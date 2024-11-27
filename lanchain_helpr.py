@@ -146,7 +146,3 @@ def generate_person_data(name, company, position):
     )
 
     return response
-
-
-if __name__ == "__main__":
-    print(generate_resturent_name_and_items("Italian"))
