@@ -6,11 +6,28 @@ st.title("Geronimo-Test")
 name = st.text_input("What is your name?")
 company = st.text_input("What is your company name?")
 position = st.selectbox(
-    "What is your position?",
-    ["CEO", "Software Engineer", "Marketing Manager", "Sales Manager"],
+    "What is your Job Role?",
+    [
+        "Developer/Engineer",
+        "IT Execurtive",
+        "C-Level",
+        "Solution or System Architect",
+        "Student",
+        "Other",
+    ],
+)
+interest = st.selectbox(
+    "What is your Job Role?",
+    [
+        "API Management",
+        "Integration",
+        "Identity & Access Management",
+        "Internal Developer Platform - Choreo",
+        "Career Opportunities",
+        "Other",
+    ],
 )
 submit = st.button("Submit")
-
 
 if submit:
     if name and company and position:
@@ -27,8 +44,7 @@ if submit:
 
             if social_media_links:
                 # #uncomment this and delete bellow code to see the link
-                st.write("link: ", social_media_links) 
-                
+                st.write("link: ", social_media_links)
 
                 # this code is user to show social media links using markdown
                 links = social_media_links.split("\n")

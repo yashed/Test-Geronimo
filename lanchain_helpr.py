@@ -9,6 +9,7 @@ from langchain.chat_models import ChatOpenAI
 import requests
 from bs4 import BeautifulSoup
 import time
+import scraping_helper as sh
 import json
 
 load_dotenv()
@@ -24,33 +25,6 @@ llm = ChatOpenAI(
 )
 
 
-def fetch_page_content(url):
-    headers = {
-        "User-Agent": (
-            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 "
-            "(KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36"
-        )
-    }
-
-    try:
-        response = requests.get(url, headers=headers, timeout=10)
-        response.raise_for_status()
-        soup = BeautifulSoup(response.text, "html.parser")
-        paragraphs = soup.find_all(["p", "h1", "h2", "h3", "li"])
-        content = [
-            tag.get_text(strip=True) for tag in paragraphs if tag.get_text(strip=True)
-        ]
-        return "\n".join(content)
-    except requests.exceptions.HTTPError as e:
-        print(f"HTTPError: {e}")
-        if response.status_code == 429:
-            print("Rate limited. Retrying after 10 seconds...")
-            time.sleep(10)
-
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-
 def fetch_top_google_results(name, company, num_results=8):
     query = f"{name} in {company}"
 
@@ -61,7 +35,7 @@ def fetch_top_google_results(name, company, num_results=8):
     for result in search_results:
 
         link = result.get("link")
-        page_content = fetch_page_content(link) if link else "No content available"
+        page_content = sh.fetch_with_requests(link) if link else "No content available"
         print(page_content)
 
         results.append(
@@ -77,7 +51,7 @@ def fetch_top_google_results(name, company, num_results=8):
 
 def generate_person_data(name, company, position):
 
-    # Fetch Google results for additional context
+    # Fetch Google results
     google_results = fetch_top_google_results(name, company)
 
     # Format Google results for input into the prompts
@@ -91,10 +65,19 @@ def generate_person_data(name, company, position):
     # First chain: Generate a concise professional summary
     prompt_template_summary = PromptTemplate(
         input_variables=["name", "company", "position", "google_results"],
+        # template=(
+        #     "Provide a brief but informative summary about {name}'s career and role at {company}. "
+        #     "Keep the summary around 100 words, highlighting the most important aspects of their professional background. "
+        #     "Consider the information in the provided Google Search Results as context. "
+        #     "Google Search Results: {google_results}\n\n"
+        #     "Summary: "
+        # ),
         template=(
-            "Provide a brief but informative summary about {name}'s career and role at {company}. "
-            "Keep the summary around 100 words, highlighting the most important aspects of their professional background. "
-            "Consider the information in the provided Google Search Results as context. "
+            "Provide a detailed and unbiased summary about {name}, who is currently associated with {company} as a {position}. "
+            "Keep the summary around 100 words and Include key details about their career, areas of interest, significant achievements, and any other notable or unique aspects about them. "
+            "Mention any relevant insights or interesting facts that could help a team initiate an engaging and informed conversation with this person. "
+            "Use only the most accurate and relevant information from the provided Google Search Results. "
+            "Be mindful that not all search results may pertain to this individual; filter out any unrelated or incorrect data. "
             "Google Search Results: {google_results}\n\n"
             "Summary: "
         ),
