@@ -32,33 +32,26 @@ def fetch_page_content(url):
         )
     }
 
-    for attempt in range(3):  # Retry up to 3 times
-        try:
-            response = requests.get(url, headers=headers, timeout=10)
-            response.raise_for_status()  # Raise an error for bad HTTP codes
-            soup = BeautifulSoup(response.text, "html.parser")
-            paragraphs = soup.find_all(["p", "h1", "h2", "h3", "li"])
-            content = [
-                tag.get_text(strip=True)
-                for tag in paragraphs
-                if tag.get_text(strip=True)
-            ]
-            return "\n".join(content)
-        except requests.exceptions.HTTPError as e:
-            print(f"HTTPError: {e}")
-            if response.status_code == 429:  # Too many requests
-                print("Rate limited. Retrying after 10 seconds...")
-                time.sleep(10)  # Delay before retrying
-            else:
-                break
-        except Exception as e:
-            print(f"An error occurred: {e}")
-            break
+    try:
+        response = requests.get(url, headers=headers, timeout=10)
+        response.raise_for_status()
+        soup = BeautifulSoup(response.text, "html.parser")
+        paragraphs = soup.find_all(["p", "h1", "h2", "h3", "li"])
+        content = [
+            tag.get_text(strip=True) for tag in paragraphs if tag.get_text(strip=True)
+        ]
+        return "\n".join(content)
+    except requests.exceptions.HTTPError as e:
+        print(f"HTTPError: {e}")
+        if response.status_code == 429:
+            print("Rate limited. Retrying after 10 seconds...")
+            time.sleep(10)
 
-    return f"Failed to fetch content from {url} after 3 attempts."
+    except Exception as e:
+        print(f"An error occurred: {e}")
 
 
-def fetch_top_google_results(name, company, num_results=5):
+def fetch_top_google_results(name, company, num_results=8):
     query = f"{name} in {company}"
 
     google_search = GoogleSearchAPIWrapper()
@@ -119,6 +112,7 @@ def generate_person_data(name, company, position):
             "There can be some false positives, so ensure the links are valid and related to the person not for any organization. "
             "Prioritize LinkedIn if available, followed by other platforms like Twitter, GitHub, personal websites, Blog Sites like Medium. "
             "Ensure that only accurate and valid links are included. Do not include any links that are not related to the person like organizations social media links. "
+            "Just give the [platform name]-[URL], remove additional information. "
             "Google Search Results: {google_results}\n\n"
             "Social Media Links: "
         ),

@@ -26,19 +26,21 @@ if submit:
             social_media_links = response.get("social_media_links", "")
 
             if social_media_links:
-                # st.write("link: ", social_media_links) #uncomment this and delete bellow code to see the link
+                # #uncomment this and delete bellow code to see the link
+                st.write("link: ", social_media_links) 
+                
 
                 # this code is user to show social media links using markdown
                 links = social_media_links.split("\n")
-                for link in links:
+                # for link in links:
 
-                    if link.strip():
+                #     if link.strip():
 
-                        platform, url = (
-                            link.split(":", 1) if ":" in link else (None, None)
-                        )
-                        if platform and url:
-                            st.markdown(f"- [{platform.strip()}]({url.strip()})")
+                #         platform, url = (
+                #             link.split(":", 1) if ":" in link else (None, None)
+                #         )
+                #         if platform and url:
+                #             st.markdown(f"- [{platform.strip()}]({url.strip()})")
             else:
                 st.write("No social media links found.")
 
