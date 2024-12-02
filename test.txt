@@ -3,7 +3,7 @@ endpoints:
   - name: test-langchain-endpoint
     service:
       port: 8502
-    type: REST
+    type: WEBAPP
 
 build:
   commands:
