@@ -1,0 +1,15 @@
+schemaVersion: 1.0
+endpoints:
+  - name: test-langchain-endpoint
+    service:
+      port: 8501
+    type: REST
+
+build:
+  commands:
+    - python -m venv .venv
+    - .venv/bin/activate
+    - pip install -r requirements.txt
+
+run:
+  command: streamlit run main.py --server.port 8501 --server.enableCORS false
