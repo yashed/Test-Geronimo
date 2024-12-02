@@ -2,7 +2,7 @@ schemaVersion: 1.0
 endpoints:
   - name: test-langchain-endpoint
     service:
-      port: 8501
+      port: 8502
     type: REST
 
 build:
@@ -12,4 +12,4 @@ build:
     - pip install -r requirements.txt
 
 run:
-  command: streamlit run main.py --server.port 8501 --server.enableCORS false
+  command: streamlit run main.py --server.port 8502 --server.enableCORS false
