@@ -6,11 +6,8 @@ from dotenv import load_dotenv
 from langchain.chains import SequentialChain
 from langchain.utilities import GoogleSearchAPIWrapper
 from langchain.chat_models import ChatOpenAI
-import requests
-from bs4 import BeautifulSoup
-import time
 import scraping_helper as sh
-import json
+
 
 load_dotenv()
 
