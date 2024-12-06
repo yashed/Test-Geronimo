@@ -51,6 +51,10 @@ Create a file named .env in the root directory of the project and add the follow
 OPENAI_API_KEY = "<your_openai_api_key>"
 GOOGLE_API_KEY = "<your_google_api_key>"
 GOOGLE_CSE_ID = "<your_google_cse_id>"
+AZURE_API_KEY = "<your_azure_api_key>"
+OPENAI_API_BASE = "<your_openai_api_base>"
+OPENAI_DEPLOYMENT_NAME = "<your_openai_deployment_name>"
+OPENAI_API_VERSION = "<your_openai_api_version>"
 ```
 
 Replace the placeholders with your respective API keys.
