@@ -61,14 +61,15 @@ llm = ChatOpenAI(
 def fetch_top_google_results(name, company, num_results=8 , company_flag = 0):
     
     if company_flag == 1:
-        query = f"{name} {company}"
+        query = f"{company}"
     elif company_flag == 0:
         query = f"{name} in {company}"
     
-
+    print("Query - ", query)    
     google_search = GoogleSearchAPIWrapper()
 
     search_results = google_search.results(query, num_results=num_results)
+    print("Search Results - ", search_results)
     results = []
     
     print("Search Results - ", search_results)
