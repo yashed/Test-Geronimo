@@ -5,6 +5,7 @@ st.title("Geronimo-Test")
 
 name = st.text_input("What is your name?")
 company = st.text_input("What is your company name?")
+country = st.text_input("What is your Country?")
 position = st.selectbox(
     "What is your Job Role?",
     [
@@ -32,19 +33,21 @@ submit = st.button("Submit")
 if submit:
     if name and company and position:
         st.write(f"Fetching data for {name} from {company} as a {position}")
-        response = lh.generate_person_data(name, company, position)
+        response = lh.generate_data(name, company, position,country)
 
         if response:
-
-            st.write("**Professional Summary:**")
+            
+            #add person summary
+            st.subheader("**Professional Summary:**")
             st.write(response.get("professional_summary", "No summary available"))
-
+            
+            #add social media links
             st.subheader("**Social Media Links:**")
             social_media_links = response.get("social_media_links", "")
 
             if social_media_links:
                 # #uncomment this and delete bellow code to see the link
-                st.write("link: ", social_media_links)
+                st.write(social_media_links)
 
                 # this code is user to show social media links using markdown
                 links = social_media_links.split("\n")
@@ -59,6 +62,12 @@ if submit:
                 #             st.markdown(f"- [{platform.strip()}]({url.strip()})")
             else:
                 st.write("No social media links found.")
+                
+            
+             #add company summary
+            st.subheader("**Company Details:**")
+            st.write(f"**{company}**")
+            st.write(response.get("company_summary", "No summary available"))
 
             st.subheader("**Additional Insights:**")
             st.write(

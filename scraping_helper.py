@@ -1,49 +1,49 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.chrome.options import Options
+# from selenium import webdriver
+# from selenium.webdriver.common.by import By
+# from selenium.webdriver.chrome.service import Service
+# from selenium.webdriver.chrome.options import Options
 
-from webdriver_manager.chrome import ChromeDriverManager
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+# from webdriver_manager.chrome import ChromeDriverManager
+# from selenium.webdriver.support.ui import WebDriverWait
+# from selenium.webdriver.support import expected_conditions as EC
 import requests
 from bs4 import BeautifulSoup
 
 
-def fetch_with_selenium(url):
-    """
-    Fetch content using Selenium
-    """
-    # Set up Chrome options for headless browsing
-    options = Options()
-    options.add_argument("--headless")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--no-sandbox")
+# def fetch_with_selenium(url):
+#     """
+#     Fetch content using Selenium
+#     """
+#     # Set up Chrome options for headless browsing
+#     options = Options()
+#     options.add_argument("--headless")
+#     options.add_argument("--disable-gpu")
+#     options.add_argument("--no-sandbox")
 
-    driver = webdriver.Chrome(
-        service=Service(ChromeDriverManager().install()), options=options
-    )
+#     driver = webdriver.Chrome(
+#         service=Service(ChromeDriverManager().install()), options=options
+#     )
 
-    try:
+#     try:
 
-        driver.get(url)
+#         driver.get(url)
 
-        WebDriverWait(driver, 10).until(
-            EC.presence_of_element_located((By.TAG_NAME, "body"))
-        )
+#         WebDriverWait(driver, 10).until(
+#             EC.presence_of_element_located((By.TAG_NAME, "body"))
+#         )
 
-        # Extract text content
-        elements = driver.find_elements(By.XPATH, "//p | //h1 | //h2 | //h3 | //li")
-        content = [el.text.strip() for el in elements if el.text.strip()]
+#         # Extract text content
+#         elements = driver.find_elements(By.XPATH, "//p | //h1 | //h2 | //h3 | //li")
+#         content = [el.text.strip() for el in elements if el.text.strip()]
 
-        return "\n".join(content)
+#         return "\n".join(content)
 
-    except Exception as e:
-        print(f"Error fetching content with Selenium: {e}")
-        return None
+#     except Exception as e:
+#         print(f"Error fetching content with Selenium: {e}")
+#         return None
 
-    finally:
-        driver.quit()
+#     finally:
+#         driver.quit()
 
 
 def fetch_with_requests(url):
@@ -75,11 +75,3 @@ def fetch_with_requests(url):
         print(f"Error fetching content with requests: {e}")
         return None
 
-
-# Test
-url = "https://stackoverflow.com/questions/71324949/import-selenium-could-not-be-resolved-pylance-reportmissingimports"
-content = fetch_with_selenium(url)
-if content:
-    print("Extracted Content:\n", content)
-else:
-    print("Failed to extract content.")
