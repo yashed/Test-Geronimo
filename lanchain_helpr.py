@@ -53,48 +53,63 @@ os.environ["OPENAI_API_BASE"] = OPENAI_API_BASE
 llm = ChatOpenAI(
     openai_api_key=OPENAI_API_KEY,
     engine=OPENAI_DEPLOYMENT_NAME,
-    model="gpt-4",  
-    temperature=0.7,  
+    model="gpt-4",
+    temperature=0.7,
 )
 
 
-def fetch_top_google_results(name, company, num_results=8 , company_flag = 0):
-    
+def fetch_top_google_results(name, company, num_results=5, company_flag=0):
+
     if company_flag == 1:
         query = f"{company}"
+        summarize_query = query
     elif company_flag == 0:
-        query = f"{name} in {company}"
-    
-    print("Query - ", query)    
+        query = f"{name}"
+        summarize_query = f"{name}"
+
+    print("Query:", query)
+
     google_search = GoogleSearchAPIWrapper()
 
-    search_results = google_search.results(query, num_results=num_results)
-    print("Search Results - ", search_results)
-    results = []
-    
-    print("Search Results - ", search_results)
-    for result in search_results:
+    try:
+        # Fetch search results
+        search_results = google_search.results(query, num_results=num_results)
+        if not search_results or "Result" in search_results[0]:
+            print("No good Google Search Result was found.")
+            return []
 
-        link = result.get("link")
-        page_content = sh.fetch_with_requests(link) if link else "No content available"
-        # print(page_content)
+        print("Search Results:", search_results)
 
-        results.append(
-            {
-                "title": result.get("title"),
-                "link": link,
-                "snippet": result.get("snippet"),
-                "content": page_content,
-            }
-        )
-    return results
+        results = []
+        for result in search_results:
+            link = result.get("link")
+            if not link:
+                continue
+
+            page_content = sh.fetch_with_requests(link, summarize_query)
+            results.append(
+                {
+                    "title": result.get("title"),
+                    "link": link,
+                    "snippet": result.get("snippet"),
+                    "content": page_content or "No content available",
+                }
+            )
+
+        return results
+
+    except Exception as e:
+        print(f"Error during search or processing: {e}")
+        return []
 
 
-def generate_data(name, company, position,country):
+def generate_data(name, company, position, country):
 
     # Fetch Google results
     person_google_results = fetch_top_google_results(name, company)
-    company_google_results = fetch_top_google_results(name, company, num_results=3 , company_flag = 1)
+    company_google_results = fetch_top_google_results(
+        name, company, num_results=3, company_flag=1
+    )
 
     # Format Google results for input into the prompts
     formatted_results = "\n\n".join(
@@ -103,7 +118,7 @@ def generate_data(name, company, position,country):
             for res in person_google_results
         ]
     )
-    
+
     # Format Company Google results for input into the prompts
     formatted_company_results = "\n\n".join(
         [
@@ -111,13 +126,10 @@ def generate_data(name, company, position,country):
             for res in company_google_results
         ]
     )
-    
-    #to get social media links
+
+    # to get social media links
     formatted_links = "\n".join(
-        [
-            f"{res['title']}:{res['link']}"
-            for res in person_google_results
-        ]
+        [f"{res['title']}:{res['link']}" for res in person_google_results]
     )
 
     # First chain: Generate a concise professional summary
@@ -155,7 +167,7 @@ def generate_data(name, company, position,country):
     chain_social_links = LLMChain(
         llm=llm, prompt=prompt_template_social_links, output_key="social_media_links"
     )
-    
+
     # Third chain: Summary of the company
     prompt_template_company_summary = PromptTemplate(
         input_variables=["company", "country", "google_company_results"],
@@ -173,7 +185,6 @@ def generate_data(name, company, position,country):
         ),
     )
 
-    
     chain_company_summary = LLMChain(
         llm=llm, prompt=prompt_template_company_summary, output_key="company_summary"
     )
@@ -181,8 +192,20 @@ def generate_data(name, company, position,country):
     # Combine the two chains into a SequentialChain
     chain = SequentialChain(
         chains=[chain_summary, chain_social_links, chain_company_summary],
-        input_variables=["name", "company", "position", "google_results", "google_links", "country","google_company_results"],
-        output_variables=["professional_summary", "social_media_links", "company_summary"],
+        input_variables=[
+            "name",
+            "company",
+            "position",
+            "google_results",
+            "google_links",
+            "country",
+            "google_company_results",
+        ],
+        output_variables=[
+            "professional_summary",
+            "social_media_links",
+            "company_summary",
+        ],
     )
 
     # Execute the SequentialChain
@@ -199,3 +222,53 @@ def generate_data(name, company, position,country):
     )
 
     return response
+
+
+# function to summazing the scraped content
+def summarize_large_content(content, query, chunk_size=10000, overlap=200):
+
+    chunks = []
+    start = 0
+    while start < len(content):
+        end = min(start + chunk_size, len(content))
+        chunks.append(content[start:end])
+        start += chunk_size - overlap
+
+    print(f"Splitting content into {len(chunks)} chunks for summarization...")
+
+    # Define a refined prompt template to focus on meaningful summary
+    prompt_template = PromptTemplate(
+        input_variables=["query", "chunk"],
+        template=(
+            "You are a summarization assistant. Based on the following query, summarize the content provided below. "
+            "Give detailed summary with including nearly 200 words. "
+            "Focus only on the relevant information related to the query. Ignore and remove irrelevant data such as "
+            "phone numbers, personal names, addresses, or any other unrelated information that does not contribute to answering the query.\n\n"
+            "This is web-scraped content, and your task is to produce a summary that is most meaningful and relevant to the query, "
+            "Summary should be related to the Query"
+            "without including any unnecessary details.\n\n"
+            "Query: {query}\n\n"
+            "Content:\n{chunk}\n\n"
+            "Summary:"
+        ),
+    )
+
+    # Create an LLM chain for summarization using the refined prompt
+    chain = LLMChain(llm=llm, prompt=prompt_template)
+
+    # Generate summaries for each chunk
+    chunk_summaries = []
+    for i, chunk in enumerate(chunks):
+        print(f"Summarizing chunk {i + 1}/{len(chunks)}...")
+        chunk_summary = chain.run({"query": query, "chunk": chunk})
+        chunk_summaries.append(chunk_summary)
+
+    combined_summary = "\n".join(chunk_summaries)
+
+    # If the combined summary is still too long, summarize it again
+    if len(combined_summary) > chunk_size:
+        print("Combined summary is too long; summarizing it again...")
+        final_summary = chain.run({"query": query, "chunk": combined_summary})
+        return final_summary
+
+    return combined_summary
