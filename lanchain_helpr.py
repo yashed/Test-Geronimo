@@ -6,6 +6,7 @@ from langchain.chains import SequentialChain
 from langchain.utilities import GoogleSearchAPIWrapper
 import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
+from langchain.chat_models import AzureChatOpenAI
 
 
 # Load environment variables
@@ -49,11 +50,10 @@ os.environ["OPENAI_API_VERSION"] = OPENAI_API_VERSION
 os.environ["OPENAI_API_BASE"] = OPENAI_API_BASE
 
 
-# Initialize ChatOpenAI model (correct method for chat-based models)
-llm = ChatOpenAI(
-    openai_api_key=OPENAI_API_KEY,
-    engine=OPENAI_DEPLOYMENT_NAME,
-    model="gpt-4",
+# Initialize ChatOpenAI model
+llm = AzureChatOpenAI(
+    openai_api_key=os.environ["OPENAI_API_KEY"],
+    deployment_name=OPENAI_DEPLOYMENT_NAME,
     temperature=0.7,
 )
 
