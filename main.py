@@ -33,15 +33,16 @@ submit = st.button("Submit")
 if submit:
     if name and company and position:
         st.write(f"Fetching data for {name} from {company} as a {position}")
-        response = lh.generate_data(name, company, position,country)
+        response = lh.generate_data(name, company, position, country)
+        print("Responce - ", response)
 
         if response:
-            
-            #add person summary
+
+            # add person summary
             st.subheader("**Professional Summary:**")
             st.write(response.get("professional_summary", "No summary available"))
-            
-            #add social media links
+
+            # add social media links
             st.subheader("**Social Media Links:**")
             social_media_links = response.get("social_media_links", "")
 
@@ -62,12 +63,22 @@ if submit:
                 #             st.markdown(f"- [{platform.strip()}]({url.strip()})")
             else:
                 st.write("No social media links found.")
-                
-            
-             #add company summary
+
+            # add company summary
             st.subheader("**Company Details:**")
             st.write(f"**{company}**")
             st.write(response.get("company_summary", "No summary available"))
+            st.write(f"**{company} Competitors**")
+            competitors = response.get("company_competitors").split(",")
+            competitors = [
+                competitor.strip("- ").strip()
+                for competitor in competitors
+                if competitor.strip()
+            ]
+
+            # show company competitors
+            for competitor in competitors:
+                st.write(competitor)
 
             st.subheader("**Additional Insights:**")
             st.write(

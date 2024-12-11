@@ -58,14 +58,19 @@ llm = AzureChatOpenAI(
 )
 
 
-def fetch_top_google_results(name, company, num_results=5, company_flag=0):
+def fetch_top_google_results(
+    name, company, num_results=5, company_flag=0, competitors=0
+):
 
-    if company_flag == 1:
+    if company_flag == 1:  # to get company information
         query = f"{company}"
         summarize_query = query
-    elif company_flag == 0:
+    elif company_flag == 0 and competitors == 0:  # to get personal information
         query = f"{name}"
         summarize_query = f"{name}"
+    elif competitors == 1 and company_flag == 0:  # to get company competitors
+        query = f"{company} competitors"
+        summarize_query = query
 
     print("Query:", query)
 
@@ -78,7 +83,7 @@ def fetch_top_google_results(name, company, num_results=5, company_flag=0):
             print("No good Google Search Result was found.")
             return []
 
-        print("Search Results:", search_results)
+        # print("Search Results:", search_results)
 
         results = []
         for result in search_results:
@@ -110,9 +115,14 @@ def generate_data(name, company, position, country):
     company_google_results = fetch_top_google_results(
         name, company, num_results=3, company_flag=1
     )
+    company_competitors_results = fetch_top_google_results(
+        name, company, num_results=4, competitors=1
+    )
+
+    print("Company Competitors - ", company_competitors_results)
 
     # Format Google results for input into the prompts
-    formatted_results = "\n\n".join(
+    formatted_person_results = "\n\n".join(
         [
             f"Title: {res['title']}\nLink: {res['link']}\nSnippet: {res['snippet']}\nContent: {res['content']}"
             for res in person_google_results
@@ -129,8 +139,21 @@ def generate_data(name, company, position, country):
 
     # to get social media links
     formatted_links = "\n".join(
-        [f"{res['title']}:{res['link']}" for res in person_google_results]
+        [
+            f"{res['title']}\nLink: {res['link']}\nSnippet: {res['snippet']}\nContent: {res['content']}"
+            for res in person_google_results
+        ]
     )
+
+    # to get company competitors
+    formatted_competitors = "\n\n".join(
+        [
+            f"Title: {res['title']}\nLink: {res['link']}\nSnippet: {res['snippet']}\nContent: {res['content']}"
+            for res in company_competitors_results
+        ]
+    )
+
+    print("Formatted Results - ", formatted_competitors)
 
     # First chain: Generate a concise professional summary
     prompt_template_summary = PromptTemplate(
@@ -189,9 +212,33 @@ def generate_data(name, company, position, country):
         llm=llm, prompt=prompt_template_company_summary, output_key="company_summary"
     )
 
+    # Fourth chain: Competitors of the company
+    prompt_template_competitors = PromptTemplate(
+        input_variables=["company", "company_competitors_results"],
+        template=(
+            "Based on the following Google Search results for {company}'s competitors, provide a concise list of the top competitors of {company}. "
+            "Return only the names of the competitor companies, excluding any product names or unrelated details. "
+            "The list should contain 3 to 5 of the most significant competitors based on the search results."
+            " If no competitors are found, respond with 'No competitors found.'"
+            " Ensure the competitor company names are sorted alphabetically."
+            " Focus strictly on company names and exclude any product names or services.\n\n"
+            "Google Search Results: {company_competitors_results}\n\n"
+            "Competitors:"
+        ),
+    )
+
+    chain_competitors = LLMChain(
+        llm=llm, prompt=prompt_template_competitors, output_key="company_competitors"
+    )
+
     # Combine the two chains into a SequentialChain
     chain = SequentialChain(
-        chains=[chain_summary, chain_social_links, chain_company_summary],
+        chains=[
+            chain_summary,
+            chain_social_links,
+            chain_company_summary,
+            chain_competitors,
+        ],
         input_variables=[
             "name",
             "company",
@@ -200,11 +247,13 @@ def generate_data(name, company, position, country):
             "google_links",
             "country",
             "google_company_results",
+            "company_competitors_results",
         ],
         output_variables=[
             "professional_summary",
             "social_media_links",
             "company_summary",
+            "company_competitors",
         ],
     )
 
@@ -214,10 +263,11 @@ def generate_data(name, company, position, country):
             "name": name,
             "company": company,
             "position": position,
-            "google_results": formatted_results,
+            "google_results": formatted_person_results,
             "google_links": formatted_links,
             "country": country,
             "google_company_results": formatted_company_results,
+            "company_competitors_results": formatted_competitors,
         }
     )
 
@@ -233,8 +283,6 @@ def summarize_large_content(content, query, chunk_size=10000, overlap=200):
         end = min(start + chunk_size, len(content))
         chunks.append(content[start:end])
         start += chunk_size - overlap
-
-    print(f"Splitting content into {len(chunks)} chunks for summarization...")
 
     # Define a refined prompt template to focus on meaningful summary
     prompt_template = PromptTemplate(
@@ -259,7 +307,7 @@ def summarize_large_content(content, query, chunk_size=10000, overlap=200):
     # Generate summaries for each chunk
     chunk_summaries = []
     for i, chunk in enumerate(chunks):
-        print(f"Summarizing chunk {i + 1}/{len(chunks)}...")
+        # print(f"Summarizing chunk {i + 1}/{len(chunks)}...")
         chunk_summary = chain.run({"query": query, "chunk": chunk})
         chunk_summaries.append(chunk_summary)
 
@@ -267,7 +315,6 @@ def summarize_large_content(content, query, chunk_size=10000, overlap=200):
 
     # If the combined summary is still too long, summarize it again
     if len(combined_summary) > chunk_size:
-        print("Combined summary is too long; summarizing it again...")
         final_summary = chain.run({"query": query, "chunk": combined_summary})
         return final_summary
 
