@@ -68,7 +68,7 @@ if submit:
             st.subheader("**Company Details:**")
             st.write(f"**{company}**")
             st.write(response.get("company_summary", "No summary available"))
-            st.write(f"**{company} Competitors**")
+            st.subheader(f"**{company} Competitors**")
             competitors = response.get("company_competitors").split(",")
             competitors = [
                 competitor.strip("- ").strip()

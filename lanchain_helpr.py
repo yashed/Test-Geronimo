@@ -35,10 +35,6 @@ if not all(
     raise ValueError("Please ensure all the necessary environment variables are set.")
 
 
-# installe bellows
-# pip install -U langchain-community openai==0.28
-
-
 print("APi Key - ", OPENAI_API_KEY)
 print("API Base - ", OPENAI_API_BASE)
 print("Deployment Name - ", OPENAI_DEPLOYMENT_NAME)
@@ -59,14 +55,14 @@ llm = AzureChatOpenAI(
 
 
 def fetch_top_google_results(
-    name, company, num_results=5, company_flag=0, competitors=0
+    name, company, num_results=8, company_flag=0, competitors=0
 ):
 
     if company_flag == 1:  # to get company information
         query = f"{company}"
         summarize_query = query
     elif company_flag == 0 and competitors == 0:  # to get personal information
-        query = f"{name}"
+        query = f"{name} in {company}"
         summarize_query = f"{name}"
     elif competitors == 1 and company_flag == 0:  # to get company competitors
         query = f"{company} competitors"
@@ -160,7 +156,7 @@ def generate_data(name, company, position, country):
         input_variables=["name", "company", "position", "google_results"],
         template=(
             "Provide a detailed and unbiased summary about {name}, who is currently associated with {company} as a {position}. "
-            "Keep the summary around 100 words and Include key details about their career, areas of interest, significant achievements, and any other notable or unique aspects about them. "
+            "Keep the summary around 120 words and Include key details about their career, areas of interest, significant achievements, and any other notable or unique aspects about them. "
             "Mention any relevant insights or interesting facts that could help a team initiate an engaging and informed conversation with this person. "
             "Use only the most accurate and relevant information from the provided Google Search Results. "
             "Be mindful that not all search results may pertain to this individual; filter out any unrelated or incorrect data. "
@@ -216,14 +212,13 @@ def generate_data(name, company, position, country):
     prompt_template_competitors = PromptTemplate(
         input_variables=["company", "company_competitors_results"],
         template=(
-            "Based on the following Google Search results for {company}'s competitors, provide a concise list of the top competitors of {company}. "
-            "Return only the names of the competitor companies, excluding any product names or unrelated details. "
-            "The list should contain 3 to 5 of the most significant competitors based on the search results."
-            " If no competitors are found, respond with 'No competitors found.'"
-            " Ensure the competitor company names are sorted alphabetically."
-            " Focus strictly on company names and exclude any product names or services.\n\n"
+            "Based on the following Google Search results for {company}'s competitors, extract a concise list containing only the names of competitor companies. "
+            "Strictly avoid including product names, services, or any unrelated details. "
+            "Provide 3 to 5 of the most significant competitors based on the search results. "
+            "If no valid company names can be identified, respond with 'No competitors found.' "
+            "Ensure that only competitor company names are returned, and sort the list alphabetically.\n\n"
             "Google Search Results: {company_competitors_results}\n\n"
-            "Competitors:"
+            "Competitor Company Names:"
         ),
     )
 
