@@ -1,3 +1,4 @@
+import concurrent.futures
 from langchain.prompts import PromptTemplate
 from langchain.chains import LLMChain
 import os
@@ -8,12 +9,10 @@ import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
 
-
 # Load environment variables
 load_dotenv()
 
 # Fetching the variables from the .env file
-
 GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 OPENAI_API_KEY = os.getenv("AZURE_API_KEY")
@@ -21,7 +20,6 @@ OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 OPENAI_DEPLOYMENT_NAME = os.getenv("OPENAI_DEPLOYMENT_NAME")
 OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
 
-# Ensure all variables are set correctly
 if not all(
     [
         GOOGLE_CSE_ID,
@@ -34,17 +32,10 @@ if not all(
 ):
     raise ValueError("Please ensure all the necessary environment variables are set.")
 
-
-print("APi Key - ", OPENAI_API_KEY)
-print("API Base - ", OPENAI_API_BASE)
-print("Deployment Name - ", OPENAI_DEPLOYMENT_NAME)
-print("API Version - ", OPENAI_API_VERSION)
-
 os.environ["OPENAI_API_KEY"] = OPENAI_API_KEY
 os.environ["OPENAI_API_TYPE"] = "Azure"
 os.environ["OPENAI_API_VERSION"] = OPENAI_API_VERSION
 os.environ["OPENAI_API_BASE"] = OPENAI_API_BASE
-
 
 # Initialize ChatOpenAI model
 llm = AzureChatOpenAI(
@@ -54,50 +45,71 @@ llm = AzureChatOpenAI(
 )
 
 
+def parallel_google_search(queries, num_results=8):
+    """
+    Perform Google searches in parallel.
+    """
+    google_search = GoogleSearchAPIWrapper()
+
+    def fetch_results(query):
+        return google_search.results(query, num_results=num_results)
+
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        results = list(executor.map(fetch_results, queries))
+    return results
+
+
+def parallel_web_scraping(results, queries):
+    """
+    Perform web scraping in parallel.
+    """
+
+    def scrape(result, query):
+        link = result.get("link")
+        if not link:
+            return None
+        return {
+            "title": result.get("title"),
+            "link": link,
+            "snippet": result.get("snippet"),
+            "content": sh.fetch_with_requests(link, query),
+        }
+
+    combined_results = []
+    with concurrent.futures.ThreadPoolExecutor() as executor:
+        for query_results, query in zip(results, queries):
+            scraped_data = list(
+                executor.map(lambda res: scrape(res, query), query_results)
+            )
+            combined_results.append(
+                [data for data in scraped_data if data]
+            )  # Filter out None results
+
+    return combined_results
+
+
 def fetch_top_google_results(
     name, company, num_results=8, company_flag=0, competitors=0
 ):
+    """
+    Fetch Google search results and scrape the content in parallel.
+    """
+    queries = []
+    if company_flag == 1:  # Get company information
+        queries.append(f"{company}")
+    elif company_flag == 0 and competitors == 0:  # Get personal information
+        queries.append(f"{name} in {company}")
+    elif competitors == 1 and company_flag == 0:  # Get company competitors
+        queries.append(f"{company} competitors")
 
-    if company_flag == 1:  # to get company information
-        query = f"{company}"
-        summarize_query = query
-    elif company_flag == 0 and competitors == 0:  # to get personal information
-        query = f"{name} in {company}"
-        summarize_query = f"{name}"
-    elif competitors == 1 and company_flag == 0:  # to get company competitors
-        query = f"{company} competitors"
-        summarize_query = query
-
-    print("Query:", query)
-
-    google_search = GoogleSearchAPIWrapper()
+    print("Queries:", queries)
 
     try:
-        # Fetch search results
-        search_results = google_search.results(query, num_results=num_results)
-        if not search_results or "Result" in search_results[0]:
-            print("No good Google Search Result was found.")
-            return []
+        search_results = parallel_google_search(queries, num_results=num_results)
 
-        # print("Search Results:", search_results)
-
-        results = []
-        for result in search_results:
-            link = result.get("link")
-            if not link:
-                continue
-
-            page_content = sh.fetch_with_requests(link, summarize_query)
-            results.append(
-                {
-                    "title": result.get("title"),
-                    "link": link,
-                    "snippet": result.get("snippet"),
-                    "content": page_content or "No content available",
-                }
-            )
-
-        return results
+        # Perform parallel web scraping for each query's results
+        scraped_results = parallel_web_scraping(search_results, queries)
+        return scraped_results[0] if scraped_results else []
 
     except Exception as e:
         print(f"Error during search or processing: {e}")
