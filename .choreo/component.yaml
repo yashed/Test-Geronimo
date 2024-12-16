@@ -3,7 +3,7 @@ endpoints:
   - name: test-langchain-endpoint
     service:
       port: 8000
-    type: HTTP
+    type: REST
 
 build:
   commands:
