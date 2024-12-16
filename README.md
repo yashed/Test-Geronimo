@@ -48,7 +48,6 @@ Create a file named .env in the root directory of the project and add the follow
 .env
 
 ```bash
-OPENAI_API_KEY = "<your_openai_api_key>"
 GOOGLE_API_KEY = "<your_google_api_key>"
 GOOGLE_CSE_ID = "<your_google_cse_id>"
 AZURE_API_KEY = "<your_azure_api_key>"
@@ -59,12 +58,41 @@ OPENAI_API_VERSION = "<your_openai_api_version>"
 
 Replace the placeholders with your respective API keys.
 
+
 #### **Running the Project:**
 
 To start the project, run the following command in your terminal:
 
 ```bash
-streamlit run main.py
+uvicorn main:app --reload
 ```
 
-This will launch the Streamlit application in your default web browser.
+This will launch the Python service. The service will be accessible at the following URL:
+
+```
+http://localhost:8000
+```
+
+#### **Accessing the Data:**
+
+To access the data, you need to use the following endpoint:
+
+```
+http://localhost:8000/generate_data/
+```
+
+#### **Required Data Parameters:**
+
+When accessing the endpoint, you must pass the following data as JSON:
+
+```json
+{
+  "name": "<Your Name>",
+  "company": "<Your Company>",
+  "country": "<Your Country>",
+  "position": "<Your Position>",
+  "interest": "<Your Interest>"
+}
+```
+
+Replace the placeholder values (`<Your Name>`, `<Your Company>`, etc.) with the actual data you want to submit.

@@ -4,7 +4,7 @@ from langchain.chains import LLMChain
 import os
 from dotenv import load_dotenv
 from langchain.chains import SequentialChain
-from langchain.utilities import GoogleSearchAPIWrapper
+from langchain_google_community import GoogleSearchAPIWrapper
 import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
@@ -89,7 +89,7 @@ def parallel_web_scraping(results, queries):
 
 
 def fetch_top_google_results(
-    name, company, num_results=8, company_flag=0, competitors=0
+    name, company, num_results=5, company_flag=0, competitors=0
 ):
     """
     Fetch Google search results and scrape the content in parallel.

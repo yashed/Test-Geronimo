@@ -1,91 +1,57 @@
-import streamlit as st
+from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
 import lanchain_helpr as lh
 
-st.title("Geronimo-Test")
+app = FastAPI()
 
-name = st.text_input("What is your name?")
-company = st.text_input("What is your company name?")
-country = st.text_input("What is your Country?")
-position = st.selectbox(
-    "What is your Job Role?",
-    [
-        "Developer/Engineer",
-        "IT Execurtive",
-        "C-Level",
-        "Solution or System Architect",
-        "Student",
-        "Other",
-    ],
+# Enable CORS middleware
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
-interest = st.selectbox(
-    "What is your Job Role?",
-    [
-        "API Management",
-        "Integration",
-        "Identity & Access Management",
-        "Internal Developer Platform - Choreo",
-        "Career Opportunities",
-        "Other",
-    ],
-)
-submit = st.button("Submit")
 
-if submit:
-    if name and company and position:
-        st.write(f"Fetching data for {name} from {company} as a {position}")
-        response = lh.generate_data(name, company, position, country)
-        print("Responce - ", response)
 
-        if response:
+# Define the request body schema using Pydantic
+class UserRequest(BaseModel):
+    name: str
+    company: str
+    country: str
+    position: str
+    interest: str
 
-            # add person summary
-            st.subheader("**Professional Summary:**")
-            st.write(response.get("professional_summary", "No summary available"))
 
-            # add social media links
-            st.subheader("**Social Media Links:**")
-            social_media_links = response.get("social_media_links", "")
+# Define an endpoint
+@app.post("/generate_data/")
+async def generate_data(user: UserRequest):
+    name = user.name
+    company = user.company
+    position = user.position
+    country = user.country
 
-            if social_media_links:
-                # #uncomment this and delete bellow code to see the link
-                st.write(social_media_links)
+    # Generate the data using the existing helper function
+    response = lh.generate_data(name, company, position, country)
 
-                # this code is user to show social media links using markdown
-                links = social_media_links.split("\n")
-                # for link in links:
+    if not response:
+        raise HTTPException(status_code=404, detail="Data generation failed")
 
-                #     if link.strip():
-
-                #         platform, url = (
-                #             link.split(":", 1) if ":" in link else (None, None)
-                #         )
-                #         if platform and url:
-                #             st.markdown(f"- [{platform.strip()}]({url.strip()})")
-            else:
-                st.write("No social media links found.")
-
-            # add company summary
-            st.subheader("**Company Details:**")
-            st.write(f"**{company}**")
-            st.write(response.get("company_summary", "No summary available"))
-            st.subheader(f"**{company} Competitors**")
-            competitors = response.get("company_competitors").split(",")
-            competitors = [
-                competitor.strip("- ").strip()
-                for competitor in competitors
-                if competitor.strip()
-            ]
-
-            # show company competitors
-            for competitor in competitors:
-                st.write(competitor)
-
-            st.subheader("**Additional Insights:**")
-            st.write(
-                response.get("additional_insights", "No additional insights available.")
-            )
-
-        else:
-            st.write("Failed to generate data. Please try again.")
-    else:
-        st.write("Please fill in the required fields before submitting.")
+    return {
+        "professional_summary": response.get(
+            "professional_summary", "No summary available"
+        ),
+        "social_media_links": response.get(
+            "social_media_links", "No social media links found."
+        ),
+        "company_summary": response.get(
+            "company_summary", "No company summary available"
+        ),
+        "company_competitors": response.get(
+            "company_competitors", "No competitors found"
+        ),
+        "additional_insights": response.get(
+            "additional_insights", "No additional insights available."
+        ),
+    }
