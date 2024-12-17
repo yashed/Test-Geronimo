@@ -1,0 +1,124 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "FastAPI",
+        "version": "0.1.0"
+    },
+    "paths": {
+        "/testgeronimo2/geronimo-v1-1/v1.0/": {
+            "get": {
+                "summary": "Read Root",
+                "operationId": "read_root_testgeronimo2_geronimo_v1_1_v1_0__get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "message": "Welcome to the API"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/testgeronimo2/geronimo-v1-1/v1.0/test": {
+            "get": {
+                "summary": "Test Endpoint",
+                "operationId": "test_endpoint_testgeronimo2_geronimo_v1_1_v1_0_test_get",
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "message": "This is a test endpoint"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/testgeronimo2/geronimo-v1-1/v1.0/generate_data/": {
+            "post": {
+                "summary": "Generate Data",
+                "operationId": "generate_data_testgeronimo2_geronimo_v1_1_v1_0_generate_data__post",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "$ref": "#/components/schemas/UserRequest"
+                            }
+                        }
+                    },
+                    "required": true
+                },
+                "responses": {
+                    "200": {
+                        "description": "Successful Response",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "professional_summary": "No summary available",
+                                    "social_media_links": "No social media links found.",
+                                    "company_summary": "No company summary available",
+                                    "company_competitors": "No competitors found",
+                                    "additional_insights": "No additional insights available."
+                                }
+                            }
+                        }
+                    },
+                    "404": {
+                        "description": "Data generation failed",
+                        "content": {
+                            "application/json": {
+                                "example": {
+                                    "detail": "Data generation failed"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "UserRequest": {
+                "title": "UserRequest",
+                "required": [
+                    "name",
+                    "company",
+                    "country",
+                    "position",
+                    "interest"
+                ],
+                "type": "object",
+                "properties": {
+                    "name": {
+                        "title": "Name",
+                        "type": "string"
+                    },
+                    "company": {
+                        "title": "Company",
+                        "type": "string"
+                    },
+                    "country": {
+                        "title": "Country",
+                        "type": "string"
+                    },
+                    "position": {
+                        "title": "Position",
+                        "type": "string"
+                    },
+                    "interest": {
+                        "title": "Interest",
+                        "type": "string"
+                    }
+                }
+            }
+        }
+    }
+}
