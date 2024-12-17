@@ -24,6 +24,18 @@ class UserRequest(BaseModel):
     interest: str
 
 
+# Define root endpoint
+@app.get("/")
+async def read_root():
+    return {"message": "Welcome to the API"}
+
+
+# Define a test endpoint
+@app.get("/test")
+def test_endpoint():
+    return {"message": "This is a test endpoint"}
+
+
 # Define an endpoint
 @app.post("/generate_data/")
 async def generate_data(user: UserRequest):
