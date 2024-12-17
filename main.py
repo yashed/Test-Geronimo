@@ -3,7 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import lanchain_helpr as lh
 
-app = FastAPI(root_path="/testgeronimo2/geronimo-v1-1/v1.0")
+app = FastAPI()
 
 
 # Enable CORS middleware
