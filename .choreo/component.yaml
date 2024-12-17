@@ -1,6 +1,6 @@
 schemaVersion: 1.0
 endpoints:
-  - name: test-langchain-endpoint
+  - name: generate_data
     service:
       port: 8000
     type: REST
