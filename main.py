@@ -50,21 +50,22 @@ async def generate_data(user: UserRequest):
 
     if not response:
         raise HTTPException(status_code=404, detail="Data generation failed")
-
-    return {
-        "professional_summary": response.get(
-            "professional_summary", "No summary available"
-        ),
-        "social_media_links": response.get(
-            "social_media_links", "No social media links found."
-        ),
-        "company_summary": response.get(
-            "company_summary", "No company summary available"
-        ),
-        "company_competitors": response.get(
-            "company_competitors", "No competitors found"
-        ),
-        "additional_insights": response.get(
-            "additional_insights", "No additional insights available."
-        ),
-    }
+    else:
+        print(response)
+        return {
+            "professional_summary": response.get(
+                "professional_summary", "No summary available"
+            ),
+            "social_media_links": response.get(
+                "social_media_links", "No social media links found."
+            ),
+            "company_summary": response.get(
+                "company_summary", "No company summary available"
+            ),
+            "company_competitors": response.get(
+                "company_competitors", "No competitors found"
+            ),
+            "additional_insights": response.get(
+                "additional_insights", "No additional insights available."
+            ),
+        }

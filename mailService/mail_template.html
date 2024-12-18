@@ -62,6 +62,16 @@
         margin-top: 20px;
       }
 
+      .lead-details th:first-child, 
+      .lead-details td:first-child {
+        width: 25%;
+      }
+
+      .lead-details th:nth-child(2), 
+      .lead-details td:nth-child(2) {
+        width: 75%;
+      }
+
       .lead-details th {
         background-color: #dcdcdc;
         color: #333;
@@ -75,6 +85,7 @@
         text-align: left;
         padding: 10px;
         border: 1px solid #ddd;
+        font-size: 14px;
       }
 
       .lead-details tr:nth-child(even) {
@@ -119,117 +130,70 @@
       }
 
       .footer {
-        font-size: 12px;
+        font-size: 13px;
         color: #555;
         margin-top: 20px;
         text-align: left;
+      }
+      .highlight {
+        color: #ff5d00;
+        font-size: 20px;
+      }
+      .content {
+        font-size: 15px;
+        color: #000;
+        padding: 10px;
       }
     </style>
   </head>
   <body>
     <div class="email-container">
       <h1 class="header">
-        WSO2<span class="header-1">Contact Us form Notification</span>
+        WSO2<span class="header-1">Contact Us form AI Generated Content</span>
       </h1>
-      <p class="instruction">
-        The Lead below was allocated to you. Click on the link below to review
-        the activity history in Salesforce.
+      <p class="footer">
+        *This is an AI-generated response and may not be entirely
+        accurate. Please conduct your own research to verify the content
       </p>
-      <div class="note">
-        <strong>Please contact this Lead within One Hour</strong> if the Lead is
-        from a Contact us Form (see Subject). Even if this is a junk Lead please
-        go to Salesforce to disqualify the Lead.
-      </div>
       <table class="lead-details">
         <tr>
           <th>Field</th>
           <th>Value</th>
         </tr>
         <tr>
-          <td>Lead Link</td>
-          <td>
-            <a href="{{lead_link}}">{{lead_link}}</a>
-          </td>
-        </tr>
-        <tr>
           <td>Name</td>
-          <td>{{name}}</td>
-        </tr>
-        <tr>
-          <td>Email</td>
-          <td>
-            <a href="mailto:{{email}}">{{email}}</a>
-          </td>
-        </tr>
-        <tr>
-          <td>Phone</td>
-          <td>{{phone}}</td>
-        </tr>
-        <tr>
-          <td>Company</td>
-          <td>{{company}}</td>
+          <td><div class="content">{{name}}</div></td>
         </tr>
         <tr>
           <td>Job Title</td>
-          <td>{{job_title}}</td>
+          <td> <div class="content">{{job_title}}</div></td>
         </tr>
         <tr>
-          <td>Country</td>
-          <td>{{country}}</td>
+        <tr>
+          <td>Email</td>
+          <td>
+            <a href="mailto:{{email}}"><div class="content">{{email}}</div></a>
+          </td>
         </tr>
         <tr>
-          <td>Region</td>
-          <td>{{region}}</td>
+          <td>Person Profile <span class="highlight">*</span></td>
+          <td><div class="content">{{person_profile}}</div></td>
         </tr>
         <tr>
-          <td>Sub Region</td>
-          <td>{{sub_region}}</td>
+          <td>Social Media Links <span class="highlight">*</span></td>
+          <td><div class="content">{{social_media_links}}</div></td>
+        </tr>
+          <td>Company</td>
+          <td><div class="content">{{company}}</div></td>
         </tr>
         <tr>
-          <td>Description</td>
-          <td>{{description}}</td>
+          <td>Company Overview <span class="highlight">*</span></td>
+          <td> <div class="content">{{company_overview}} Vidura Gamini Abhaya is a seasoned technologist and executive currently serving as the Senior Director and Head of Integration Solution Architecture at WSO2. He also holds the position of Field CTO. With a robust career in technology, Vidura has garnered extensive experience in solution architecture, particularly focusing on API management. Educated at RMIT University, he is based in Colombo, Sri Lanka, and boasts a substantial professional network with over 500 connections on LinkedIn. Vidura is actively involved in digital transformation initiatives and has participated in events like WSO2Con and Nigeria Oxygenate 2023. An advocate for innovation, he engages with platforms such as Kubernetes and frequently shares insights on his social media, particularly Twitter.</div> </td>
         </tr>
-        <tr>
-          <td>Area of Interest</td>
-          <td>{{area_of_interest}}</td>
-        </tr>
-        <tr>
-          <td>Page Reference</td>
-          <td>{{page_reference}}</td>
-        </tr>
-        <tr>
-          <td>Allocation Type</td>
-          <td>{{allocation_type}}</td>
-        </tr>
-        <tr>
-          <td>Activity Info</td>
-          <td>{{activity_info}}</td>
-        </tr>
-        <tr>
-          <th colspan="2" class="ai-section-title">AI Generated Content</th>
-        </tr>
-        <tr>
-          <td>Person Profile</td>
-          <td>{{person_profile}}</td>
-        </tr>
-        <tr>
-          <td>Social Media Links</td>
-          <td>{{social_media_links}}</td>
-        </tr>
-        <tr>
-          <td>Company Overview</td>
-          <td>{{company_overview}}</td>
-        </tr>
-        <tr>
-          <td>Competitors of the Company</td>
-          <td>{{competitors}}</td>
+          <td>Competitors of the Company <span class="highlight">*</span></td>
+          <td> <div class="content">{{competitors}}</div></td>
         </tr>
       </table>
-
-      <p class="footer">
-        *This is an AI generated response which might or might not be accurate.
-        Do your own research to vet content!
-      </p>
     </div>
   </body>
 </html>
