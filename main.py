@@ -51,7 +51,7 @@ async def generate_data(user: UserRequest):
     if not response:
         raise HTTPException(status_code=404, detail="Data generation failed")
     else:
-        print(response)
+
         return {
             "professional_summary": response.get(
                 "professional_summary", "No summary available"

@@ -8,6 +8,7 @@ from langchain_google_community import GoogleSearchAPIWrapper
 import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
+from mailService import send_mail
 
 # Load environment variables
 load_dotenv()
@@ -278,10 +279,13 @@ def generate_data(name, company, position, country):
         }
     )
 
+    # Send the email with the response data
+    send_mail(response)
+
     return response
 
 
-# function to summazing the scraped content
+# summazing the scraped content
 def summarize_large_content(content, query, chunk_size=10000, overlap=200):
 
     chunks = []
@@ -308,7 +312,6 @@ def summarize_large_content(content, query, chunk_size=10000, overlap=200):
         ),
     )
 
-    # Create an LLM chain for summarization using the refined prompt
     chain = LLMChain(llm=llm, prompt=prompt_template)
 
     # Generate summaries for each chunk
