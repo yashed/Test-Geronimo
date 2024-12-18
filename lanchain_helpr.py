@@ -280,7 +280,7 @@ def generate_data(name, company, position, country):
     )
 
     # Send the email with the response data
-    send_mail(response)
+    # send_mail(response)
 
     return response
 

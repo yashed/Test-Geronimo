@@ -2,10 +2,14 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 import lanchain_helpr as lh
+import logging
 
+
+logger = logging.getLogger(__name__)
 app = FastAPI()
 
 
+logger.info("Start the FastAPI application")
 # Enable CORS middleware
 app.add_middleware(
     CORSMiddleware,
