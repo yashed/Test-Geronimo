@@ -1,0 +1,84 @@
+openapi: 3.0.3
+info:
+  title: FastAPI
+  description: API specification for the FastAPI application.
+  version: 0.1.0
+servers:
+  - url: http://localhost:8000
+    description: Gateway URL
+paths:
+  /testgeronimo2/geronimo-v1-1/v1.0/:
+    get:
+      summary: Read Root
+      operationId: read_root
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              example:
+                message: "Welcome to the API"
+  /testgeronimo2/geronimo-v1-1/v1.0/test:
+    get:
+      summary: Test Endpoint
+      operationId: test_endpoint
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              example:
+                message: "This is a test endpoint"
+  /testgeronimo2/geronimo-v1-1/v1.0/generate_data/:
+    post:
+      summary: Generate Data
+      operationId: generate_data
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRequest"
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              example:
+                professional_summary: "No summary available"
+                social_media_links: "No social media links found."
+                company_summary: "No company summary available"
+                company_competitors: "No competitors found"
+                additional_insights: "No additional insights available."
+        "404":
+          description: Data generation failed
+          content:
+            application/json:
+              example:
+                detail: "Data generation failed"
+components:
+  schemas:
+    UserRequest:
+      type: object
+      required:
+        - name
+        - company
+        - country
+        - position
+        - interest
+      properties:
+        name:
+          type: string
+          description: Name of the user
+        company:
+          type: string
+          description: Name of the company
+        country:
+          type: string
+          description: Country of the user
+        position:
+          type: string
+          description: Job position of the user
+        interest:
+          type: string
+          description: User's interest area

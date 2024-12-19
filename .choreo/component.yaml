@@ -3,9 +3,8 @@ endpoints:
   - name: fastapi_service
     displayName: FastAPI Service
     service:
-      basePath: /api
       port: 8000
     type: REST
     networkVisibilities:
       - Public
-    schemaFilePath: openapi.json
+    schemaFilePath: openapi.yaml
