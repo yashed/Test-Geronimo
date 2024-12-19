@@ -1,0 +1,24 @@
+2024-12-19 10:39:10,683 - INFO - Starting the FastAPI application
+2024-12-19 10:39:10,684 - INFO - CORS middleware enabled with all origins allowed
+2024-12-19 10:39:10,686 - INFO - UserRequest schema defined
+2024-12-19 10:39:42,224 - INFO - Generate data endpoint called with user: {"name":"Ruwan Linton","company":"WSO2","country":"USA","position":"Developer","interest":"Technology"}
+2024-12-19 10:39:42,229 - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-19 10:39:45,336 - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-19 10:39:47,640 - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-19 10:39:53,152 - INFO - HTTP Request: POST https://test-geronimo.openai.azure.com/openai/deployments/gpt-4o-geronimo/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2024-12-19 10:39:54,127 - INFO - HTTP Request: POST https://test-geronimo.openai.azure.com/openai/deployments/gpt-4o-geronimo/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2024-12-19 10:39:56,419 - INFO - HTTP Request: POST https://test-geronimo.openai.azure.com/openai/deployments/gpt-4o-geronimo/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2024-12-19 10:39:57,117 - INFO - HTTP Request: POST https://test-geronimo.openai.azure.com/openai/deployments/gpt-4o-geronimo/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2024-12-19 10:39:57,119 - INFO - Data generation successful for user: {"name":"Ruwan Linton","company":"WSO2","country":"USA","position":"Developer","interest":"Technology"}
+2024-12-19 10:40:48,520 - INFO - Starting the FastAPI application
+2024-12-19 10:40:48,520 - INFO - CORS middleware enabled with all origins allowed
+2024-12-19 10:40:48,521 - INFO - UserRequest schema defined
+2024-12-19 10:40:48,588 - INFO - Generate data endpoint called with user: {"name":"Ruwan Linton","company":"WSO2","country":"USA","position":"Developer","interest":"Technology"}
+2024-12-19 10:40:48,592 - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-19 10:40:51,710 - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-19 10:40:53,710 - INFO - file_cache is only supported with oauth2client<4.0.0
+2024-12-19 10:40:58,178 - INFO - HTTP Request: POST https://test-geronimo.openai.azure.com/openai/deployments/gpt-4o-geronimo/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2024-12-19 10:40:59,078 - INFO - HTTP Request: POST https://test-geronimo.openai.azure.com/openai/deployments/gpt-4o-geronimo/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2024-12-19 10:41:01,362 - INFO - HTTP Request: POST https://test-geronimo.openai.azure.com/openai/deployments/gpt-4o-geronimo/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2024-12-19 10:41:02,278 - INFO - HTTP Request: POST https://test-geronimo.openai.azure.com/openai/deployments/gpt-4o-geronimo/chat/completions?api-version=2024-08-01-preview "HTTP/1.1 200 OK"
+2024-12-19 10:41:03,530 - INFO - Data generation successful for user: {"name":"Ruwan Linton","company":"WSO2","country":"USA","position":"Developer","interest":"Technology"}
