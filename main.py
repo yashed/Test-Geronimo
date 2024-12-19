@@ -30,7 +30,7 @@ class UserRequest(BaseModel):
 
 
 # Define root endpoint
-@app.get("/")
+@app.get("/testgeronimo/geronimo-v1-1/v1.0/")
 async def read_root():
     return {"message": "Welcome to the API"}
 
