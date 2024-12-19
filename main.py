@@ -6,6 +6,7 @@ from pydantic import BaseModel
 import lanchain_helpr as lh
 import logging
 
+
 # Configure logging
 logging.basicConfig(
     level=logging.INFO,
@@ -84,7 +85,8 @@ def test_endpoint():
 
 # Define an endpoint
 @app.post("/generate_data/")
-async def generate_data(user: UserRequest):
+async def generate_data(user: UserRequest, request: Request):
+    logger.info("Request URL: %s", request.url)
     logger.info("Generate data endpoint called with user: %s", user.json())
 
     name = user.name

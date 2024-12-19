@@ -4,8 +4,10 @@ info:
   description: API specification for the FastAPI application.
   version: 0.1.0
 servers:
+  - url: https://bd3b73b5-b360-4c52-b210-5519f6919d65-dev.e1-us-east-azure.choreoapis.dev
+    description: Production Gateway URL
   - url: http://localhost:8000
-    description: Gateway URL
+    description: Local Gateway URL
 paths:
   /:
     get:
