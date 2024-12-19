@@ -1,5 +1,7 @@
+import os
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import lanchain_helpr as lh
 import logging
@@ -18,7 +20,9 @@ logger = logging.getLogger(__name__)
 # Create FastAPI instance
 app = FastAPI()
 
-logger.info("Starting the FastAPI application")
+# Log base URL if available from environment
+base_url = os.getenv("BASE_URL", "Base URL not set")
+logger.info("Base URL of deployed application: %s", base_url)
 
 # Enable CORS middleware
 app.add_middleware(
@@ -41,6 +45,27 @@ class UserRequest(BaseModel):
 
 
 logger.info("UserRequest schema defined")
+
+
+# Middleware to handle 404 errors
+@app.middleware("http")
+async def log_unhandled_requests(request: Request, call_next):
+    response = await call_next(request)
+    if response.status_code == 404:
+        logger.warning(
+            "Unhandled endpoint accessed: %s %s",
+            request.method,
+            request.url.path,
+        )
+        return JSONResponse(
+            status_code=404,
+            content={
+                "code": "404",
+                "description": "The requested resource is not available.",
+                "message": "Not Found",
+            },
+        )
+    return response
 
 
 # Define root endpoint

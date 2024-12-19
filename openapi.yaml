@@ -7,7 +7,7 @@ servers:
   - url: http://localhost:8000
     description: Gateway URL
 paths:
-  /testgeronimo2/geronimo-v1-1/v1.0/:
+  /:
     get:
       summary: Read Root
       operationId: read_root
@@ -18,7 +18,7 @@ paths:
             application/json:
               example:
                 message: "Welcome to the API"
-  /testgeronimo2/geronimo-v1-1/v1.0/test:
+  /test:
     get:
       summary: Test Endpoint
       operationId: test_endpoint
@@ -29,7 +29,7 @@ paths:
             application/json:
               example:
                 message: "This is a test endpoint"
-  /testgeronimo2/geronimo-v1-1/v1.0/generate_data/:
+  /generate_data:
     post:
       summary: Generate Data
       operationId: generate_data
