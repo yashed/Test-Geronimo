@@ -2,7 +2,7 @@
 FROM python:3.9-slim
 
 # Set the working directory in the container
-WORKDIR /flask-docker
+WORKDIR /fastapi-docker
 
 # Copy the requirements file into the container
 COPY requirements.txt .
@@ -20,8 +20,9 @@ RUN addgroup --gid 10016 choreo && \
 # Set the user for the container
 USER 10016
 
-# Expose the Flask port (8000)
+# Expose the FastAPI port (8000)
 EXPOSE 8000
 
-# Command to run the Flask app
+# Command to run the FastAPI app with uvicorn
+# CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
 CMD ["python", "main.py"]
