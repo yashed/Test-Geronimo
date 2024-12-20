@@ -21,6 +21,10 @@ OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 OPENAI_DEPLOYMENT_NAME = os.getenv("OPENAI_DEPLOYMENT_NAME")
 OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
 
+print("Google API Key - ", GOOGLE_API_KEY)
+print("Google CSE ID - ", GOOGLE_CSE_ID)
+
+
 if not all(
     [
         GOOGLE_CSE_ID,
