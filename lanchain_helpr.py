@@ -10,6 +10,7 @@ from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
 from mailService import send_mail
 
+
 # Load environment variables
 load_dotenv()
 

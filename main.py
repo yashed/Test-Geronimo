@@ -1,122 +1,100 @@
 import os
-from fastapi import FastAPI, HTTPException, Request
-from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import JSONResponse
-from pydantic import BaseModel
-import lanchain_helpr as lh
-import logging
+from langchain.agents import initialize_agent, Tool
+from langchain.agents import ZeroShotAgent
+from langchain.memory import ConversationBufferMemory
+from langchain_openai import AzureChatOpenAI
+from langchain_google_community import GoogleSearchAPIWrapper
+from langchain.schema import AIMessage, HumanMessage
+import requests
+import json
 
+# Environment Variables Setup
+os.environ["OPENAI_API_KEY"] = os.getenv("AZURE_OPENAI_API_KEY")
+os.environ["OPENAI_API_TYPE"] = "azure"
+os.environ["OPENAI_API_BASE"] = os.getenv("OPENAI_API_BASE")
+os.environ["OPENAI_API_VERSION"] = os.getenv("OPENAI_API_VERSION")
 
-logging.basicConfig(
-    level=logging.INFO,
-    format="%(asctime)s - %(levelname)s - %(message)s",
-    handlers=[
-        logging.StreamHandler(),
-    ],
+# Initialize Language Model and Memory
+llm = AzureChatOpenAI(
+    openai_api_key=os.environ["OPENAI_API_KEY"],
+    deployment_name=os.getenv("OPENAI_DEPLOYMENT_NAME"),
+    azure_endpoint=os.getenv("OPENAI_API_BASE"),
+    temperature=0.7,
 )
+memory = ConversationBufferMemory(memory_key="chat_history")
 
-logger = logging.getLogger(__name__)
+# Define Helper Functions for Tools
+def google_search(query, num_results=5):
+    google_search_tool = GoogleSearchAPIWrapper()
+    return google_search_tool.results(query, num_results=num_results)
 
-# Create FastAPI instance
-app = FastAPI()
+def web_scraping(url):
+    try:
+        response = requests.get(url)
+        if response.status_code == 200:
+            return f"Scraped data from {url}: {response.text[:300]}..."
+        else:
+            return f"Failed to retrieve data from {url}"
+    except Exception as e:
+        return f"Error occurred while scraping: {e}"
 
+def summarize_text(text):
+    messages = [HumanMessage(content=f"Summarize the following information: {text}")]
+    summary = llm(messages)
+    return summary.content
 
-# Enable CORS middleware
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
-logger.info("CORS middleware enabled with all origins allowed")
+# Define Tools
+tools = [
+    Tool(
+        name="Google Search",
+        func=google_search,
+        description="Use this tool to search Google for any query."
+    ),
+    Tool(
+        name="Web Scraping",
+        func=web_scraping,
+        description="Scrape content from a given URL."
+    ),
+    Tool(
+        name="Summarize Information",
+        func=summarize_text,
+        description="Summarize lengthy text into concise information."
+    )
+]
 
+# Initialize Agent
+agent = initialize_agent(tools=tools,
+    llm=llm,
+    memory=ConversationBufferMemory(),
+    handle_parsing_errors=True , verbose=True)
 
-# Define the request body schema
-class UserRequest(BaseModel):
-    name: str
-    company: str
-    country: str
-    position: str
-    interest: str
+# Main Function
 
+def gather_info(name, job_title, company_name, country):
+    query = (
+        f"You are an agent tasked with gathering accurate information about a person and their company. "
+        f"The details provided are: Name: {name}, Job Title: {job_title}, Company: {company_name}, Country: {country}. "
+        f"Generate a JSON response with the following keys: \n"
+        f"1. 'personal_summary': A 300-word summary about the person, including their current role, areas of focus, and interests.\n"
+        f"2. 'social_media_links': A JSON object with the person's social media URLs (LinkedIn, Twitter, Facebook, etc.).\n"
+        f"3. 'company_summary': A summary of the company, including its services and products.\n"
+        f"4. 'company_competitors': Competitor company names separated by commas.\n"
+        f"5. 'company_news': Latest 3-5 news articles about the company, each including title, URL, and a brief description. "
+        f"If data is insufficient, use the tools to gather more information."
+    )
 
-logger.info("UserRequest schema defined")
+    # Agent Processes Query
+    response = agent.run(query)
 
-
-# Middleware to handle 404 errors
-@app.middleware("http")
-async def log_unhandled_requests(request: Request, call_next):
-    response = await call_next(request)
-    if response.status_code == 404:
-        logger.warning(
-            "Unhandled endpoint accessed: %s %s",
-            request.method,
-            request.url.path,
-        )
-        return JSONResponse(
-            status_code=404,
-            content={
-                "code": "404",
-                "description": "The requested resource is not available.",
-                "message": "Not Found",
-            },
-        )
+    # Format JSON Response
     return response
 
+# Example Usage
+if __name__ == "__main__":
+    name = "Yashed Thisara"
+    job_title = "Developer"
+    company_name = "WSO2"
+    country = "Sri Lanka"
 
-# Define root endpoint
-@app.get("/")
-async def read_root():
-    logger.info("Root endpoint accessed")
-    return {"message": "Welcome to the API"}
-
-
-# Define a test endpoint
-@app.get("/test")
-def test_endpoint():
-    logger.info("Test endpoint accessed")
-    return {"message": "This is a test endpoint"}
-
-
-# Define an generat data endpoint
-@app.post("/generate_data")
-async def generate_data(user: UserRequest, request: Request):
-    logger.info("Request URL: %s", request.url)
-    logger.info("Generate data endpoint called with user: %s", user.json())
-
-    name = user.name
-    company = user.company
-    position = user.position
-    country = user.country
-
-    try:
-        # Generate the data
-        logger.debug("Calling generate_data helper function with inputs")
-        response = lh.generate_data(name, company, position, country)
-
-        if not response:
-            logger.error("Data generation failed for user: %s", user.json())
-            raise HTTPException(status_code=404, detail="Data generation failed")
-
-        logger.info("Data generation successful for user: %s", user.json())
-        return {
-            "professional_summary": response.get(
-                "professional_summary", "No summary available"
-            ),
-            "social_media_links": response.get(
-                "social_media_links", "No social media links found."
-            ),
-            "company_summary": response.get(
-                "company_summary", "No company summary available"
-            ),
-            "company_competitors": response.get(
-                "company_competitors", "No competitors found"
-            ),
-            "additional_insights": response.get(
-                "additional_insights", "No additional insights available."
-            ),
-        }
-    except Exception as e:
-        logger.exception("An error occurred while processing the request")
-        raise HTTPException(status_code=500, detail="Internal server error")
+    result = gather_info(name, job_title, company_name, country)
+    print(result)
