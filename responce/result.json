@@ -1,26 +1,25 @@
 {
-  "personal_summary": "Yashed Thisara is an undergraduate student at the University of Colombo School of Computing (UCSC) in Sri Lanka, majoring in Computer Science. He currently works as a Software Engineer Intern at WSO2, a leading open-source technology company. His role involves software development, where he applies his skills in programming and design. Yashed is also involved with the IEEE Computer Society Student Branch Chapter of UCSC, where he contributes as a media coordinator. He has interests in technology, software development, and digital transformation.",
-  "social_media_links": {
-    "LinkedIn": "https://lk.linkedin.com/in/yashed?trk=organization_guest_main-feed-card-text",
-    "Facebook": "https://www.facebook.com/IEEECSUCSC/"
-  },
-  "company_summary": "WSO2 is an open-source technology company founded in 2005. It provides software and cloud solutions focused on API management, integration, and identity access management. Notable products include WSO2 API Manager, WSO2 Identity Server, and WSO2 Enterprise Integrator. These solutions support digital transformation and are deployed in various environments, including on-premises, cloud, and hybrid setups.",
-  "company_competitors": "MuleSoft, IBM API Connect, Apigee (Google Cloud), TIBCO, Red Hat",
-  "company_news": [
-    {
-      "title": "WSO2 Expands Executive Team to Advance Customer Adoption Worldwide",
-      "url": "https://wso2.com/about/news/",
-      "description": "WSO2 has expanded its executive team to drive customer adoption and innovation, focusing on enhancing their API management and integration solutions."
+    "personal_summary": "Yashed Thisara is an undergraduate student at the University of Colombo School of Computing (UCSC) in Sri Lanka, majoring in Computer Science. He currently works as a Software Engineer Intern at WSO2, a leading open-source technology company. His role involves software development, where he applies his skills in programming and design. Yashed is also involved with the IEEE Computer Society Student Branch Chapter of UCSC, where he contributes as a media coordinator. He has interests in technology, software development, and digital transformation.",
+    "social_media_links": {
+        "LinkedIn": "https://lk.linkedin.com/in/yashed?trk=organization_guest_main-feed-card-text",
+        "Facebook": "https://www.facebook.com/IEEECSUCSC/"
     },
-    {
-      "title": "Multiple WSO2 Products Vulnerable to XXE Attacks",
-      "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-6836",
-      "description": "A vulnerability due to an XML External Entity (XXE) attack has been identified in multiple WSO2 products, posing security risks to users."
-    },
-    {
-      "title": "WSO2 Earns 5-Star Rating in 2023 CRN® Partner Program Guide",
-      "url": "https://wso2.com/about/news/wso2-earns-5-star-rating-in-2023-crn-partner-guide/",
-      "description": "WSO2 has been awarded a 5-star rating in the 2023 CRN Partner Program Guide, recognizing their outstanding partner program and solutions."
-    }
-  ]
+    "company_summary": "WSO2 is an open-source technology company founded in 2005. It provides software and cloud solutions focused on API management, integration, and identity access management. Notable products include WSO2 API Manager, WSO2 Identity Server, and WSO2 Enterprise Integrator. These solutions support digital transformation and are deployed in various environments, including on-premises, cloud, and hybrid setups.",
+    "company_competitors": "MuleSoft, IBM API Connect, Apigee (Google Cloud), TIBCO, Red Hat",
+    "company_news": [{
+            "title": "WSO2 Expands Executive Team to Advance Customer Adoption Worldwide",
+            "url": "https://wso2.com/about/news/",
+            "description": "WSO2 has expanded its executive team to drive customer adoption and innovation, focusing on enhancing their API management and integration solutions."
+        },
+        {
+            "title": "Multiple WSO2 Products Vulnerable to XXE Attacks",
+            "url": "https://nvd.nist.gov/vuln/detail/CVE-2023-6836",
+            "description": "A vulnerability due to an XML External Entity (XXE) attack has been identified in multiple WSO2 products, posing security risks to users."
+        },
+        {
+            "title": "WSO2 Earns 5-Star Rating in 2023 CRN® Partner Program Guide",
+            "url": "https://wso2.com/about/news/wso2-earns-5-star-rating-in-2023-crn-partner-guide/",
+            "description": "WSO2 has been awarded a 5-star rating in the 2023 CRN Partner Program Guide, recognizing their outstanding partner program and solutions."
+        }
+    ]
 }
