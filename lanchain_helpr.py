@@ -23,31 +23,29 @@ llm = AzureChatOpenAI(
     temperature=0.7,
 )
 
+
 # Tools
 def google_search(query, num_results=8, use_serper=True):
     if use_serper:
         # Serper API call
         url = "https://google.serper.dev/search"
-        payload = json.dumps({
-            "q": query,
-            "num": num_results
-        })
-        headers = {
-            'X-API-KEY': X_API_KEY,  
-            'Content-Type': 'application/json'
-        }
+        payload = json.dumps({"q": query, "num": num_results})
+        headers = {"X-API-KEY": X_API_KEY, "Content-Type": "application/json"}
 
         response = requests.request("POST", url, headers=headers, data=payload)
-        
+
         if response.status_code == 200:
-            return response.json().get('organic', [])
+            return response.json().get("organic", [])
         else:
-            return {"error": f"Serper request failed with status code {response.status_code}"}
-    
+            return {
+                "error": f"Serper request failed with status code {response.status_code}"
+            }
+
     else:
         # Original GoogleSearchAPIWrapper call
         google_search_tool = GoogleSearchAPIWrapper()
         return google_search_tool.results(query, num_results=num_results)
+
 
 def web_scraping(url):
     try:
@@ -58,6 +56,7 @@ def web_scraping(url):
             return f"Failed to retrieve data from {url}"
     except Exception as e:
         return str(e)
+
 
 tools = [
     Tool(
@@ -81,8 +80,9 @@ agent = initialize_agent(
     memory=memory,
     handle_parsing_errors=True,
     verbose=True,
-    max_iterations=10
+    max_iterations=10,
 )
+
 
 # Main Function
 def gather_info(name, job_title, company_name, country):
@@ -107,28 +107,41 @@ def gather_info(name, job_title, company_name, country):
         try:
             response = agent.run(query)
             iteration_results.append(response)
-            
+
             # Break for the best result
-            if all(key in response for key in ['personal_summary', 'social_media_links', 'company_summary', 'company_competitors', 'company_news']):
+            if all(
+                key in response
+                for key in [
+                    "personal_summary",
+                    "social_media_links",
+                    "company_summary",
+                    "company_competitors",
+                    "company_news",
+                ]
+            ):
                 best_result = response
                 break
         except Exception as e:
             iteration_results.append({"error": str(e)})
-    
+
     # Select the most complete and accurate result from all iterations
     if not best_result:
-        best_result = max(iteration_results, key=lambda res: len(res) if isinstance(res, dict) else 0)
-    
+        best_result = max(
+            iteration_results, key=lambda res: len(res) if isinstance(res, dict) else 0
+        )
+
     return best_result
+
 
 # Main Function to Test the Code
 if __name__ == "__main__":
     # Sample input data
-    name = "Mifan Careem"
-    job_title = "Solution Architect"
+    name = "Yashed Thisara"
+    job_title = "Developer"
     company_name = "WSO2"
     country = "Sri Lanka"
 
     # Call the gather_info function and print the output
     result = gather_info(name, job_title, company_name, country)
+    print("Type of Result = ", type(result))
     print("Response = ", result)
