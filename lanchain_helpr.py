@@ -343,7 +343,7 @@ def summarize_large_content(content, query, chunk_size=10000, overlap=200):
 def format_response(response_data):
 
     # Extracting details from response_data
-    personal_summary = response_data.get("professional_summary", "")
+    professional_summary = response_data.get("professional_summary", "")
     company_summary = response_data.get("company_summary", "")
     social_media_links_raw = response_data.get("social_media_links", "")
     company_competitors_raw = response_data.get("company_competitors", "")
@@ -366,7 +366,7 @@ def format_response(response_data):
 
     # Create the final formatted JSON object
     formatted_json = {
-        "personal_summary": personal_summary,
+        "professional_summary": professional_summary,
         "social_media_links": social_media_links,
         "company_summary": company_summary,
         "company_competitors": company_competitors,
