@@ -16,13 +16,17 @@ load_dotenv()
 # Fetching the variables from the .env file
 GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
 GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
-OPENAI_API_KEY = os.getenv("AZURE_API_KEY")
+OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 OPENAI_DEPLOYMENT_NAME = os.getenv("OPENAI_DEPLOYMENT_NAME")
 OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
 
 print("Google API Key - ", GOOGLE_API_KEY)
 print("Google CSE ID - ", GOOGLE_CSE_ID)
+print("OpenAI API Key - ", OPENAI_API_KEY)
+print("OpenAI API Base - ", OPENAI_API_BASE)
+print("OpenAI Deployment Name - ", OPENAI_DEPLOYMENT_NAME)
+print("OpenAI API Version - ", OPENAI_API_VERSION)
 
 
 if not all(
@@ -286,7 +290,7 @@ def generate_data(name, company, position, country):
     # Send the email with the response data
     send_mail(response)
 
-    return response
+    return format_response(response)
 
 
 # summazing the scraped content
@@ -333,3 +337,51 @@ def summarize_large_content(content, query, chunk_size=10000, overlap=200):
         return final_summary
 
     return combined_summary
+
+
+# function to format the content into json
+def format_response(response_data):
+
+    # Extracting details from response_data
+    personal_summary = response_data.get("professional_summary", "")
+    company_summary = response_data.get("company_summary", "")
+    social_media_links_raw = response_data.get("social_media_links", "")
+    company_competitors_raw = response_data.get("company_competitors", "")
+
+    # Parse social media links into the required format
+    social_media_links = {}
+    for line in social_media_links_raw.split("\n"):
+        if "-" in line:
+            key, value = map(str.strip, line.split("-", 1))
+            social_media_links[key] = value
+
+    # Parse company competitors into a comma-separated list
+    company_competitors = ", ".join(
+        [
+            competitor.strip()
+            for competitor in company_competitors_raw.split("\n")
+            if competitor.strip()
+        ]
+    )
+
+    # Create the final formatted JSON object
+    formatted_json = {
+        "personal_summary": personal_summary,
+        "social_media_links": social_media_links,
+        "company_summary": company_summary,
+        "company_competitors": company_competitors,
+        "company_news": [
+            {
+                "title": "Placeholder News Title 1",
+                "url": "https://example.com/news1",
+                "description": "Placeholder description for the first news item.",
+            },
+            {
+                "title": "Placeholder News Title 2",
+                "url": "https://example.com/news2",
+                "description": "Placeholder description for the second news item.",
+            },
+        ],
+    }
+
+    return formatted_json

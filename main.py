@@ -94,7 +94,7 @@ async def generate_data(user: UserRequest, request: Request):
         # Generate the data
         logger.debug("Calling generate_data helper function with inputs")
         response = lh.generate_data(name, company, position, country)
-
+        print("Response: ", response)
         if not response:
             logger.error("Data generation failed for user: %s", user.json())
             raise HTTPException(status_code=404, detail="Data generation failed")
