@@ -93,7 +93,7 @@ def gather_info(name, job_title, company_name, country):
         f"1. 'personal_summary': A detailed 300-word summary about the person, focusing on their professional achievements and background.\n"
         f"2. 'social_media_links': A JSON object with the person's most accurate social media URLs. Include only verified and relevant profiles for platforms like LinkedIn, Twitter, GitHub, or others the person actively uses. Also, suggest other relevant links related to the person, such as personal blogs, portfolio websites, or interview pages.\n"
         f"3. 'company_summary': A comprehensive summary of the company's services, products, and market presence.\n"
-        f"4. 'company_competitors': A list of competitor company names not product names, separated by commas.\n"
+        f"4. 'company_competitors': A list of competitor company names in the same domain , not product names, separated by commas.\n"
         f"5. 'company_news': A list of the latest 3-5 news articles about the company. For each article, provide:\n"
         f"    - 'title': A clear and accurate title that gives a precise idea of the news.\n"
         f"    - 'url': The link to the news article.\n"
@@ -108,7 +108,6 @@ def gather_info(name, job_title, company_name, country):
             response = agent.run(query)
             iteration_results.append(response)
 
-            # Break for the best result
             if all(
                 key in response
                 for key in [
@@ -135,13 +134,12 @@ def gather_info(name, job_title, company_name, country):
 
 # Main Function to Test the Code
 if __name__ == "__main__":
-    # Sample input data
+
     name = "Yashed Thisara"
     job_title = "Developer"
     company_name = "WSO2"
     country = "Sri Lanka"
 
-    # Call the gather_info function and print the output
     result = gather_info(name, job_title, company_name, country)
     print("Type of Result = ", type(result))
     print("Response = ", result)
