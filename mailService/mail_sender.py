@@ -49,7 +49,7 @@ def send_mail(response_data):
 
     # Create the email object
     message = Mail(from_email=Email("geronimo.test.01@gmail.com"))
-    message.template_id = "d-a6c1b0ab7ad84f74b399bb7f28d07998"
+    message.template_id = "d-27e17b14c8f0406b9d745bdee528f9a6"
 
     personalization = Personalization()
     personalization.add_to(Email("yashedthisara2001@gmail.com"))
