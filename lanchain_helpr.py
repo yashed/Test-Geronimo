@@ -50,7 +50,7 @@ os.environ["OPENAI_API_BASE"] = OPENAI_API_BASE
 llm = AzureChatOpenAI(
     openai_api_key=os.environ["OPENAI_API_KEY"],
     deployment_name=OPENAI_DEPLOYMENT_NAME,
-    temperature=0.7,
+    temperature=0.0,
 )
 
 
