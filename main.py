@@ -7,6 +7,7 @@ import lanchain_helpr as lh
 import logging
 import json
 import re
+from mailService import send_mail
 
 
 logging.basicConfig(
@@ -112,6 +113,9 @@ async def generate_data(user: UserRequest, request: Request):
                 print(f"JSON Decode Error: {e}")
         else:
             print("No valid JSON found in the response.")
+
+        # Send the email
+        send_mail(parsed_json)
 
         # return response
         return {
