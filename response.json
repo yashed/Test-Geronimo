@@ -1,0 +1,25 @@
+{
+    "personal_summary": "Yashed Thisara is a developer associated with WSO2, a prominent tech company in Sri Lanka. He is currently pursuing an undergraduate degree in Computer Science at the University of Colombo School of Computing (UCSC). Yashed is recognized for his technical skills and contributions within the WSO2 team, where he has been involved in various development projects. His academic background and hands-on experience in software development have equipped him with a robust understanding of both theoretical and practical aspects of computer science. Known for his dedication and innovative thinking, Yashed has been instrumental in solving complex technical challenges and delivering high-quality software solutions. His involvement in open-source projects and active participation in tech communities further highlight his commitment to continuous learning and professional development.",
+    "social_media_links": {
+        "LinkedIn": "https://lk.linkedin.com/in/yashed?trk=organization_guest_main-feed-card-text"
+    },
+    "company_summary": "WSO2 is an open-source technology provider founded in 2005. The company offers software solutions and cloud services that empower enterprises to create, deliver, and scale digital experiences. WSO2's offerings include API management, integration, identity and access management, and analytics platforms, all designed to support digital transformation initiatives. With a strong emphasis on open-source development, WSO2 has established itself as a trusted partner for businesses worldwide, providing innovative solutions that simplify system connectivity and enhance operational efficiency. The company's API-first approach and cloud-native platforms enable developers to leverage cutting-edge technologies for building scalable and secure applications.",
+    "company_competitors": "Amazon Web Services (AWS), Salesforce (MuleSoft), Microsoft, IBM, Oracle, Google, Kong, Postman",
+    "company_news": [
+        {
+            "title": "Latest WSO2 API Management Products Help Enterprises to Manage AI APIs",
+            "url": "https://www.globenewswire.com/news-release/2024/11/05/2974950/0/en/Latest-WSO2-API-Management-Products-Help-Enterprises-to-Manage-AI-APIs-Maximize-Developer-Productivity-and-Future-Proof-Their-Deployments.html",
+            "description": "WSO2 has launched new versions of its API Manager and API Platform for Kubernetes, aimed at managing AI APIs, enhancing developer productivity, and expanding Kubernetes support."
+        },
+        {
+            "title": "EQT Completes Acquisition of WSO2",
+            "url": "https://wso2.com/about/news/eqt-completes-acquisition-of-wso2/",
+            "description": "EQT has successfully acquired WSO2, a leading provider of digital transformation technologies. This acquisition is set to enhance WSO2's global reach and innovation capabilities."
+        },
+        {
+            "title": "WSO2 Upgrades API Management with Enhanced AI Support",
+            "url": "https://wso2.com/library/blogs/wso2-upgrades-apim-enhanced-ai-support-kubernetes-native-capabilities/",
+            "description": "WSO2 has released updates to its API management platform, introducing enhanced AI support and Kubernetes native capabilities to help businesses build and manage APIs more efficiently."
+        }
+    ]
+}

@@ -6,6 +6,8 @@ from pydantic import BaseModel
 import lanchain_helpr as lh
 import logging
 import json
+import re
+from mailService import send_mail
 
 
 logging.basicConfig(
@@ -94,21 +96,31 @@ async def generate_data(user: UserRequest, request: Request):
     try:
         # Generate the data
         logger.debug("Calling generate_data helper function with inputs")
+        import json
+
         response = lh.gather_info(name, position, company, country)
-        json_string = response.strip("```json").strip("```")
-        print("Json String = " , json_string)
-        parsed_json = json.loads(json_string)
-        print("Final Responce = " , parsed_json)
+        print(response)
+        json_match = re.search(r"\{.*\}", response, re.DOTALL)
+        if json_match:
 
-        if not response:
-            logger.error("Data generation failed for user: %s", user.json())
-            raise HTTPException(status_code=404, detail="Data generation failed")
+            json_string = json_match.group(0)
+            print("Extracted JSON String = ", json_string)
 
-        logger.info("Data generation successful for user: %s", user.json())
+            try:
+                parsed_json = json.loads(json_string)
+
+            except json.JSONDecodeError as e:
+                print(f"JSON Decode Error: {e}")
+        else:
+            print("No valid JSON found in the response.")
+
+        # Send the email
+        send_mail(parsed_json)
+
         # return response
         return {
-            "personal_summary": parsed_json.get(
-                "professional_summary", "No summary available"
+            "professional_summary": parsed_json.get(
+                "personal_summary", "No summary available"
             ),
             "social_media_links": parsed_json.get(
                 "social_media_links", "No social media links found."
@@ -119,8 +131,8 @@ async def generate_data(user: UserRequest, request: Request):
             "company_competitors": parsed_json.get(
                 "company_competitors", "No competitors found"
             ),
-            "company_news": parsed_json.get(
-                "additional_insights", "No additional insights available."
+            "additional_insights": parsed_json.get(
+                "company_news", "No News available."
             ),
         }
     except Exception as e:

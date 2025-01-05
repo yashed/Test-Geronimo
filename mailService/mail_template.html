@@ -62,14 +62,14 @@
         margin-top: 20px;
       }
 
-      .lead-details th:first-child, 
+      .lead-details th:first-child,
       .lead-details td:first-child {
-        width: 25%;
+        width: 30%;
       }
 
-      .lead-details th:nth-child(2), 
+      .lead-details th:nth-child(2),
       .lead-details td:nth-child(2) {
-        width: 75%;
+        width: 70%;
       }
 
       .lead-details th {
@@ -152,8 +152,8 @@
         WSO2<span class="header-1">Contact Us form AI Generated Content</span>
       </h1>
       <p class="footer">
-        *This is an AI-generated response and may not be entirely
-        accurate. Please conduct your own research to verify the content
+        *This is an AI-generated response and may not be entirely accurate.
+        Please conduct your own research to verify the content.
       </p>
       <table class="lead-details">
         <tr>
@@ -166,9 +166,8 @@
         </tr>
         <tr>
           <td>Job Title</td>
-          <td> <div class="content">{{job_title}}</div></td>
+          <td><div class="content">{{job_title}}</div></td>
         </tr>
-        <tr>
         <tr>
           <td>Email</td>
           <td>
@@ -181,17 +180,34 @@
         </tr>
         <tr>
           <td>Social Media Links <span class="highlight">*</span></td>
-          <td><div class="content">{{social_media_links}}</div></td>
+          <td>
+            <ul>
+              {{#each social_media_links}}
+              <li>
+                {{platform}}:
+                <a href="{{url}}" target="_blank">{{url}}</a>
+              </li>
+              {{/each}}
+            </ul>
+          </td>
         </tr>
+        <tr>
           <td>Company</td>
           <td><div class="content">{{company}}</div></td>
         </tr>
         <tr>
           <td>Company Overview <span class="highlight">*</span></td>
-          <td> <div class="content">{{company_overview}} Vidura Gamini Abhaya is a seasoned technologist and executive currently serving as the Senior Director and Head of Integration Solution Architecture at WSO2. He also holds the position of Field CTO. With a robust career in technology, Vidura has garnered extensive experience in solution architecture, particularly focusing on API management. Educated at RMIT University, he is based in Colombo, Sri Lanka, and boasts a substantial professional network with over 500 connections on LinkedIn. Vidura is actively involved in digital transformation initiatives and has participated in events like WSO2Con and Nigeria Oxygenate 2023. An advocate for innovation, he engages with platforms such as Kubernetes and frequently shares insights on his social media, particularly Twitter.</div> </td>
+          <td><div class="content">{{company_overview}}</div></td>
         </tr>
+        <tr>
           <td>Competitors of the Company <span class="highlight">*</span></td>
-          <td> <div class="content">{{competitors}}</div></td>
+          <td>
+            <ul>
+              {{#each company_competitors}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </td>
         </tr>
       </table>
     </div>
