@@ -114,7 +114,7 @@ async def generate_data(user: UserRequest, request: Request):
                 "company_competitors", "No competitors found"
             ),
             "additional_insights": response.get(
-                "additional_insights", "No additional insights available."
+                "company_news", "No additional insights available."
             ),
         }
     except Exception as e:

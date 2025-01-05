@@ -9,6 +9,7 @@ import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
 from mailService import send_mail
+import json_helpr as jh
 
 # Load environment variables
 load_dotenv()
@@ -98,7 +99,7 @@ def parallel_web_scraping(results, queries):
 
 
 def fetch_top_google_results(
-    name, company, num_results=5, company_flag=0, competitors=0
+    name, company, num_results=5, company_flag=0, competitors=0 , news=0
 ):
     """
     Fetch Google search results and scrape the content in parallel.
@@ -106,10 +107,12 @@ def fetch_top_google_results(
     queries = []
     if company_flag == 1:  # Get company information
         queries.append(f"{company}")
-    elif company_flag == 0 and competitors == 0:  # Get personal information
+    elif company_flag == 0 and competitors == 0 and news == 0:  # Get personal information
         queries.append(f"{name} in {company}")
-    elif competitors == 1 and company_flag == 0:  # Get company competitors
+    elif competitors == 1 and company_flag == 0 and news == 0:  # Get company competitors
         queries.append(f"{company} competitors")
+    elif news == 1 and company_flag == 0 and competitors == 0:  # Get company news
+        queries.append(f"{company} recent news")
 
     print("Queries:", queries)
 
@@ -135,6 +138,7 @@ def generate_data(name, company, position, country):
     company_competitors_results = fetch_top_google_results(
         name, company, num_results=4, competitors=1
     )
+    company_news_results = fetch_top_google_results(name , company, num_results=10, news=1)
 
     print("Company Competitors - ", company_competitors_results)
 
@@ -167,6 +171,14 @@ def generate_data(name, company, position, country):
         [
             f"Title: {res['title']}\nLink: {res['link']}\nSnippet: {res['snippet']}\nContent: {res['content']}"
             for res in company_competitors_results
+        ]
+    )
+    
+    # to get company news
+    formatted_news = "\n\n".join(
+        [
+            f"Title: {res['title']}\nLink: {res['link']}\nSnippet: {res['snippet']}\nContent: {res['content']}"
+            for res in company_news_results
         ]
     )
 
@@ -246,6 +258,27 @@ def generate_data(name, company, position, country):
     chain_competitors = LLMChain(
         llm=llm, prompt=prompt_template_competitors, output_key="company_competitors"
     )
+    
+    # Fifth chain: Company News
+    prompt_template_news = PromptTemplate(
+        input_variables=["company", "company_news_results"],
+        template=(
+            "Based on the following Google Search results for {company}'s recent news, provide a JSON-formatted summary of the top 3 to 5 most relevant news articles from the last 12 months. "
+            "Focus on articles related to the company's financial performance, major partnerships, executive changes, or significant industry developments. "
+            "For each article, include the following details:\n"
+            "- 'title': A clear , detailed and accurate title that gives a precise idea of the news.\n"
+            "- 'url': The link to the news article.\n"
+            "- 'description': A concise but informative summary of the news content, not exceeding 100 words.\n"
+            "If no valid news articles are found, respond with 'No recent news found.'\n\n"
+            "Google Search Results: {company_news_results}\n\n"
+            "Company News Json:"
+        ),
+    )
+    
+    chain_news = LLMChain(
+        llm=llm, prompt=prompt_template_news, output_key="company_news"
+        )
+
 
     # Combine the two chains into a SequentialChain
     chain = SequentialChain(
@@ -254,6 +287,7 @@ def generate_data(name, company, position, country):
             chain_social_links,
             chain_company_summary,
             chain_competitors,
+            chain_news
         ],
         input_variables=[
             "name",
@@ -264,12 +298,14 @@ def generate_data(name, company, position, country):
             "country",
             "google_company_results",
             "company_competitors_results",
+            "company_news_results",
         ],
         output_variables=[
             "professional_summary",
             "social_media_links",
             "company_summary",
             "company_competitors",
+            "company_news",
         ],
     )
 
@@ -284,6 +320,7 @@ def generate_data(name, company, position, country):
             "country": country,
             "google_company_results": formatted_company_results,
             "company_competitors_results": formatted_competitors,
+            "company_news_results": formatted_news
         }
     )
 
@@ -347,6 +384,13 @@ def format_response(response_data):
     company_summary = response_data.get("company_summary", "")
     social_media_links_raw = response_data.get("social_media_links", "")
     company_competitors_raw = response_data.get("company_competitors", "")
+    company_news_raw = response_data.get("company_news", "")
+    
+    print("Company News Raw - ", company_news_raw)
+    
+    #convert company_news_raw to json
+    company_news_json = jh.format_json_string(company_news_raw)
+    print("Company News JSON - ", company_news_json)
 
     # Parse social media links into the required format
     social_media_links = {}
@@ -370,18 +414,7 @@ def format_response(response_data):
         "social_media_links": social_media_links,
         "company_summary": company_summary,
         "company_competitors": company_competitors,
-        "company_news": [
-            {
-                "title": "Placeholder News Title 1",
-                "url": "https://example.com/news1",
-                "description": "Placeholder description for the first news item.",
-            },
-            {
-                "title": "Placeholder News Title 2",
-                "url": "https://example.com/news2",
-                "description": "Placeholder description for the second news item.",
-            },
-        ],
+        "company_news": company_news_json
     }
 
     return formatted_json
