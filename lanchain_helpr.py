@@ -81,7 +81,6 @@ agent = initialize_agent(
     memory=memory,
     handle_parsing_errors=True,
     verbose=True,
-    max_iterations=10
 )
 
 # Main Function
@@ -97,9 +96,10 @@ def gather_info(name, job_title, company_name, country):
         f"5. 'company_news': A list of the latest 3-5 news articles about the company. For each article, provide:\n"
         f"    - 'title': A clear and accurate title that gives a precise idea of the news.\n"
         f"    - 'url': The link to the news article.\n"
-        f"    - 'description': A detailed summary of the news content. The summary must include the main points and be concise but informative, not exceeding 100 words.\n"
+        f"    - 'description': A detailed summary of the news content. The summary must include the main points and be concise but informative, not exceeding 50 words.\n"
         f"If you lack data, use tools like Google Search and Web Scraping to gather more information. Ensure all information is verified, reliable, and formatted correctly."
     )
+    response = agent.run(query)
 
     best_result = None
     iteration_results = []
@@ -115,20 +115,20 @@ def gather_info(name, job_title, company_name, country):
         except Exception as e:
             iteration_results.append({"error": str(e)})
     
-    # Select the most complete and accurate result from all iterations
+   
     if not best_result:
         best_result = max(iteration_results, key=lambda res: len(res) if isinstance(res, dict) else 0)
     
     return best_result
 
-# Main Function to Test the Code
+# Main Function 
 if __name__ == "__main__":
-    # Sample input data
+    
     name = "Mifan Careem"
     job_title = "Solution Architect"
     company_name = "WSO2"
     country = "Sri Lanka"
 
-    # Call the gather_info function and print the output
+
     result = gather_info(name, job_title, company_name, country)
     print("Response = ", result)
