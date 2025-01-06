@@ -14,7 +14,7 @@ if not SENDGRID_API_KEY:
     raise ValueError("SENDGRID_API_KEY is not set in the environment variables!")
 
 
-def send_mail(response_data):
+def send_mail(response_data, SendTo):
     """Main function to send an email."""
 
     print("mail data = ", response_data)
@@ -54,7 +54,8 @@ def send_mail(response_data):
     message.template_id = "d-a6c1b0ab7ad84f74b399bb7f28d07998"
 
     personalization = Personalization()
-    personalization.add_to(Email("yashedthisara2001@gmail.com"))  # Main recipient
+    personalization.add_to(Email("yashedthisara2001@gmail.com"))
+    personalization.add_to(Email(SendTo))
 
     personalization.subject = "AI Generated Content of the Lead"
     personalization.dynamic_template_data = dynamic_data

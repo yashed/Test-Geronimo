@@ -5,6 +5,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import lanchain_helpr as lh
 import logging
+from mailService import send_mail
 
 
 logging.basicConfig(
@@ -39,6 +40,7 @@ class UserRequest(BaseModel):
     country: str
     position: str
     interest: str
+    email: str
 
 
 logger.info("UserRequest schema defined")
@@ -89,11 +91,18 @@ async def generate_data(user: UserRequest, request: Request):
     company = user.company
     position = user.position
     country = user.country
+    print("email user : ", user)
+    email = user.email
 
+    print("email : ", email)
     try:
         # Generate the data
         logger.debug("Calling generate_data helper function with inputs")
         response = lh.generate_data(name, company, position, country)
+
+        # Send the email with the response data
+        send_mail(response, email)
+
         print("Response: ", response)
         if not response:
             logger.error("Data generation failed for user: %s", user.json())

@@ -8,7 +8,6 @@ from langchain_google_community import GoogleSearchAPIWrapper
 import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
-from mailService import send_mail
 import json_helpr as jh
 
 # Load environment variables
@@ -333,9 +332,6 @@ def generate_data(name, company, position, country):
     # Send the email with the response data
 
     formatted_response = format_response(response)
-
-    # Send the email with the response data
-    send_mail(formatted_response)
 
     return formatted_response
 
