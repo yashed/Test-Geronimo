@@ -94,7 +94,7 @@ def gather_info(name, job_title, company_name, country):
         f"2. 'social_media_links': A JSON object with the person's most accurate social media URLs. Include only verified and relevant profiles for platforms like LinkedIn, Twitter, GitHub, or others the person actively uses. Also, suggest other relevant links related to the person, such as personal blogs, portfolio websites, or interview pages.\n"
         f"3. 'company_summary': A comprehensive summary of the company's services, products, and market presence.\n"
         f"4. 'company_competitors': A list of competitor company names in the same domain , not product names, separated by commas.\n"
-        f"5. 'company_news': A list of 3 to 5 **recent and relevant** news articles about the company (from the last 12 months). Focus on news that is related to the company's financial performance, major partnerships, executive changes, or significant industry developments. For each article, provide:\n"
+        f"5. 'company_news': A list of the recent 3 to 5 news articles about the company. News aetical needs to be recent one for today For each article, provide:\n"
         f"    - 'title': A clear and accurate title that gives a precise idea of the news.\n"
         f"    - 'url': The link to the news article.\n"
         f"    - 'description': A detailed summary of the news content. The summary must include the main points and be concise but informative, not exceeding 100 words.\n"

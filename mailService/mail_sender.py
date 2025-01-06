@@ -47,7 +47,9 @@ def send_mail(response_data):
     message.template_id = "d-a6c1b0ab7ad84f74b399bb7f28d07998"
 
     personalization = Personalization()
-    personalization.add_to(Email("piumisarangag@gmail.com"))
+    personalization.add_to(Email("yashed@wso2.com"))
+    personalization.add_to(Email("yashedthisara2001@gmail.com"))
+    personalization.add_to(Email("ytgaming20011@gmail.com"))
     personalization.subject = "AI Generated Content of the Lead"
     personalization.dynamic_template_data = dynamic_data
     message.add_personalization(personalization)
