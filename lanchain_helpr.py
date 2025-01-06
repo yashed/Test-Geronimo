@@ -12,7 +12,7 @@ from mailService import send_mail
 import json_helpr as jh
 
 # Load environment variables
-load_dotenv()
+load_dotenv(override=True)
 
 # Fetching the variables from the .env file
 GOOGLE_CSE_ID = os.getenv("GOOGLE_CSE_ID")
@@ -99,7 +99,7 @@ def parallel_web_scraping(results, queries):
 
 
 def fetch_top_google_results(
-    name, company, num_results=5, company_flag=0, competitors=0 , news=0
+    name, company, num_results=5, company_flag=0, competitors=0, news=0
 ):
     """
     Fetch Google search results and scrape the content in parallel.
@@ -107,9 +107,13 @@ def fetch_top_google_results(
     queries = []
     if company_flag == 1:  # Get company information
         queries.append(f"{company}")
-    elif company_flag == 0 and competitors == 0 and news == 0:  # Get personal information
+    elif (
+        company_flag == 0 and competitors == 0 and news == 0
+    ):  # Get personal information
         queries.append(f"{name} in {company}")
-    elif competitors == 1 and company_flag == 0 and news == 0:  # Get company competitors
+    elif (
+        competitors == 1 and company_flag == 0 and news == 0
+    ):  # Get company competitors
         queries.append(f"{company} competitors")
     elif news == 1 and company_flag == 0 and competitors == 0:  # Get company news
         queries.append(f"{company} recent news")
@@ -138,7 +142,9 @@ def generate_data(name, company, position, country):
     company_competitors_results = fetch_top_google_results(
         name, company, num_results=4, competitors=1
     )
-    company_news_results = fetch_top_google_results(name , company, num_results=10, news=1)
+    company_news_results = fetch_top_google_results(
+        name, company, num_results=10, news=1
+    )
 
     print("Company Competitors - ", company_competitors_results)
 
@@ -173,7 +179,7 @@ def generate_data(name, company, position, country):
             for res in company_competitors_results
         ]
     )
-    
+
     # to get company news
     formatted_news = "\n\n".join(
         [
@@ -207,12 +213,13 @@ def generate_data(name, company, position, country):
         input_variables=["name", "company", "position", "google_links"],
         template=(
             "Extract and list the most accurate and relevant social media links for {name} based on the provided Google Search Results. "
-            "There can be some false positives, so ensure the links are valid and related to the person not for any organization. "
-            "Prioritize LinkedIn if available, followed by other platforms like Twitter, GitHub, personal websites, Blog Sites like Medium. "
-            "Ensure that only accurate and valid links are included. Do not include any links that are not related to the person like organizations social media links. "
-            "Just give the [platform name]-[URL], remove additional information. "
+            "There can be some false positives, so ensure the links are valid and related to the person, not any organization. "
+            "Prioritize platforms like LinkedIn, Twitter, GitHub, personal websites, and blogs like Medium. "
+            "Ensure that only accurate and valid links are included. Do not include any links related to organizations' social media profiles. "
+            "Provide the links in the following JSON format, where the platform name is the key and the URL is the value. \n\n"
+            'Example format-  platform_name : "https://person_account_url" \n\n'
             "Google Search Results with Links: {google_links}\n\n"
-            "Social Media Links: "
+            "Social Media Links (in JSON format): "
         ),
     )
 
@@ -258,7 +265,7 @@ def generate_data(name, company, position, country):
     chain_competitors = LLMChain(
         llm=llm, prompt=prompt_template_competitors, output_key="company_competitors"
     )
-    
+
     # Fifth chain: Company News
     prompt_template_news = PromptTemplate(
         input_variables=["company", "company_news_results"],
@@ -274,11 +281,10 @@ def generate_data(name, company, position, country):
             "Company News Json:"
         ),
     )
-    
+
     chain_news = LLMChain(
         llm=llm, prompt=prompt_template_news, output_key="company_news"
-        )
-
+    )
 
     # Combine the two chains into a SequentialChain
     chain = SequentialChain(
@@ -287,7 +293,7 @@ def generate_data(name, company, position, country):
             chain_social_links,
             chain_company_summary,
             chain_competitors,
-            chain_news
+            chain_news,
         ],
         input_variables=[
             "name",
@@ -320,14 +326,18 @@ def generate_data(name, company, position, country):
             "country": country,
             "google_company_results": formatted_company_results,
             "company_competitors_results": formatted_competitors,
-            "company_news_results": formatted_news
+            "company_news_results": formatted_news,
         }
     )
 
     # Send the email with the response data
-    send_mail(response)
 
-    return format_response(response)
+    formatted_response = format_response(response)
+
+    # Send the email with the response data
+    send_mail(formatted_response)
+
+    return formatted_response
 
 
 # summazing the scraped content
@@ -382,15 +392,19 @@ def format_response(response_data):
     # Extracting details from response_data
     professional_summary = response_data.get("professional_summary", "")
     company_summary = response_data.get("company_summary", "")
-    social_media_links_raw = response_data.get("social_media_links", "")
+
     company_competitors_raw = response_data.get("company_competitors", "")
     company_news_raw = response_data.get("company_news", "")
-    
-    print("Company News Raw - ", company_news_raw)
-    
-    #convert company_news_raw to json
+    social_media_links_raw = response_data.get("social_media_links", "")
+
+    print("social_media_links_raw - ", social_media_links_raw)
+    # print("Company News Raw - ", company_news_raw)
+
+    # convert company_news_raw to json
     company_news_json = jh.format_json_string(company_news_raw)
-    print("Company News JSON - ", company_news_json)
+    social_media_links_json = jh.format_json_string(social_media_links_raw)
+    print("Social Media Links JSON - ", social_media_links_json)
+    # print("Company News JSON - ", company_news_json)
 
     # Parse social media links into the required format
     social_media_links = {}
@@ -411,10 +425,10 @@ def format_response(response_data):
     # Create the final formatted JSON object
     formatted_json = {
         "professional_summary": professional_summary,
-        "social_media_links": social_media_links,
+        "social_media_links": social_media_links_json,
         "company_summary": company_summary,
         "company_competitors": company_competitors,
-        "company_news": company_news_json
+        "company_news": company_news_json,
     }
 
     return formatted_json

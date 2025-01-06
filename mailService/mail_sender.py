@@ -16,43 +16,51 @@ if not SENDGRID_API_KEY:
 
 def send_mail(response_data):
     """Main function to send an email."""
-    print("Send Grid Key:", SENDGRID_API_KEY)
+
+    print("mail data = ", response_data)
     sg = SendGridAPIClient(SENDGRID_API_KEY)
 
     # Prepare dynamic data for the email template
     dynamic_data = {
-        "name": response_data.get("name", ""),
-        "job_title": response_data.get("position", ""),
-        "email": response_data.get("email", ""),
-        "social_media_links": [],
+        "name": response_data.get("name", "N/A"),
+        "job_title": response_data.get("job_title", "N/A"),
+        "email": response_data.get("email", "N/A"),
+        "social_media_links": (
+            {
+                platform: url.strip()
+                for item in response_data.get("social_media_links", [])
+                for platform, url in item.items()
+            }
+            if response_data.get("social_media_links")
+            else []
+        ),
+        "person_profile": response_data.get(
+            "professional_summary", "No Personal Detail Available"
+        ),
+        "company": response_data.get("company", "N/A"),
+        "company_overview": response_data.get(
+            "company_summary", "No Company Detail Available"
+        ),
+        "company_competitors": response_data.get("company_competitors", "").split(", "),
+        "company_news": [
+            {
+                "title": news_item.get("title", ""),
+                "url": news_item.get("url", ""),
+                "description": news_item.get("description", ""),
+            }
+            for news_item in response_data.get("company_news", [])
+        ],
     }
-
-    social_links = response_data.get("social_media_links", "")
-    if social_links:
-        for link in social_links.split("\n"):
-            parts = link.split(" - ")
-            if len(parts) == 2:
-                platform, url = parts[0].strip(), parts[1].strip()
-                dynamic_data["social_media_links"].append(
-                    {"platform": platform, "url": url}
-                )
-
-    dynamic_data["person_profile"] = response_data.get("professional_summary", "")
-    dynamic_data["job_title"] = response_data.get("position", "")
-    dynamic_data["company"] = response_data.get("company", "")
-    dynamic_data["company_overview"] = response_data.get("company_summary", "")
-    dynamic_data["company_competitors"] = response_data.get(
-        "company_competitors", ""
-    ).split("\n")
 
     print("Dynamic Data -", dynamic_data)
 
     # Create the email object
     message = Mail(from_email=Email("geronimo.test.01@gmail.com"))
-    message.template_id = "d-27e17b14c8f0406b9d745bdee528f9a6"
+    message.template_id = "d-a6c1b0ab7ad84f74b399bb7f28d07998"
 
     personalization = Personalization()
-    personalization.add_to(Email("yashedthisara2001@gmail.com"))
+    personalization.add_to(Email("yashedthisara2001@gmail.com"))  # Main recipient
+
     personalization.subject = "AI Generated Content of the Lead"
     personalization.dynamic_template_data = dynamic_data
     message.add_personalization(personalization)
