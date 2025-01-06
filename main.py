@@ -117,23 +117,28 @@ async def generate_data(user: UserRequest, request: Request):
         # Send the email
         send_mail(parsed_json)
 
+        social_media_links = parsed_json.get("social_media_links", {})
+
+        # If social_media_links is a single object, convert it to an array
+        if isinstance(social_media_links, dict):
+            social_media_links = [
+                {"platform": key, "url": value}
+                for key, value in social_media_links.items()
+            ]
+
         # return response
         return {
             "professional_summary": parsed_json.get(
                 "personal_summary", "No summary available"
             ),
-            "social_media_links": parsed_json.get(
-                "social_media_links", "No social media links found."
-            ),
+            "social_media_links": social_media_links,
             "company_summary": parsed_json.get(
                 "company_summary", "No company summary available"
             ),
             "company_competitors": parsed_json.get(
                 "company_competitors", "No competitors found"
             ),
-            "additional_insights": parsed_json.get(
-                "company_news", "No News available."
-            ),
+            "additional_insights": parsed_json.get("company_news", ""),
         }
     except Exception as e:
         logger.exception("An error occurred while processing the request")
