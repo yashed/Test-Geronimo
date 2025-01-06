@@ -99,14 +99,17 @@ async def generate_data(user: UserRequest, request: Request):
             logger.error("Data generation failed for user: %s", user.json())
             raise HTTPException(status_code=404, detail="Data generation failed")
 
+        social_media_links = [
+            {"platform": link["platform"], "url": link["url"]}
+            for link in response.get("social_media_links", [])
+        ]
+
         logger.info("Data generation successful for user: %s", user.json())
         return {
             "professional_summary": response.get(
                 "professional_summary", "No summary available"
             ),
-            "social_media_links": response.get(
-                "social_media_links", "No social media links found."
-            ),
+            "social_media_links": social_media_links,
             "company_summary": response.get(
                 "company_summary", "No company summary available"
             ),

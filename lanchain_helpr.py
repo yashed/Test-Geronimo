@@ -212,14 +212,14 @@ def generate_data(name, company, position, country):
     prompt_template_social_links = PromptTemplate(
         input_variables=["name", "company", "position", "google_links"],
         template=(
-            "Extract and list the most accurate and relevant social media links for {name} based on the provided Google Search Results. "
-            "There can be some false positives, so ensure the links are valid and related to the person, not any organization. "
-            "Prioritize platforms like LinkedIn, Twitter, GitHub, personal websites, and blogs like Medium. "
-            "Ensure that only accurate and valid links are included. Do not include any links related to organizations' social media profiles. "
-            "Provide the links in the following JSON format, where the platform name is the key and the URL is the value. \n\n"
-            'Example format-  platform_name : "https://person_account_url" \n\n'
+            "Based on the provided Google Search Results, extract the most accurate and relevant personal social media links for {name}. "
+            "These links should belong to the person, not to any organization or unrelated entity. Focus on platforms such as LinkedIn, Twitter, GitHub, personal websites, or blogs (e.g., Medium). "
+            "Exclude invalid or irrelevant links.\n\n"
+            "Output the result as a JSON array each item enclosed with curly brackets in the following format:\n\n"
+            '  -platform": "platform_name", -url": "URL",\n'
+            "Ensure there is one object for each social media link. If no valid links are found, return an empty array.\n\n"
             "Google Search Results with Links: {google_links}\n\n"
-            "Social Media Links (in JSON format): "
+            "JSON Array Output:"
         ),
     )
 

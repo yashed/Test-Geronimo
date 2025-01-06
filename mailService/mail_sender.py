@@ -25,15 +25,10 @@ def send_mail(response_data):
         "name": response_data.get("name", "N/A"),
         "job_title": response_data.get("job_title", "N/A"),
         "email": response_data.get("email", "N/A"),
-        "social_media_links": (
-            {
-                platform: url.strip()
-                for item in response_data.get("social_media_links", [])
-                for platform, url in item.items()
-            }
-            if response_data.get("social_media_links")
-            else []
-        ),
+        "social_media_links": [
+            {"platform": link["platform"], "url": link["url"]}
+            for link in response_data.get("social_media_links", [])
+        ],
         "person_profile": response_data.get(
             "professional_summary", "No Personal Detail Available"
         ),
