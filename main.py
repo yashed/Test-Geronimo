@@ -3,7 +3,7 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
-import lanchain_helpr as lh
+import lanchain_helper as lh
 import logging
 from mailService import send_mail
 

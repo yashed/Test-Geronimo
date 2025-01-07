@@ -8,7 +8,7 @@
 # from selenium.webdriver.support import expected_conditions as EC
 import requests
 from bs4 import BeautifulSoup
-import lanchain_helpr as lh
+import lanchain_helper as lh
 
 
 # def fetch_with_selenium(url):

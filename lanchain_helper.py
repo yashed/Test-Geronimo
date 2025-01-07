@@ -90,9 +90,7 @@ def parallel_web_scraping(results, queries):
             scraped_data = list(
                 executor.map(lambda res: scrape(res, query), query_results)
             )
-            combined_results.append(
-                [data for data in scraped_data if data]
-            )  # Filter out None results
+            combined_results.append([data for data in scraped_data if data])
 
     return combined_results
 
