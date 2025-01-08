@@ -9,6 +9,9 @@ import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
 import json_helpr as jh
+import google.generativeai as genai
+from langchain_google_genai import ChatGoogleGenerativeAI
+
 
 # Load environment variables
 load_dotenv(override=True)
@@ -20,6 +23,7 @@ OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 OPENAI_DEPLOYMENT_NAME = os.getenv("OPENAI_DEPLOYMENT_NAME")
 OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 print("Google API Key - ", GOOGLE_API_KEY)
 print("Google CSE ID - ", GOOGLE_CSE_ID)
@@ -27,6 +31,7 @@ print("OpenAI API Key - ", OPENAI_API_KEY)
 print("OpenAI API Base - ", OPENAI_API_BASE)
 print("OpenAI Deployment Name - ", OPENAI_DEPLOYMENT_NAME)
 print("OpenAI API Version - ", OPENAI_API_VERSION)
+print("Gemini Key - ", GEMINI_API_KEY)
 
 
 if not all(
@@ -52,6 +57,8 @@ llm = AzureChatOpenAI(
     deployment_name=OPENAI_DEPLOYMENT_NAME,
     temperature=0.0,
 )
+# Gemini LLM initialization
+# llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=GEMINI_API_KEY)
 
 
 def parallel_google_search(queries, num_results=8):
@@ -210,7 +217,7 @@ def generate_data(name, company, position, country):
         input_variables=["name", "company", "position", "google_links"],
         template=(
             "Based on the provided Google Search Results, extract the most accurate and relevant personal social media links for {name}. "
-            "These links should belong to the person, not to any organization or unrelated entity. Focus on platforms such as LinkedIn, Twitter, GitHub, personal websites, or blogs (e.g., Medium). "
+            "These links should belong to the person, not to any organization or unrelated entity. Focus on platforms such as LinkedIn, Twitter, GitHub, personal websites, company profile page or blogs (e.g., Medium). "
             "Exclude invalid or irrelevant links.\n\n"
             "Output the result as a JSON array each item enclosed with curly brackets in the following format:\n\n"
             '  -platform": "platform_name", -url": "URL",\n'
@@ -228,7 +235,7 @@ def generate_data(name, company, position, country):
     prompt_template_company_summary = PromptTemplate(
         input_variables=["company", "country", "google_company_results"],
         template=(
-            "Based on the provided Google Search Results, create a concise yet detailed summary about {company}, highlighting the following key points:"
+            "Based on the provided Google Search Results, create a concise yet detailed summary about {company},give a paragraph with nealy 250 words highlighting the following key points:"
             "\n1. A brief overview of what the company does."
             "\n2. The countries or regions where the company operates."
             "\n3. The main services and products the company offers."

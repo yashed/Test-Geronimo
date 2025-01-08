@@ -1,13 +1,14 @@
 import os
-from fastapi import FastAPI, HTTPException, Request
+from fastapi import FastAPI, HTTPException, Request, Security, Depends
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+from fastapi.security.api_key import APIKeyHeader
 import lanchain_helper as lh
 import logging
 from mailService import send_mail
 
-
+# Configure logging
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s - %(levelname)s - %(message)s",
@@ -15,12 +16,29 @@ logging.basicConfig(
         logging.StreamHandler(),
     ],
 )
-
 logger = logging.getLogger(__name__)
+
+# Constants
+API_KEY_NAME = "GERONIMO-API-KEY"
+API_KEY = os.getenv("GERONIMO_API_KEY", "")
+
+# Security dependency
+api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
+
+
+async def verify_api_key(api_key: str = Depends(api_key_header)):
+    if api_key != API_KEY:
+        logger.warning("Invalid API key provided")
+        raise HTTPException(
+            status_code=401,
+            detail="Unauthorized: Invalid API key",
+        )
+    logger.info("Valid API key provided")
+    return api_key
+
 
 # Create FastAPI instance
 app = FastAPI()
-
 
 # Enable CORS middleware
 app.add_middleware(
@@ -76,14 +94,19 @@ async def read_root():
 
 # Define a test endpoint
 @app.get("/test")
-def test_endpoint():
+async def test_endpoint():
     logger.info("Test endpoint accessed")
     return {"message": "This is a test endpoint"}
 
 
-# Define an generat data endpoint
+# Define a generate data endpoint
 @app.post("/generate_data")
-async def generate_data(user: UserRequest, request: Request):
+async def generate_data(
+    user: UserRequest,
+    request: Request,
+    api_key: str = Security(verify_api_key),
+):
+    logger.info("Request authenticated with API key")
     logger.info("Request URL: %s", request.url)
     logger.info("Generate data endpoint called with user: %s", user.json())
 
@@ -91,10 +114,8 @@ async def generate_data(user: UserRequest, request: Request):
     company = user.company
     position = user.position
     country = user.country
-    print("email user : ", user)
     email = user.email
 
-    print("email : ", email)
     try:
         # Generate the data
         logger.debug("Calling generate_data helper function with inputs")
@@ -103,7 +124,6 @@ async def generate_data(user: UserRequest, request: Request):
         # Send the email with the response data
         send_mail(response, email)
 
-        print("Response: ", response)
         if not response:
             logger.error("Data generation failed for user: %s", user.json())
             raise HTTPException(status_code=404, detail="Data generation failed")
