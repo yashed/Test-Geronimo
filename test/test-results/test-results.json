@@ -1,0 +1,330 @@
+[
+  {
+    "test_index": 1,
+    "input": {
+      "name": "Yashed Thisara",
+      "job_title": "Developer/Engineer",
+      "company_name": "WSO2",
+      "country": "Sri Lanka"
+    },
+    "response": {
+      "personal_summary": "Yashed Thisara is a Software Engineer Intern at WSO2, a prominent open-source middleware company. He is currently pursuing a degree in Computer Science at the University of Colombo School of Computing. Yashed has a keen interest in web and game development, as well as UI/UX design. His journey in the tech industry began with a successful internship at WSO2, where he has been able to apply his skills and knowledge in a professional setting. Yashed is also actively involved in various tech communities and events, such as volunteering at GDG Cloud Sri Lanka and participating in projects like the Examination Management Information System for NILIS. His dedication to learning and growth is evident from his continuous pursuit of knowledge, as seen in his completion of courses like 'Deep Learning: Getting Started'. Yashed is also a media coordinator for the Computer Science Society at the University of Colombo, showcasing his leadership and organizational skills.",
+      "social_media_links": {
+        "LinkedIn": "https://lk.linkedin.com/in/yashed?trk=organization_guest_main-feed-card-text",
+        "Instagram": "https://www.instagram.com/yashh._.h/"
+      },
+      "company_summary": "WSO2 LLC is an open-source technology provider founded in 2005, headquartered in Santa Clara, California, with operations worldwide. The company specializes in delivering software and cloud solutions that provide foundational technologies for application development and identity and access management (IAM). Initially focused on integrating application programming interfaces (APIs), applications, and web services, WSO2 has expanded its offerings to include a comprehensive suite of middleware products. These products facilitate agile integration, API management, and IAM, supporting enterprises in creating, delivering, and scaling digital experiences. WSO2's product lineup includes the WSO2 API Manager, Choreo, WSO2 Micro Integrator, and WSO2 Identity Server, among others. The company has a strong open-source engagement, with many of its products based on or contributing to the Apache product stack. WSO2 has been backed by significant investments from Intel Capital, Toba Capital, and others, and was acquired by EQT Private Capital Asia in 2024 for over $600 million. The company operates offices in multiple countries, with its main research and operations conducted from Colombo, Sri Lanka.",
+      "company_competitors": "Amazon Web Services (AWS), Salesforce (MuleSoft), Microsoft, IBM, Kong",
+      "company_news": [
+        {
+          "title": "Latest WSO2 API Management Products Help Enterprises to Manage AI APIs, Maximize Developer Productivity, and Future-Proof Their Deployments",
+          "url": "https://finance.yahoo.com/news/latest-wso2-api-management-products-140000999.html",
+          "description": "WSO2 has announced its latest API management products designed to help enterprises manage AI APIs, enhance developer productivity, and future-proof their deployments. The new release includes support for subscription rate limit policies, which are already available in WSO2 API Manager. These updates aim to streamline API management and improve operational efficiency for businesses leveraging AI technologies."
+        },
+        {
+          "title": "WSO2's latest product release allows AI services to be managed like APIs",
+          "url": "https://sdtimes.com/api/wso2s-latest-product-release-allows-ai-services-to-be-managed-like-apis/",
+          "description": "WSO2 has introduced a new product release that enables AI services to be managed similarly to APIs. This update is part of WSO2's ongoing efforts to enhance its API management platform, providing businesses with the tools needed to integrate and manage AI services effectively. The release includes several new features aimed at improving the flexibility and scalability of AI service management."
+        },
+        {
+          "title": "EQT to acquire WSO2, a leading global provider of digital transformation technologies",
+          "url": "https://www.prnewswire.com/news-releases/eqt-to-acquire-wso2-a-leading-global-provider-of-digital-transformation-technologies-302135604.html",
+          "description": "EQT Private Capital Asia's BPEA Fund VIII has agreed to acquire WSO2, a prominent provider of digital transformation technologies. This acquisition is expected to bolster WSO2's growth and innovation capabilities, allowing it to expand its global reach and enhance its product offerings. The deal underscores the increasing demand for digital transformation solutions and WSO2's strong position in the market."
+        }
+      ]
+    },
+    "status": "Pass"
+  },
+  {
+    "test_index": 2,
+    "input": {
+      "name": "Mifan Careem",
+      "job_title": "Solution or Systems Architect",
+      "company_name": "WSO2",
+      "country": "Sri Lanka"
+    },
+    "response": {
+      "personal_summary": "Mifan Careem is a seasoned technology executive currently serving as the Chief Solutions Officer at WSO2. With a strong background in ICT entrepreneurship, he has extensive experience in leadership and organizational roles. At WSO2, he is responsible for overseeing customer technical interactions and leading the global Solution Architecture and Pre-sales functions. Mifan has played a pivotal role in driving digital transformation initiatives and has been instrumental in developing healthcare solutions at WSO2. His educational background includes studies at the Australian Institute of Business, which has further equipped him with the skills necessary for his leadership roles. Mifan is recognized for his strategic vision and ability to foster innovation within the technology sector.",
+      "social_media_links": {
+        "LinkedIn": "https://www.linkedin.com/in/mifan",
+        "Forbes Profile": "https://councils.forbes.com/profile/Mifan-Careem-Vice-President-Solution-Architecture-WSO2-WSO2/f2010b9f-2482-4e1d-b8e7-926ad06835f4"
+      },
+      "company_summary": "WSO2 LLC is an open-source technology provider founded in 2005. It delivers software and cloud solutions that provide foundational technologies for application development and identity and access management (IAM). This represents an expansion upon its original focus on integrating application programming interfaces (APIs), applications, and web services locally and across the Internet. The company was founded by Sanjiva Weerawarana, Paul Fremantle, and Davanum Srinivas, with backing from Intel Capital, Toba Capital, and Pacific Controls. WSO2's first product was code-named Tungsten, followed by WSO2 Titanium, which later became WSO2 Enterprise Service Bus (ESB). In February 2009, WSO2 introduced the WSO2 Carbon componentized framework, designed to serve as the basis for all WSO2 software products. WSO2 offers a platform of middleware products for agile integration, API management, and identity and access management. As of 2023, WSO2 has offices in multiple countries, with its main office in Colombo, Sri Lanka. The company was acquired by EQT Private Capital Asia in 2024 for over $600 million.",
+      "company_competitors": "Amazon Web Services (AWS), Salesforce (MuleSoft), Microsoft, IBM, Kong",
+      "company_news": [
+        {
+          "title": "Latest WSO2 API Management Products Help Enterprises to Manage AI APIs, Maximize Developer Productivity, and Future-Proof Their Deployments",
+          "url": "https://finance.yahoo.com/news/latest-wso2-api-management-products-140000999.html",
+          "description": "WSO2 has announced its latest API management products designed to help enterprises manage AI APIs, enhance developer productivity, and future-proof their deployments. The new release includes support for subscription rate limit policies, which are already available in WSO2 API Manager. This update aims to streamline API management and improve operational efficiency for businesses leveraging AI technologies."
+        },
+        {
+          "title": "EQT to acquire WSO2, a leading global provider of digital transformation technologies",
+          "url": "https://www.prnewswire.com/news-releases/eqt-to-acquire-wso2-a-leading-global-provider-of-digital-transformation-technologies-302135604.html",
+          "description": "EQT Private Capital Asia's BPEA Fund VIII has agreed to acquire WSO2 from its existing shareholders. This acquisition is expected to enhance WSO2's capabilities in providing digital transformation technologies globally. The deal underscores EQT's commitment to investing in innovative companies that drive digital transformation and technological advancement."
+        },
+        {
+          "title": "WSO2's latest product release allows AI services to be managed like APIs",
+          "url": "https://sdtimes.com/api/wso2s-latest-product-release-allows-ai-services-to-be-managed-like-apis/",
+          "description": "WSO2 has introduced a new product release that enables AI services to be managed similarly to APIs. This update is part of WSO2's API management platform enhancements, which include a range of new features aimed at optimizing the management of AI services. The release is designed to simplify the integration and management of AI capabilities within enterprise environments."
+        }
+      ]
+    },
+    "status": "Pass"
+  },
+  {
+    "test_index": 3,
+    "input": {
+      "name": "Andrew Westwood",
+      "job_title": "IT Executive",
+      "company_name": "Needseek",
+      "country": "USA"
+    },
+    "response": {
+      "error": "One or more queries failed",
+      "details": [
+        "News: No JSON found in response"
+      ]
+    },
+    "status": "Fail"
+  },
+  {
+    "test_index": 4,
+    "input": {
+      "name": "Robin West",
+      "job_title": "Solution or Systems Architect",
+      "company_name": "Zebra Technologies",
+      "country": "USA"
+    },
+    "response": {
+      "personal_summary": "Not available",
+      "social_media_links": {},
+      "company_summary": "Zebra Technologies Corp is a technology company headquartered in Lincolnshire, Illinois, USA. It specializes in providing mobile computing products, barcode printers, and information solutions. The company's product portfolio includes mobile computers, barcode scanners, RFID readers, and specialty printers for barcode labeling and personal identification. Zebra Technologies serves a wide range of industries, including manufacturing, retail, government, healthcare, warehouse and distribution, e-commerce fulfillment, energy and utilities, transportation, and logistics. The company also offers maintenance, technical support, repair, managed and professional services, including cloud-based subscriptions. Zebra Technologies is known for its workforce management solutions, demand-sensing solutions, price optimization solutions, prescriptive analytics solutions, and physical inventory management solutions. With a global presence across the Americas, Europe, the Middle East, Africa, and Asia-Pacific, Zebra Technologies is a leader in its field, helping organizations monitor, anticipate, and accelerate workflows by empowering their frontline and ensuring that everyone and everything is visible, connected, and fully optimized.",
+      "company_competitors": "Panasonic Holdings Corp, Cisco Systems Inc, Honeywell International Inc, Keyence Corp",
+      "company_news": [
+        {
+          "title": "Zebra Technologies Introduces New AI Solutions to Empower Retail Frontline Operations",
+          "url": "https://www.zebra.com/us/en/about-zebra/newsroom/press-releases/2025/zebra-technologies-introduces-new-ai-solutions-to-empower-retail-frontline-operations.html",
+          "description": "Zebra Technologies announced new AI innovations for the retail industry, including the Zebra Mobile Computing AI Suite and Zebra Companion, designed to empower retail frontline workers. These solutions will be showcased at NRF 2025 Retail's Big Show. The AI Suite facilitates the integration of vision AI capabilities into mobile applications, while Zebra Companion provides instant access to critical information for frontline workers. These innovations aim to enhance productivity and customer experience in retail operations."
+        }
+      ]
+    },
+    "status": "Pass"
+  },
+  {
+    "test_index": 5,
+    "input": {
+      "name": "Pratik Pamanik",
+      "job_title": "Solution or Systems Architect",
+      "company_name": "San Francisco International Airport",
+      "country": "USA"
+    },
+    "response": {
+      "personal_summary": "Pratik Pramanik is a professional working as an Engineer Principal - Technical Architect at San Francisco International Airport. He has a strong background in engineering and technical architecture, contributing to the development and maintenance of complex systems at the airport. Pratik is based in San Francisco and has a significant professional network, as indicated by his 500+ connections on LinkedIn. He is an alumnus of the University of California, San Diego, which adds to his robust educational background. His role at the airport involves overseeing technical projects and ensuring the seamless operation of various systems critical to airport operations.",
+      "social_media_links": {
+        "LinkedIn": "https://www.linkedin.com/in/pratikpramanik"
+      },
+      "company_summary": "San Francisco International Airport (SFO) is a major international airport located approximately 13 miles south of downtown San Francisco, California. It is the largest airport in Northern California and the second-busiest in the state, following Los Angeles International Airport (LAX). SFO serves as a major gateway to Asia and Europe, offering nonstop flights to numerous destinations across the globe. The airport is owned and operated by the City and County of San Francisco and is situated primarily in unincorporated San Mateo County. SFO features four terminals, including one international terminal, and is equipped with modern amenities such as shopping, dining, and lounges. The airport is also known for its sustainable practices and efforts to reduce its environmental impact. SFO is a hub for United Airlines and Alaska Airlines, contributing significantly to its passenger traffic and connectivity. The airport is well-connected to the city and surrounding areas through various transportation options, including the Bay Area Rapid Transit (BART) system.",
+      "company_competitors": "Los Angeles International Airport (LAX), Oakland International Airport (OAK), San Jose International Airport (SJC), Seattle-Tacoma International Airport (SEA), Portland International Airport (PDX)",
+      "company_news": [
+        {
+          "title": "BART service between SFO, Millbrae halted because of equipment problem",
+          "url": "https://www.cbsnews.com/sanfrancisco/tag/san-francisco-international-airport/",
+          "description": "BART train service was disrupted on the Red Line between San Francisco International Airport and Millbrae due to a trackside equipment problem. This interruption affected commuters and travelers relying on the service for airport access."
+        },
+        {
+          "title": "Ruling against 'San Francisco Bay Oakland International Airport' name change appealed",
+          "url": "https://www.cbsnews.com/sanfrancisco/tag/san-francisco-international-airport/",
+          "description": "The Port of Oakland is appealing a court ruling that temporarily blocks it from using its new airport name, 'San Francisco Bay Oakland International Airport.' This legal battle highlights ongoing disputes over airport naming rights and regional branding."
+        },
+        {
+          "title": "Injury crash closes northbound US-101 near SFO",
+          "url": "https://www.cbsnews.com/sanfrancisco/tag/san-francisco-international-airport/",
+          "description": "An injury collision blocked all northbound lanes of U.S. Highway 101 near San Francisco International Airport, causing significant traffic disruptions. The incident underscores the importance of traffic management around major transportation hubs."
+        }
+      ]
+    },
+    "status": "Pass"
+  },
+  {
+    "test_index": 6,
+    "input": {
+      "name": "Ashish Batwara",
+      "job_title": "IT Executive",
+      "company_name": "Sharecare",
+      "country": "USA"
+    },
+    "response": {
+      "error": "One or more queries failed",
+      "details": [
+        "News: No JSON found in response"
+      ]
+    },
+    "status": "Fail"
+  },
+  {
+    "test_index": 7,
+    "input": {
+      "name": "karima EL MADKOURI",
+      "job_title": "C-Level",
+      "company_name": "MARS IT",
+      "country": "Morocco"
+    },
+    "response": {
+      "error": "One or more queries failed",
+      "details": [
+        "News: No JSON found in response"
+      ]
+    },
+    "status": "Fail"
+  },
+  {
+    "test_index": 8,
+    "input": {
+      "name": "Tanveer",
+      "job_title": "IT Executive",
+      "company_name": "HPD",
+      "country": "USA"
+    },
+    "response": {
+      "error": "One or more queries failed",
+      "details": [
+        "Personal: No JSON found in response",
+        "News: No JSON found in response"
+      ]
+    },
+    "status": "Fail"
+  },
+  {
+    "test_index": 9,
+    "input": {
+      "name": "Radwa Essam",
+      "job_title": "Developer/Engineer",
+      "company_name": "Vodafone",
+      "country": "Egypt"
+    },
+    "response": {
+      "personal_summary": "Radwa Essam is an accomplished Integration Developer currently working at Atos in Egypt. She has a strong background in software development and integration, with a particular focus on cloud technologies, as indicated by her Certified Kubernetes Administrator (CKA) certification. Radwa has previously worked at Vodafone, where she gained valuable experience in telecommunications and software engineering. Her educational background includes studies at Udacity, where she likely honed her skills in modern software development practices. Radwa is well-connected in the professional community, with over 500 connections on LinkedIn, reflecting her active engagement in the tech industry. Her career trajectory showcases a commitment to continuous learning and professional growth, making her a valuable asset in any technology-driven organization.",
+      "social_media_links": {
+        "LinkedIn": "https://www.linkedin.com/in/radwaessam"
+      },
+      "company_summary": "Vodafone is a British multinational telecommunications company headquartered in Newbury, Berkshire, England. Founded in 1984, Vodafone has grown to become one of the world's largest telecommunications companies, operating in Asia, Africa, Europe, and Oceania. The company provides a wide range of services, including fixed and mobile telephony, broadband, digital television, and Internet of Things (IoT) solutions. Vodafone is known for its significant presence in the mobile telecommunications market, with operations in 16 countries and partner networks in 46 additional countries. The company also serves corporate clients in 150 countries through its Vodafone Global Enterprise division. Vodafone is publicly traded on the London Stock Exchange and is a constituent of the FTSE 100 Index. Over the years, Vodafone has expanded through acquisitions and mergers, including the notable acquisition of Mannesmann in 2000, which was one of the largest corporate mergers in history. The company has also been involved in various strategic partnerships and divestments to streamline its operations and focus on core markets. Vodafone is committed to innovation and has invested heavily in 5G technology and infrastructure to enhance its service offerings and maintain its competitive edge in the telecommunications industry.",
+      "company_competitors": "AT&T, Verizon, Deutsche Telekom, Telefonica, Orange",
+      "company_news": [
+        {
+          "title": "Vodafone Idea planning phased 5G rollout with new tariff plans",
+          "url": "https://www.business-standard.com/companies/news/vodafone-idea-5g-rollout-new-tariff-plans-125010700617_1.html",
+          "description": "Vodafone Idea has announced plans for a phased rollout of 5G services in 75 cities. The company aims to offer tariffs that are reportedly 15% lower than current market rates, in a bid to attract more customers and boost its market presence. This strategic move is part of Vodafone's efforts to enhance its service offerings and compete more effectively in the telecommunications sector."
+        },
+        {
+          "title": "Vodafone Idea 5G rollout plans: Revival mode ON! CEO reveals launch date",
+          "url": "https://www.etnownews.com/companies/vodafone-idea-5g-rollout-plans-revival-mode-on-ceo-reveals-launch-date-article-117048837",
+          "description": "Vodafone Idea's CEO, Akshaya Moondra, has revealed that the company plans to launch its 5G services starting March 2025. This announcement marks a significant step in Vodafone's revival strategy, aiming to position itself as a key player in the 5G market. The rollout is expected to enhance connectivity and offer advanced services to customers."
+        },
+        {
+          "title": "Vodafone joins the Google Verified Peering Partner programme",
+          "url": "https://www.vodafone.com/business/news-and-insights/company-news",
+          "description": "Vodafone has joined the Google Verified Peering Partner programme, a move that will facilitate easier cloud connectivity for businesses. This partnership with Google is part of Vodafone's strategy to expand its cloud services and provide enhanced connectivity solutions to its corporate clients. The collaboration is expected to drive innovation and improve service delivery."
+        }
+      ]
+    },
+    "status": "Pass"
+  },
+  {
+    "test_index": 10,
+    "input": {
+      "name": "john milburn",
+      "job_title": "C-Level",
+      "company_name": "Clear Skye",
+      "country": "USA"
+    },
+    "response": {
+      "personal_summary": "John Milburn is the Chief Executive Officer (CEO) of Clear Skye, a company that focuses on identity governance and administration (IGA) software. Known for his leadership qualities such as integrity, passion, and humility, John is dedicated to empowering his team while keeping a keen focus on the company's objectives. He has played a crucial role in closing the value gap in the identity security sector. With extensive experience in the enterprise software industry, John has been pivotal in advancing Clear Skye's vision. His leadership has also been instrumental in the company raising substantial funds to fuel its growth and innovation in cybersecurity.",
+      "social_media_links": {
+        "LinkedIn": "https://www.linkedin.com/in/jomilburn"
+      },
+      "company_summary": "Clear Skye is a company that addresses the integration challenges associated with traditional identity security approaches. By leveraging the ServiceNow platform, Clear Skye reimagines enterprise identity access and risk management, providing a seamless user experience and reducing data redundancy. The company's Identity Governance and Administration (IGA) solution is built natively on ServiceNow, which simplifies business process integration and enhances security and risk capabilities. This integration also streamlines HR processes, offering greater value from the ServiceNow platform. Clear Skye's solutions are designed to optimize identity governance, access requests, access reviews, identity lifecycle management, and separation of duties. The company serves various industries, including healthcare, higher education, and manufacturing, and focuses on improving security operations, risk management, and role mining. Clear Skye's approach ensures that all access is governed efficiently, providing a better way to manage identity governance and administration.",
+      "company_competitors": "SailPoint, Saviynt, One Identity, Okta, Microsoft Entra ID",
+      "company_news": [
+        {
+          "title": "Clear Skye IGA 5.1 Streamlines Business Processes and Identity Security on the ServiceNow Platform",
+          "url": "https://www.businesswire.com/news/home/20240509918973/en/Clear-Skye-IGA-5.1-Streamlines-Business-Processes-and-Identity-Security-on-the-ServiceNow-Platform",
+          "description": "Clear Skye has announced the release of IGA 5.1, which enhances business processes and identity security on the ServiceNow platform. This update allows users to streamline deployments, manage employee changes more effectively, and gain improved visibility into identity data, thereby optimizing identity governance and administration."
+        },
+        {
+          "title": "Clear Skye Announces Global Partner Program to Meet Growing Demand for Comprehensive and Effective Identity Governance and Administration Solutions",
+          "url": "https://clearskye.com/blog/clear-skye-announces-global-partner-program-to-meet-growing-demand-for-comprehensive-and-effective-identity-governance-and-administration-solutions",
+          "description": "Clear Skye has launched 'Elevate,' a global partner program designed to address the increasing demand for robust identity governance and administration solutions. This initiative aims to expand Clear Skye's reach and enhance collaboration with partners to deliver comprehensive identity solutions."
+        },
+        {
+          "title": "Clear Skye Announces Over 300% Revenue Growth in First Half 2021",
+          "url": "https://clearskye.com/category/news",
+          "description": "Clear Skye has reported a significant revenue growth of over 300% in the first half of 2021. This growth underscores the company's expanding influence in the identity governance sector and highlights its successful strategies in meeting the evolving needs of its clients."
+        }
+      ]
+    },
+    "status": "Pass"
+  },
+  {
+    "test_index": 11,
+    "input": {
+      "name": "Todd Thiemann",
+      "job_title": "Developer/Engineer",
+      "company_name": "Enterprise Strategy Group",
+      "country": "USA"
+    },
+    "response": {
+      "personal_summary": "Todd Thiemann is a Senior Analyst at the Enterprise Strategy Group, which is part of TechTarget. With over 20 years of experience in cybersecurity marketing and strategy, Todd has established himself as a knowledgeable professional in the field. His expertise lies in identity access management and data security, where he has been actively involved in researching and analyzing market trends. Todd has played a pivotal role in enhancing the FIDO Alliance's marketing strategies, contributing to its improved messaging and marketplace momentum. He is recognized for his insights into data security and identity and access management (IAM), often participating in discussions and interviews to share his knowledge. Todd's work is instrumental in helping clients understand emerging market trends and navigate the complexities of cybersecurity.",
+      "social_media_links": {
+        "LinkedIn": "https://www.linkedin.com/in/toddthiemann",
+        "TechTarget Profile": "https://www.techtarget.com/contributor/Todd-Thiemann",
+        "Dark Reading Author Page": "https://www.darkreading.com/author/todd-thiemann"
+      },
+      "company_summary": "Enterprise Strategy Group (ESG) is a leading industry analyst firm that provides strategic guidance and unmatched service to technology vendors, IT professionals, venture capitalists, and institutional investors. The Enterprise Strategy Group evolved from the Enterprise Storage Group, and now offers products and services focused on application infrastructure and information security while it continues to set the tone for storage and information management. Enterprise Strategy Group sets itself apart from legacy analyst firms and boutiques by continuing to build its excellent reputation of assisting clients to make strategic business and IT decisions.",
+      "company_competitors": "TAMID Group, The NPD Group, Prefeitura Municipal De Duque De Caxias, Accenture, Bain & Company",
+      "company_news": [
+        {
+          "title": "Enterprise Strategy Group Analysts' Perspectives - TechTarget",
+          "url": "https://www.techtarget.com/sustainability/series/Enterprise-Strategy-Group-Analysts-Perspectives",
+          "description": "This article discusses recent developments in the tech industry, including the FTC inquiry and the acquisition of Claypot. Enterprise Strategy Group analyst Mike Leone provides insights into five significant news items, highlighting the impact of these events on the industry."
+        },
+        {
+          "title": "New Research from TechTarget's Enterprise Strategy Group and the ISSA Reveals Crisis in Leadership",
+          "url": "https://www.issa.org/new-research-from-techtargets-enterprise-strategy-group-and-the-issa-reveals-crisis-in-leadership-as-the-cybersecurity-profession-grows-increasingly-difficult/",
+          "description": "This report from TechTarget's Enterprise Strategy Group and the ISSA highlights a leadership crisis within the cybersecurity profession. As the field becomes more challenging, the report underscores the growing difficulties faced by cybersecurity professionals and the need for effective leadership."
+        },
+        {
+          "title": "New Research From Legit Security and TechTarget's Enterprise Strategy Group Shows Outdated Application Security Approaches Do Not Work",
+          "url": "https://www.prnewswire.com/news-releases/new-research-from-legit-security-and-techtarget-s-enterprise-strategy-group-shows-outdated-application-security-approaches-do-not-work-with-modern-development-trends-815127908.html",
+          "description": "This research collaboration between Legit Security and TechTarget's Enterprise Strategy Group examines the challenges of outdated application security methods. The report emphasizes the need for modernization to keep pace with current development trends, addressing the pressing challenges faced by organizations."
+        }
+      ]
+    },
+    "status": "Pass"
+  },
+  {
+    "test_index": 12,
+    "input": {
+      "name": "Wilson Achilles",
+      "job_title": "IT Executive",
+      "company_name": "Funcional Health Tech",
+      "country": "Brazil"
+    },
+    "response": {
+      "personal_summary": "Wilson Achilles Pereira Neto is a seasoned IT professional with over 20 years of experience in infrastructure and information security. He currently serves as the Head of Infrastructure and Information Security at Funcional Health Tech, a prominent healthcare technology company in Brazil. Throughout his career, Wilson has demonstrated expertise in managing complex IT environments and implementing robust security measures to protect sensitive data. His leadership has been instrumental in guiding Funcional Health Tech through various technological advancements and security challenges. Wilson's role involves overseeing the company's IT infrastructure, ensuring the security of data, and leading initiatives to enhance the organization's technological capabilities. He is recognized for his strategic vision and ability to drive innovation in the field of information technology. Wilson's contributions have been pivotal in establishing Funcional Health Tech as a leader in the healthcare technology sector, particularly in the areas of data security and infrastructure management.",
+      "social_media_links": {
+        "LinkedIn": "https://br.linkedin.com/in/wilson-achilles/pt",
+        "LinkedIn (Alternate)": "https://br.linkedin.com/in/wilson-achilles-alves-pereira-neto-b022781b5"
+      },
+      "company_summary": "Funcional Health Tech is a company that specializes in data intelligence, offering services that integrate the health market chain. It operates in the Research & Development industry and employs between 250 to 499 people, with a revenue range of $100 million to $250 million. The company focuses on improving healthcare through technology, serving over 13 million daily users by providing industry intelligence and insights. Funcional Health Tech has been in the market for 24 years, emphasizing the enhancement of people's lives through health technology solutions.",
+      "company_competitors": "Nomi Health, Ribbon Health, MedXoom, Slingshot, HosmartAI",
+      "company_news": [
+        {
+          "title": "Funcional Health Tech acquires corporate benefits provider BeFlex",
+          "url": "https://latamlist.com/funcional-health-tech-acquires-corporate-benefits-provider-beflex/",
+          "description": "Funcional Health Tech has recently acquired BeFlex, a corporate multi-benefits card provider. This acquisition expands Funcional Health Tech's offerings, adding over 70 corporate clients and 20,000 active users to its portfolio. The move is expected to enhance the company's position in the health tech industry by integrating BeFlex's services and client base, thereby broadening its reach and capabilities in providing comprehensive health and wellness solutions."
+        }
+      ]
+    },
+    "status": "Pass"
+  }
+]

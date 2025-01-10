@@ -42,6 +42,7 @@ class UserRequest(BaseModel):
     country: str
     position: str
     interest: str
+    email: str
 
 
 logger.info("UserRequest schema defined")

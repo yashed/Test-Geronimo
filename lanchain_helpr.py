@@ -6,6 +6,10 @@ from langchain.schema import AIMessage, HumanMessage
 import requests
 import os
 import json
+from bs4 import BeautifulSoup
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 
 # Initialize Environment Variables
 os.environ["OPENAI_API_KEY"] = os.getenv("AZURE_OPENAI_API_KEY")
@@ -51,11 +55,15 @@ def web_scraping(url):
     try:
         response = requests.get(url)
         if response.status_code == 200:
-            return response.text[:500]  # Return first 500 characters of the response
+
+            soup = BeautifulSoup(response.text, "html.parser")
+            visible_text = soup.get_text()
+
+            return visible_text.strip()
         else:
-            return f"Failed to retrieve data from {url}"
+            return f"Failed to retrieve data from {url}. Status code: {response.status_code}"
     except Exception as e:
-        return str(e)
+        return f"An error occurred: {str(e)}"
 
 
 tools = [
@@ -84,6 +92,9 @@ agent = initialize_agent(
 )
 
 
+# LLM Planer
+# change the scraper to google search
+# check langraph for the planer
 # Main Function
 def gather_info(name, job_title, company_name, country):
     query = (
@@ -93,43 +104,50 @@ def gather_info(name, job_title, company_name, country):
         f"1. 'personal_summary': A detailed 300-word summary about the person, focusing on their professional achievements and background.\n"
         f"2. 'social_media_links': A JSON object with the person's most accurate social media URLs. Include only verified and relevant profiles for platforms like LinkedIn, Twitter, GitHub, or others the person actively uses. Also, suggest other relevant links related to the person, such as personal blogs, portfolio websites, or interview pages.\n"
         f"3. 'company_summary': A comprehensive summary of the company's services, products, and market presence.\n"
-        f"4. 'company_competitors': A list of competitor company names in the same domain , not product names, separated by commas.\n"
+        f"4. 'company_competitors': top 3 to 5 competitors company names to the {company_name}, not product names, separated by commas.\n"
         f"5. 'company_news': A list of the recent 3 to 5 news articles about the company. News aetical needs to be recent one for today For each article, provide:\n"
         f"    - 'title': A clear and accurate title that gives a precise idea of the news.\n"
         f"    - 'url': The link to the news article.\n"
         f"    - 'description': A detailed summary of the news content. The summary must include the main points and be concise but informative, not exceeding 100 words.\n"
-        f"If you lack data, use tools like Google Search and Web Scraping to gather more information. Ensure all information is verified, reliable, and formatted correctly."
+        f"If you lack data, use tools like Google Search and Web Scraping to gather more information."
+        f"If the web sraped data is too large, summarize it according to the Quary that perform google search."
+        f"Ensure all information is verified, reliable, and formatted correctly."
     )
 
     best_result = None
     iteration_results = []
-    for i in range(agent.max_iterations):
-        try:
-            response = agent.run(query)
-            iteration_results.append(response)
+    response = agent.run(query)
+    print("Response = ", response)
+    return response
+    # for i in range(agent.max_iterations):
+    #     try:
+    #         response = agent.run(query)
+    #         print("Iteration", i)
+    #         print(response)
+    #         iteration_results.append(response)
 
-            if all(
-                key in response
-                for key in [
-                    "personal_summary",
-                    "social_media_links",
-                    "company_summary",
-                    "company_competitors",
-                    "company_news",
-                ]
-            ):
-                best_result = response
-                break
-        except Exception as e:
-            iteration_results.append({"error": str(e)})
+    #         if all(
+    #             key in response
+    #             for key in [
+    #                 "personal_summary",
+    #                 "social_media_links",
+    #                 "company_summary",
+    #                 "company_competitors",
+    #                 "company_news",
+    #             ]
+    #         ):
+    #             best_result = response
+    #             break
+    #     except Exception as e:
+    #         iteration_results.append({"error": str(e)})
 
-    # Select the most complete and accurate result from all iterations
-    if not best_result:
-        best_result = max(
-            iteration_results, key=lambda res: len(res) if isinstance(res, dict) else 0
-        )
+    # # Select the most complete and accurate result from all iterations
+    # if not best_result:
+    #     best_result = max(
+    #         iteration_results, key=lambda res: len(res) if isinstance(res, dict) else 0
+    #     )
 
-    return best_result
+    # return best_result
 
 
 # Main Function to Test the Code
