@@ -300,7 +300,10 @@ def gather_info(
         personal_summary_query = f"""Find and return information about {name} who works as {job_title} at {company_name} in {country}.
         Search instructions:
         1. If it gives only the fist name then use company name and country to get search results and if it gives full name then first use full name to get search results, if not found then use company name and country to get search results.
-        2. Use search terms for personal data like "{name}" , "{name} in {company_name}", "{name} {job_title} in {company_name}", "{name} {job_title} {country}", "{name} in {company_name} {country}"
+        2. Use search terms for personal data like "{name}" , "{name} in {company_name}", "{name} {job_title} in {company_name}", "{name} {job_title} {country}"
+        3. Do maximum 5 searches to get the data 
+        4. Use web Scraping tool to get the data from the google search results if it is possible.
+        5. IMPORTANT: if the scraped content is too long, try to summarize it to 300 words or less to provide a concise summary about person.
         3. Focus on the most accurate and up-to-date information available
 
         {{
@@ -313,10 +316,11 @@ def gather_info(
     # Get Social Media Links from the agent
     def get_social_media_links() -> Dict[str, Any]:
         """Fetches verified social media and relevant online profiles of the individual."""
-        social_media_query = f"""Find and return social media information about {name} who works as {job_title} at {company_name} in {country}.
+        social_media_query = f"""Find and return social media information about {name} who works as {job_title} at {company_name}.
         Search instructions:
-        1. Use search terms for social media like "{name} in {company_name}, LinkedIn {name} in {company_name}", "Twitter {name}", "GitHub {name}", "personal blog {name}", "portfolio website {name}"
-        2. Include only verified and relevant profiles for platforms like LinkedIn, Twitter, GitHub. Suggest other relevant links related to the person, such as personal blogs, portfolio websites, or Company Profile pages.
+        1. Try to use minimum searches to get the data, use "{name}", {name} in {company_name}" like queries and identify the social media or person related platform links.
+        2. or Use search terms for social media like "{name} in {company_name}, LinkedIn {name} in {company_name}", "Twitter {name}", "personal blog {name}", "portfolio website {name}"
+        3. Include only verified and relevant profiles for platforms like LinkedIn, Twitter, Facebook. Suggest other relevant links related to the person, such as personal blogs, portfolio websites, or Company Profile pages any other accurate platform links.
         3. IMPORTANT: Focus on the most accurate and up-to-date information available
 
         {{
@@ -353,18 +357,20 @@ def gather_info(
         2. IMPORTANT: Focus ONLY on the newest and most recent news without using specific dates in your search
         3. Use filters and search techniques to get the most recent results first
         4. Prioritize official company press releases and major tech news websites
+        5. minimum number of news articles is 1 and maximum is 5
+         
 
         Return the data in this exact JSON format:
         {{
             "company_news": [
                 {{
                     "title": "<A short and precise title that provides an overall idea of the news. Avoid lengthy phrases>",
-                    "url": "<direct URL to the news article>",
+                    "url": "<direct URL to the news article, give only one URL>",
                     "description": "<100-word summary focusing on key announcements and impacts>"
                 }},
                 {{
                     "title": "<A short and precise title that provides an overall idea of the news. Avoid lengthy phrases>",
-                    "url": "<direct URL to the news article>",
+                    "url": "<direct URL to the news article, give only one URL>",
                     "description": "<100-word summary focusing on key announcements and impacts>"
                 }}
             ]
@@ -405,9 +411,16 @@ def gather_info(
             future_news_info = executor.submit(get_news_info)
 
             personal_summary_data = future_personal_summary.result()
+            print("personal_summary_data = ", personal_summary_data)
             social_media_data = future_social_media.result()
             company_data = future_company_info.result()
             news_data = future_news_info.result()
+
+        """Uncomment the below code and comment the above code to run the tasks in parallel"""
+        # personal_summary_data = get_personal_summary()
+        # social_media_data = get_social_media_links()
+        # company_data = get_company_info()
+        # news_data = get_news_info()
 
         # Check for errors in any response
         error_messages = []
@@ -452,7 +465,7 @@ def gather_info(
 # Main execution code
 if __name__ == "__main__":
     test_inputs = {
-        "name": "Yashed Thisara",
+        "name": "Malith Jayasinghe",
         "job_title": "Developer",
         "company_name": "WSO2",
         "country": "Sri Lanka",
