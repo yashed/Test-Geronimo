@@ -7,6 +7,9 @@ from fastapi.security.api_key import APIKeyHeader
 import lanchain_helper as lh
 import logging
 from mailService import send_mail
+from dotenv import load_dotenv
+
+load_dotenv(override=True)
 
 # Configure logging
 logging.basicConfig(
@@ -21,6 +24,7 @@ logger = logging.getLogger(__name__)
 # Constants
 API_KEY_NAME = "GERONIMO-API-KEY"
 API_KEY = os.getenv("GERONIMO_API_KEY", "")
+print("GERONIMO_API_KEY: ", API_KEY)
 
 # Security dependency
 api_key_header = APIKeyHeader(name=API_KEY_NAME, auto_error=False)
