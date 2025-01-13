@@ -5,10 +5,10 @@ import os
 from dotenv import load_dotenv
 from langchain.chains import SequentialChain
 from langchain_google_community import GoogleSearchAPIWrapper
-import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
-import json_helpr as jh
+from . import json_helper as jh
+from . import scraping_helper as sh
 
 
 # Load environment variables

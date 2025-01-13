@@ -4,9 +4,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 from fastapi.security.api_key import APIKeyHeader
-import lanchain_helper as lh
+import Helper.langchain_helper as lh
 import logging
-from mailService import send_mail
+from Service.mailService import send_mail
+from Service.Queue.queue_manager import start_worker, task_queue
+from Service.Queue.database_manager import DatabaseManager
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -89,21 +91,32 @@ async def log_unhandled_requests(request: Request, call_next):
     return response
 
 
-# Define root endpoint
+# Initialize worker and database manager
+worker = start_worker()
+db_manager = DatabaseManager()
+
+
+@app.on_event("startup")
+async def load_pending_tasks():
+    logger.info("Loading pending tasks into the queue")
+    pending_tasks = db_manager.get_pending_tasks()
+    for task in pending_tasks:
+        task_queue.put(task)
+    logger.info("Pending tasks loaded successfully")
+
+
 @app.get("/")
 async def read_root():
     logger.info("Root endpoint accessed")
     return {"message": "Welcome to the API"}
 
 
-# Define a test endpoint
 @app.get("/test")
 async def test_endpoint():
     logger.info("Test endpoint accessed")
     return {"message": "This is a test endpoint"}
 
 
-# Define a generate data endpoint
 @app.post("/generate_data")
 async def generate_data(
     user: UserRequest,
@@ -114,45 +127,24 @@ async def generate_data(
     logger.info("Request URL: %s", request.url)
     logger.info("Generate data endpoint called with user: %s", user.json())
 
-    name = user.name
-    company = user.company
-    position = user.position
-    country = user.country
-    email = user.email
-
     try:
-        # Generate the data
-        logger.debug("Calling generate_data helper function with inputs")
-        response = lh.generate_data(name, company, position, country)
-
-        # Send the email with the response data
-        send_mail(response, email)
-
-        if not response:
-            logger.error("Data generation failed for user: %s", user.json())
-            raise HTTPException(status_code=404, detail="Data generation failed")
-
-        social_media_links = [
-            {"platform": link["platform"], "url": link["url"]}
-            for link in response.get("social_media_links", [])
-        ]
-
-        logger.info("Data generation successful for user: %s", user.json())
-        return {
-            "professional_summary": response.get(
-                "professional_summary", "No summary available"
-            ),
-            "social_media_links": social_media_links,
-            "company_summary": response.get(
-                "company_summary", "No company summary available"
-            ),
-            "company_competitors": response.get(
-                "company_competitors", "No competitors found"
-            ),
-            "additional_insights": response.get(
-                "company_news", "No additional insights available."
-            ),
+        # Save task to database
+        task = {
+            "name": user.name,
+            "company": user.company,
+            "country": user.country,
+            "position": user.position,
+            "interest": user.interest,
+            "email": user.email,
         }
+        task_id = db_manager.add_task(task)
+        task["id"] = task_id
+
+        # Add task to queue
+        task_queue.put(task)
+        logger.info("Task added to queue: %s", task_id)
+
+        return {"message": "Task added to the queue", "task_id": task_id}
     except Exception as e:
-        logger.exception("An error occurred while processing the request")
+        logger.exception("Error adding task to queue: %s", e)
         raise HTTPException(status_code=500, detail="Internal server error")
