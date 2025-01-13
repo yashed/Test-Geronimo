@@ -1,11 +1,14 @@
 import sqlite3
 import os
 
-DB_FILE = "tasks.db"
+DB_DIR = os.getenv("DATA_DIR", "/tmp")
+DB_FILE = os.path.join(DB_DIR, "tasks.db")
 
 
 class DatabaseManager:
     def __init__(self):
+        # Ensure the database directory exists
+        os.makedirs(DB_DIR, exist_ok=True)
         self.conn = sqlite3.connect(DB_FILE, check_same_thread=False)
         self.create_table()
 
