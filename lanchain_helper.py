@@ -9,8 +9,6 @@ import scraping_helper as sh
 from langchain_community.chat_models import ChatOpenAI
 from langchain.chat_models import AzureChatOpenAI
 import json_helpr as jh
-import google.generativeai as genai
-from langchain_google_genai import ChatGoogleGenerativeAI
 
 
 # Load environment variables
