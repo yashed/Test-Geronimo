@@ -21,7 +21,6 @@ OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 OPENAI_DEPLOYMENT_NAME = os.getenv("OPENAI_DEPLOYMENT_NAME")
 OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
 print("Google API Key - ", GOOGLE_API_KEY)
 print("Google CSE ID - ", GOOGLE_CSE_ID)
@@ -29,7 +28,6 @@ print("OpenAI API Key - ", OPENAI_API_KEY)
 print("OpenAI API Base - ", OPENAI_API_BASE)
 print("OpenAI Deployment Name - ", OPENAI_DEPLOYMENT_NAME)
 print("OpenAI API Version - ", OPENAI_API_VERSION)
-print("Gemini Key - ", GEMINI_API_KEY)
 
 
 if not all(
