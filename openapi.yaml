@@ -5,7 +5,7 @@ info:
   version: 0.1.0
 servers:
   - url: https://bd3b73b5-b360-4c52-b210-5519f6919d65-dev.e1-us-east-azure.choreoapis.dev
-    description: Production Gateway URL 
+    description: Production Gateway URL
   - url: http://localhost:8000
     description: Local Gateway URL
 paths:
@@ -35,6 +35,8 @@ paths:
     post:
       summary: Generate Data
       operationId: generate_data
+      security:
+        - apiKeyAuth: []  # Reference the API key security scheme
       requestBody:
         required: true
         content:
@@ -48,10 +50,18 @@ paths:
             application/json:
               example:
                 professional_summary: "No summary available"
-                social_media_links: "No social media links found."
+                social_media_links:
+                  - platform: "LinkedIn"
+                    url: "https://linkedin.com/example"
                 company_summary: "No company summary available"
                 company_competitors: "No competitors found"
                 additional_insights: "No additional insights available."
+        "401":
+          description: "Unauthorized: Invalid API key"
+          content:
+            application/json:
+              example:
+                detail: "Unauthorized: Invalid API key"
         "404":
           description: Data generation failed
           content:
@@ -59,6 +69,11 @@ paths:
               example:
                 detail: "Data generation failed"
 components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      name: GERONIMO-API-KEY
+      in: header
   schemas:
     UserRequest:
       type: object
@@ -68,6 +83,7 @@ components:
         - country
         - position
         - interest
+        - email
       properties:
         name:
           type: string
@@ -84,3 +100,6 @@ components:
         interest:
           type: string
           description: User's interest area
+        email:
+          type: string
+          description: User's email address
