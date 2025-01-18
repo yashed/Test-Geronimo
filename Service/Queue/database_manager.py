@@ -2,7 +2,7 @@ import sqlite3
 import os
 
 DB_DIR = os.getenv("DATA_DIR", "/tmp")
-DB_FILE = os.path.join(DB_DIR, "tasks.db")
+DB_FILE = os.path.join(DB_DIR, "tasks")
 
 
 class DatabaseManager:

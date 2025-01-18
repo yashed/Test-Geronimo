@@ -73,7 +73,7 @@ def fetch_with_requests(url, query, chunk_size=1500, overlap=200):
         content_str = "\n".join(content)
 
         # If content is too large, summarize it using summarize_large_content
-        if len(content_str) > 20000:  # You can adjust this threshold
+        if len(content_str) > 50000:  # You can adjust this threshold
             print(f"Content from {url} is too large, summarizing it...")
             return lh.summarize_large_content(content_str, query)
             # return "Content too large"

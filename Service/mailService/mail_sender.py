@@ -22,7 +22,7 @@ def send_mail(response_data, SendTo):
 
     # Prepare dynamic data for the email template
     dynamic_data = {
-        "subject": "Geronimo Lead Response",
+        "subject": "Geronimo Lead Response ",
         "name": response_data.get("name", "N/A"),
         "job_title": response_data.get("job_title", "N/A"),
         "email": response_data.get("email", "N/A"),
