@@ -22,13 +22,22 @@ def send_mail(response_data, SendTo):
 
     # Prepare dynamic data for the email template
     dynamic_data = {
+        "subject": "Geronimo Lead Response",
         "name": response_data.get("name", "N/A"),
         "job_title": response_data.get("job_title", "N/A"),
         "email": response_data.get("email", "N/A"),
-        "social_media_links": [
-            {"platform": link["platform"], "url": link["url"]}
-            for link in response_data.get("social_media_links", [])
-        ],
+        "social_media_links": (
+            response_data.get("social_media_links", {"error": "No data found"})
+            if isinstance(response_data.get("social_media_links"), list)
+            else [
+                {
+                    "platform": "Error",
+                    "url": response_data.get("social_media_links", {}).get(
+                        "error", "Unknown error"
+                    ),
+                }
+            ]
+        ),
         "person_profile": response_data.get(
             "professional_summary", "No Personal Detail Available"
         ),
@@ -37,14 +46,19 @@ def send_mail(response_data, SendTo):
             "company_summary", "No Company Detail Available"
         ),
         "company_competitors": response_data.get("company_competitors", "").split(", "),
-        "company_news": [
-            {
-                "title": news_item.get("title", ""),
-                "url": news_item.get("url", ""),
-                "description": news_item.get("description", ""),
-            }
-            for news_item in response_data.get("company_news", [])
-        ],
+        "company_news": (
+            response_data.get("company_news", [{"error": "No data found"}])
+            if isinstance(response_data.get("company_news"), list)
+            else [
+                {
+                    "title": "Error",
+                    "url": "",
+                    "description": response_data.get("company_news", {}).get(
+                        "error", "Unknown error"
+                    ),
+                }
+            ]
+        ),
     }
 
     print("Dynamic Data -", dynamic_data)

@@ -144,7 +144,10 @@ async def generate_data(
         task_queue.put(task)
         logger.info("Task added to queue: %s", task_id)
 
-        return {"message": "Task added to the queue", "task_id": task_id}
+        return {
+            "message": "Task added to the queue , Response will send as a Mail within 1 Min",
+            "task_id": task_id,
+        }
     except Exception as e:
         logger.exception("Error adding task to queue: %s", e)
         raise HTTPException(status_code=500, detail="Internal server error")

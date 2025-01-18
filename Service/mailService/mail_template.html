@@ -3,197 +3,243 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>WSO2 Contact Us Notification</title>
+    <title>Geronimo Response Mail Template</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
+        font-family: "Poppins", sans-serif;
         margin: 0;
         padding: 0;
-        background-color: #f4f4f9;
+        background-color: #e7e7e7;
+        color: #333;
       }
 
-      .email-container {
-        max-width: 700px;
+      .container {
+        max-width: 600px;
         margin: 20px auto;
-        background: #fff;
         padding: 20px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
       }
 
       .header {
-        background-color: #dcdcdc;
-        color: #ff5d00;
-        padding: 10px;
         text-align: left;
-        font-size: 20px;
+        font-size: 24px;
         font-weight: bold;
       }
 
-      .header-1 {
-        background-color: #dcdcdc;
-        color: #000;
-        padding: 10px;
-        text-align: left;
-        font-size: 20px;
-        font-weight: bold;
+      .header span.orange {
+        color: #ff6a00;
       }
 
-      .instruction {
-        color: #555;
-        font-size: 14px;
-        margin-bottom: 10px;
-        text-align: left;
-      }
-
-      .note {
-        color: #000;
-        font-weight: bold;
+      .frame {
+        border: 1px solid #ccc;
+        border-radius: 20px;
         margin-bottom: 20px;
-        text-align: left;
-        font-size: 15px;
+        padding: 20px;
       }
 
-      .lead-details {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 20px;
+      .frame h2 {
+        text-align: center;
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 20px;
       }
 
-      .lead-details th:first-child, 
-      .lead-details td:first-child {
-        width: 25%;
+      .sub-section {
+        margin-bottom: 20px;
       }
 
-      .lead-details th:nth-child(2), 
-      .lead-details td:nth-child(2) {
-        width: 75%;
+      .sub-section h3 {
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
       }
 
-      .lead-details th {
-        background-color: #dcdcdc;
-        color: #333;
-        font-weight: bold;
-        text-align: left;
-        padding: 10px;
-        border: 1px solid #ddd;
-      }
-
-      .lead-details td {
-        text-align: left;
-        padding: 10px;
-        border: 1px solid #ddd;
+      .sub-section .info {
+        background-color: #f6f6f6;
+        border: 1px solid #eae6e6;
+        border-radius: 10px;
         font-size: 14px;
+        line-height: 1.6;
+        padding: 15px;
       }
 
-      .lead-details tr:nth-child(even) {
-        background-color: #f9f9f9;
+      .social-links {
+        list-style-type: none;
+        padding: 0;
       }
 
-      .lead-details a {
-        color: #0073e6;
+      .social-links li {
+        font-size: 14px;
+        margin-bottom: 5px;
+      }
+
+      .social-links a {
+        color: #007bff;
         text-decoration: none;
       }
 
-      .lead-details a:hover {
-        text-decoration: underline;
+      .news-item {
+        font-size: 14px;
+        line-height: 1.6;
       }
 
-      .ai-section {
-        margin-top: 30px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-        background-color: #f4f4f9;
+      .news-item a {
+        color: #007bff;
+        text-decoration: none;
       }
 
-      .ai-section-title {
-        background-color: #dcdcdc;
-        color: #000;
-        font-size: 18px;
-        font-weight: bold;
+      .header-wrapper {
+        display: flex;
+        align-items: center;
         padding: 10px;
-        border-bottom: 1px solid #ddd;
-        text-align: left;
+        padding-left: 20px;
+        background-color: #e7e7e7;
+        margin-bottom: 20px;
+        border-radius: 10px;
       }
 
-      .ai-details {
+      .disclaimer {
+        font-size: 10px;
+        margin-bottom: 20px;
         width: 100%;
-        border-collapse: collapse;
+        font-weight: 500;
       }
 
-      .ai-details td {
-        text-align: left;
-        padding: 10px;
-        border: 1px solid #ddd;
+      .news-list li {
+        margin-bottom: 8px;
       }
 
       .footer {
-        font-size: 13px;
-        color: #555;
+        text-align: center;
+        font-size: 12px;
+        color: #666;
         margin-top: 20px;
-        text-align: left;
+        padding: 10px 0;
+        border-top: 1px solid #ccc;
       }
-      .highlight {
-        color: #ff5d00;
-        font-size: 20px;
+
+      .footer .footer-message {
+        font-size: 14px;
+        color: #ff6a00;
+        font-weight: 600;
+        margin-bottom: 5px;
       }
-      .content {
-        font-size: 15px;
-        color: #000;
-        padding: 10px;
+
+      @media (max-width: 600px) {
+        .container {
+          padding: 15px;
+        }
+
+        .header {
+          font-size: 20px;
+        }
+
+        .frame h2 {
+          font-size: 18px;
+        }
+
+        .sub-section h3 {
+          font-size: 14px;
+        }
+
+        .sub-section .info {
+          font-size: 12px;
+        }
+
+        .social-links li {
+          font-size: 12px;
+        }
+
+        .news-item {
+          font-size: 12px;
+        }
+
+        .footer {
+          font-size: 10px;
+        }
+
+        .footer .footer-message {
+          font-size: 12px;
+        }
       }
     </style>
   </head>
   <body>
-    <div class="email-container">
-      <h1 class="header">
-        WSO2<span class="header-1">Contact Us form AI Generated Content</span>
-      </h1>
-      <p class="footer">
-        *This is an AI-generated response and may not be entirely
-        accurate. Please conduct your own research to verify the content
-      </p>
-      <table class="lead-details">
-        <tr>
-          <th>Field</th>
-          <th>Value</th>
-        </tr>
-        <tr>
-          <td>Name</td>
-          <td><div class="content">{{name}}</div></td>
-        </tr>
-        <tr>
-          <td>Job Title</td>
-          <td> <div class="content">{{job_title}}</div></td>
-        </tr>
-        <tr>
-        <tr>
-          <td>Email</td>
-          <td>
-            <a href="mailto:{{email}}"><div class="content">{{email}}</div></a>
-          </td>
-        </tr>
-        <tr>
-          <td>Person Profile <span class="highlight">*</span></td>
-          <td><div class="content">{{person_profile}}</div></td>
-        </tr>
-        <tr>
-          <td>Social Media Links <span class="highlight">*</span></td>
-          <td><div class="content">{{social_media_links}}</div></td>
-        </tr>
-          <td>Company</td>
-          <td><div class="content">{{company}}</div></td>
-        </tr>
-        <tr>
-          <td>Company Overview <span class="highlight">*</span></td>
-          <td> <div class="content">{{company_overview}} Vidura Gamini Abhaya is a seasoned technologist and executive currently serving as the Senior Director and Head of Integration Solution Architecture at WSO2. He also holds the position of Field CTO. With a robust career in technology, Vidura has garnered extensive experience in solution architecture, particularly focusing on API management. Educated at RMIT University, he is based in Colombo, Sri Lanka, and boasts a substantial professional network with over 500 connections on LinkedIn. Vidura is actively involved in digital transformation initiatives and has participated in events like WSO2Con and Nigeria Oxygenate 2023. An advocate for innovation, he engages with platforms such as Kubernetes and frequently shares insights on his social media, particularly Twitter.</div> </td>
-        </tr>
-          <td>Competitors of the Company <span class="highlight">*</span></td>
-          <td> <div class="content">{{competitors}}</div></td>
-        </tr>
-      </table>
+    <div class="container">
+      <div class="header-wrapper">
+        <div class="header"><span class="orange">Geronimo</span> Response</div>
+      </div>
+      <div class="disclaimer">
+         *This is an AI-generated response and may not be entirely accurate.
+        Please conduct your own research to verify the content
+      </div>
+
+      <div class="frame">
+        <h2>Personal Details</h2>
+
+        <div class="sub-section">
+          <h3>Person Profile</h3>
+          <div class="info">{{person_profile}}</div>
+        </div>
+
+        <div class="sub-section">
+          <h3>Social Media Links</h3>
+          <div class="info">
+            <ul class="social-links">
+              {{#each social_media_links}}
+              <li>
+                {{platform}}:
+                <a href="{{url}}" target="_blank">{{url}}</a>
+              </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="frame">
+        <h2>Company Details</h2>
+
+        <div class="sub-section">
+          <h3>Description</h3>
+          <div class="info">{{company_overview}}</div>
+        </div>
+
+        <div class="sub-section">
+          <h3>Competitors of Customer</h3>
+          <div class="info">
+            <ul>
+              {{#each company_competitors}}
+              <li>{{this}}</li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+
+        <div class="sub-section">
+          <h3>News</h3>
+          <div class="info">
+            <div class="news-item">
+              <ul class="news-list">
+                {{#each company_news}}
+                <li>
+                  <strong>{{title}}</strong><br />
+                  <a href="{{url}}" target="_blank">Link</a><br />
+                  {{description}}
+                </li>
+                {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div class="footer-message">Generated by Geronimo, V1.0.1.</div>
+        <div>© 2025 Geronimo.</div>
+      </div>
     </div>
   </body>
 </html>
