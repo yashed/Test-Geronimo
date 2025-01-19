@@ -122,7 +122,7 @@ def fetch_top_google_results(
 
     try:
         search_results = parallel_google_search(queries, num_results=num_results)
-
+        print("Search Results - ", search_results)
         # Perform parallel web scraping for each query's results
         scraped_results = parallel_web_scraping(search_results, queries)
         return scraped_results[0] if scraped_results else []

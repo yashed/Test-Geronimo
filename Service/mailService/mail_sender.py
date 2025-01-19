@@ -6,9 +6,13 @@ from sendgrid import SendGridAPIClient
 from sendgrid.helpers.mail import Mail, Email, Personalization
 
 # Load environment variables
-load_dotenv()
+load_dotenv(override=True)
 
-SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+# SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
+SENDGRID_API_KEY = (
+    "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"
+)
+print("SENDGRID_API_KEY: ", SENDGRID_API_KEY)
 
 if not SENDGRID_API_KEY:
     raise ValueError("SENDGRID_API_KEY is not set in the environment variables!")
@@ -19,6 +23,7 @@ def send_mail(response_data, SendTo):
 
     print("mail data = ", response_data)
     sg = SendGridAPIClient(SENDGRID_API_KEY)
+    print("SendGrid client", sg)
 
     # Prepare dynamic data for the email template
     dynamic_data = {
@@ -64,8 +69,10 @@ def send_mail(response_data, SendTo):
     print("Dynamic Data -", dynamic_data)
 
     # Create the email object
-    message = Mail(from_email=Email("geronimo.test.01@gmail.com"))
-    message.template_id = "d-a6c1b0ab7ad84f74b399bb7f28d07998"
+    # message = Mail(from_email=Email("geronimo.test.01@gmail.com"))
+    message = Mail(from_email=Email("yashedthisara2001@gmail.com"))
+    # message.template_id = "d-a6c1b0ab7ad84f74b399bb7f28d07998"
+    message.template_id = "d-0422142c3c364898967a74e36d6f72a7"
 
     personalization = Personalization()
     personalization.add_to(Email("yashedthisara2001@gmail.com"))
