@@ -10,7 +10,6 @@ load_dotenv(override=True)
 
 # SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
 SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY_2")
-print("SENDGRID_API_KEY: ", SENDGRID_API_KEY)
 
 if not SENDGRID_API_KEY:
     raise ValueError("SENDGRID_API_KEY is not set in the environment variables!")
