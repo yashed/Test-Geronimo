@@ -9,9 +9,7 @@ from sendgrid.helpers.mail import Mail, Email, Personalization
 load_dotenv(override=True)
 
 # SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY")
-SENDGRID_API_KEY = (
-    "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"
-)
+SENDGRID_API_KEY = os.getenv("SENDGRID_API_KEY_2")
 print("SENDGRID_API_KEY: ", SENDGRID_API_KEY)
 
 if not SENDGRID_API_KEY:
