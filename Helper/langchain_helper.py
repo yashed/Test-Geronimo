@@ -369,6 +369,7 @@ def generate_data(name, company, position, country):
             "\n5. Relevant and engaging insights to help initiate informed conversations."
             "Ensure that the summary is accurate, unbiased, and limited to around 100 words. "
             "Filter out any unrelated or incorrect data from the Google Search Results."
+            "If no atleast one valid information can be extracted, respond with 'No information found.' Do not just ignore providing information always try to provide data about the company \n\n"
             "\n\nGoogle Search Results: {google_company_results}\n\n"
             "Summary:"
         ),

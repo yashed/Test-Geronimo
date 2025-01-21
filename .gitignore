@@ -5,3 +5,4 @@ venv
 sendgrid.env
 .csv
 Test/test-data.csv
+Test/test-data-2.csv

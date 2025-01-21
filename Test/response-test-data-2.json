@@ -1,0 +1,393 @@
+[
+    {
+        "input": {
+            "name": "Wilson Achilles",
+            "job_title": "Developer/Engineer",
+            "company_name": "Funcional Health Tech",
+            "country": "Brazil",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Wilson Achilles Pereira Neto is a seasoned professional with over 20 years of experience in IT infrastructure and information security, currently serving as the Head of Infrastructure and Security at Funcional Health Tech. His expertise lies in cybersecurity, where he has played a pivotal role in achieving the SOC 2 and 3 certifications for the company, underscoring his commitment to data security and privacy. Wilson is passionate about implementing robust cybersecurity measures and aligning them with regulatory standards like the LGPD. His leadership in adopting advanced security solutions has been instrumental in enhancing the company's data protection capabilities, making Funcional Health Tech a leader in secure health data management.",
+            "social_media_links": [
+                {
+                    "platform": "LinkedIn",
+                    "url": "https://br.linkedin.com/in/wilson-achilles/pt"
+                }
+            ],
+            "company_summary": "Funcional Health Tech is a Brazilian company specializing in data intelligence and technology solutions for the healthcare sector. Operating primarily in Brazil, the company offers a range of services including pharmaceutical benefits management (PBM), patient support programs (PSP), health analytics, and actuarial consulting. Notable for its innovative use of data to enhance healthcare ecosystems, Funcional Health Tech has been in the market for over 20 years, focusing on creating intelligent and sustainable health solutions. The company has achieved recognition for its commitment to candidate feedback in recruitment processes and is known for its strategic insights that support health market integration.",
+            "company_competitors": "Amwell, Cerner Corporation, Cureatr, MedXoom, Nomi Health",
+            "company_news": [
+                {
+                    "title": "Funcional Health Tech acquires corporate benefits provider BeFlex",
+                    "url": "https://latamlist.com/funcional-health-tech-acquires-corporate-benefits-provider-beflex/",
+                    "description": "Funcional Health Tech has acquired BeFlex, a corporate multi-benefits card provider with over 70 corporate clients and 20,000 active users. This acquisition is part of Funcional's strategy to expand in the corporate benefits sector, aiming to reach 3 million users by 2025. The integration will allow Funcional to offer customized benefits packages, including services like food, transportation, and fitness."
+                },
+                {
+                    "title": "Funcional Health Tech acquires BeFlex - 2024-10-30 - Crunchbase",
+                    "url": "https://lb.crunchbase.com/acquisition/funcional-health-tech-acquires-beflex-ec35--f755d1c6",
+                    "description": "Funcional Health Tech has completed the acquisition of BeFlex on October 30, 2024, for an undisclosed amount. This move is expected to enhance Funcional's offerings in the corporate benefits sector."
+                },
+                {
+                    "title": "Funcional Health Tech - Crunchbase Company Profile & Funding",
+                    "url": "https://www.crunchbase.com/organization/funcional-health-tech",
+                    "description": "Funcional Health Tech has been in the news for acquiring BeFlex, a corporate benefits provider. This acquisition aligns with their growth strategy in the corporate wellness sector."
+                }
+            ]
+        },
+        "response_time": 38.84811305999756
+    },
+    {
+        "input": {
+            "name": "Wojciech",
+            "job_title": "C-Level",
+            "company_name": "NymCard",
+            "country": "United Arab Emirates",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Wojciech Soltysiak is the Chief Technology Officer at NymCard, a cloud-based issuer processor in the MENA region. With over 20 years of experience, Wojciech has held leadership roles at companies like PayPal, Daimler Mobility Services, and EY. His expertise lies in information technology and management, with a strong focus on API-first strategies and open banking trends. Wojciech is passionate about leveraging technology to streamline compliance, risk, and fraud prevention, and he is a thought leader in embedded finance trends. His educational background includes a Master of Science in Management and Marketing from the Warsaw University of Technology. Wojciech's professional journey reflects a commitment to innovation and digital transformation in the financial services industry.",
+            "social_media_links": {
+                "error": "No valid Data found"
+            },
+            "company_summary": "NymCard is a leading provider of embedded finance solutions in the MENA region, specializing in integrating financial services into various industries such as fintech, retail, and telecommunications. Operating primarily in the Middle East, including the UAE and Egypt, NymCard offers a comprehensive suite of services, including card issuance, lending, and payment solutions. The company is notable for its modular platform with over 1,000 APIs, facilitating seamless integration of financial services. NymCard has achieved significant milestones, such as PCI PIN Security compliance in Egypt and partnerships with major entities like Lulu International Holdings and Numou. These collaborations highlight its commitment to innovation and enhancing customer experiences in the digital finance landscape.",
+            "company_competitors": "Adyen, Checkout.com, Finablr, PayU, Wise",
+            "company_news": [
+                {
+                    "title": "NymCard Acquires BNPL Company Spotii to Extend Services",
+                    "url": "https://thepaypers.com/companies/latest-news-on-nymcard--27007",
+                    "description": "UAE-based Banking-as-a-Service provider NymCard has acquired the Buy Now, Pay Later company Spotii. This acquisition aims to extend customized BNPL services to NymCard's clients, enhancing its fintech offerings in the MENA region."
+                },
+                {
+                    "title": "NymCard Partners with Mastercard for Global Money Transfers",
+                    "url": "https://thefintechtimes.com/nymcard-leverages-mastercard-move-to-sustainably-scale-baas-platform-for-uae-customers/",
+                    "description": "NymCard has collaborated with Mastercard to offer fast global money transfers, leveraging Mastercard's Cross-Border Services. This partnership aims to enhance NymCard's BaaS platform, providing efficient international remittance services to various countries."
+                },
+                {
+                    "title": "NymCard Teams Up with ACI Worldwide to Combat Fraud",
+                    "url": "https://www.pymnts.com/tag/nymcard/",
+                    "description": "NymCard has partnered with ACI Worldwide to enhance its fraud management platform. This collaboration aims to strengthen NymCard's capabilities in combating financial crime and fraud, ensuring secure transactions for its clients in the MENA region."
+                },
+                {
+                    "title": "NymCard Joins Visa Ready to Launch Program",
+                    "url": "https://www.pymnts.com/tag/nymcard/",
+                    "description": "NymCard has joined the Visa Ready to Launch (VRTL) program, which aims to streamline the process of launching new financial products. This partnership will enable NymCard to offer innovative solutions and expand its fintech services across the Middle East and Pakistan."
+                }
+            ]
+        },
+        "response_time": 32.96511244773865
+    },
+    {
+        "input": {
+            "name": "Wettstein",
+            "job_title": "Other",
+            "company_name": "OBT AG",
+            "country": "Switzerland",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Alex Wettstein is an expert in IT System Solutions and serves as the IT Security Officer (ISO) at OBT AG, based in Zurich. His professional focus is on enhancing IT security measures, ensuring robust system solutions, and safeguarding digital infrastructures. Alex is likely involved in writing or contributing to infoboard articles, which suggests a role in thought leadership or knowledge sharing within his field. His work is crucial in the ever-evolving landscape of IT security, where staying ahead of potential threats is paramount. Engaging with Alex on topics such as cybersecurity trends, IT infrastructure advancements, and the importance of digital security in modern business operations could lead to meaningful conversations.",
+            "social_media_links": [
+                {
+                    "platform": "Professional Directory",
+                    "url": "https://www.obt.ch/en/company/our-experts/alex-wettstein"
+                }
+            ],
+            "company_summary": "OBT AG is a leading Swiss company specializing in fiduciary, consulting, audit, tax, and legal services, alongside offering comprehensive global IT solutions. With a robust presence in Switzerland, OBT AG operates through 12 offices, employing around 300 professionals. The company is recognized as one of the six largest firms in its sector within Switzerland, underscoring its significant market position. OBT AG is committed to providing personalized and holistic solutions tailored to the needs of small and medium-sized enterprises (SMEs), ensuring quality, security, and sustainable success. Its notable achievements include a strong regional anchoring and a reputation for competence and reliability, making it a trusted partner for businesses seeking comprehensive support in fiduciary and IT services.",
+            "company_competitors": "- Accenture, - Atos, - Capgemini, - IBM, - SAP",
+            "company_news": [
+                {
+                    "title": "OBT shares target increased, overweight on strong growth",
+                    "url": "https://www.investing.com/news/analyst-ratings/obt-shares-target-increased-overweight-on-strong-growth-93CH-3771472",
+                    "description": "Piper Sandler increased its stock price target for Orange County Bancorp (NASDAQ: OBT) to $71 from $66, maintaining an Overweight rating. The bank is recognized for its strong financial health, consistent profitability, and growth prospects, with a market cap of $339 million and $2.5 billion in assets."
+                },
+                {
+                    "title": "Insider Sale: Reg Pres Of $OBT (OBT) Sells 910 Shares",
+                    "url": "https://www.barchart.com/story/news/29731394/insider-sale-reg-pres-of-obt-obt-sells-910-shares",
+                    "description": "Joseph A Ruhl, the Regional President of Orange County Bancorp, sold 910 shares of the company. This insider sale was reported in a recent SEC filing, highlighting ongoing insider trading activities within the company."
+                },
+                {
+                    "title": "OBT Live & UIC Digital Announce Global Partnership",
+                    "url": "https://www.linkedin.com/posts/obt-live_obt-live-uic-digital-announce-global-partnership-activity-7254794975299690496-DI0S",
+                    "description": "OBT Live announced a global partnership with UIC Digital to deliver hyper-personalized digital solutions for the sports, media, and publishing industries. This collaboration aims to reshape digital experiences and enhance customer engagement."
+                }
+            ]
+        },
+        "response_time": 51.462077379226685
+    },
+    {
+        "input": {
+            "name": "Nathan Pye",
+            "job_title": "IT Executive",
+            "company_name": "Checkmate",
+            "country": "Australia",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Unable to provide information about Nathan Pye at Checkmate.",
+            "social_media_links": {
+                "error": "No valid Data found"
+            },
+            "company_summary": "Checkmate is a financial services company operating in the United States, specifically in Arizona, California, Colorado, New Mexico, and Washington. Established in 1989, it offers a range of loan products, including registration loans, payday loans, and installment loans, alongside check cashing services. Notably, Checkmate provides both online and in-store loan applications, emphasizing customer service and community support. The company is recognized for its commitment to helping customers make informed financial decisions, supported by positive testimonials highlighting its reliable and respectful service. This positions Checkmate as a trusted provider in the short-term financial solutions market.",
+            "company_competitors": "Atlantic Employee Screening, Chowly, Deliverect, HiPeople, iCIMS SkillSurvey Reference",
+            "company_news": [
+                {
+                    "title": "Tech provider Checkmate raises $10M to grow AI ordering",
+                    "url": "https://restaurantbusinessonline.com/technology/tech-provider-checkmate-raises-10m-grow-ai-ordering",
+                    "description": "Checkmate, a digital ordering provider for restaurants, has raised $10 million in a Series B funding round led by Tiger Global. The funds will be used to expand AI-powered phone and drive-thru ordering solutions, aiming to enhance efficiency and digital revenue for medium and large restaurant chains."
+                },
+                {
+                    "title": "Checkmate Raises $10 Million in Series B Funding Led by Tiger Global",
+                    "url": "https://www.prweb.com/releases/checkmate-raises-10-million-in-series-b-funding-led-by-tiger-global-to-scale-the-adoption-of-its-restaurant-voice-ai-and-kiosk-solutions-302282963.html",
+                    "description": "Checkmate secured $10 million in Series B funding led by Tiger Global to accelerate the adoption of its voice AI and kiosk technologies. The investment will help Checkmate expand its digital ordering solutions, offering customized experiences for restaurant brands to enhance operations and digital revenue."
+                },
+                {
+                    "title": "Checkmate Secures $10 Million to Fuel Expansion of Its Voice AI, Kiosk and Other Restaurant Technology Solutions",
+                    "url": "https://restauranttechnologynews.com/2024/10/checkmate-secures-10-million-to-fuel-expansion-of-its-voice-ai-kiosk-and-other-restaurant-technology-solutions/",
+                    "description": "Checkmate has secured a $10 million Series B funding round led by Tiger Global to expand its voice AI and kiosk technologies. The company aims to strengthen its position as a comprehensive provider of restaurant technology solutions, helping brands streamline operations and enhance customer experiences."
+                },
+                {
+                    "title": "Checkmate acquires VoiceBite, a voice AI company",
+                    "url": "https://www.fastcasual.com/companies/media/itsacheckmate/",
+                    "description": "Checkmate, a restaurant ordering solutions provider, has acquired VoiceBite, a voice AI company. This acquisition is part of Checkmate's strategy to enhance its digital ordering capabilities and offer advanced voice AI solutions to restaurant brands."
+                }
+            ]
+        },
+        "response_time": 56.839313983917236
+    },
+    {
+        "input": {
+            "name": "alex",
+            "job_title": "C-Level",
+            "company_name": "stanbic",
+            "country": "Kenya",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Alex Siboe is a prominent figure in the banking and telecommunications sectors, currently serving as the Chief Technology Officer at Stanbic Bank, focusing on Kenya and South Sudan. With over 20 years of leadership experience, Alex has a strong background in technology innovation, financial inclusion, and strategic management. He has worked with notable organizations like Safaricom and the Communication Authority of Kenya. Passionate about leveraging technology to enhance customer experiences, Alex has spearheaded digital transformation initiatives, including a mobile application upgrade and core-banking transformation. He is also a fintech enthusiast and thought leader, frequently engaging in speaking events like the Africa Bank 4.0 Summit. Outside work, Alex enjoys running, traveling, and supporting youth soccer initiatives.",
+            "social_media_links": [
+                {
+                    "platform": "LinkedIn",
+                    "url": "https://ke.linkedin.com/in/alex-siboe-wekunda-98784012"
+                }
+            ],
+            "company_summary": "Stanbic Bank, a prominent financial institution, operates primarily in Uganda and Nigeria, offering a wide range of banking services. It provides personal, business, and corporate banking solutions, including loans, mortgages, insurance, and investment services. The bank is known for its innovative digital banking platforms like FlexiPay and the Stanbic app, which enhance customer convenience. Notably, Stanbic has received accolades such as \"Best Bank in Uganda\" and \"Best Innovation in Retail Banking.\" Its commitment to customer-centric services and financial inclusion makes it a key player in Africa's banking sector, fostering economic growth and development.",
+            "company_competitors": "- Absa Bank Limited, - Agricultural Development Bank, - BNP Paribas India Solutions, - dfcu Bank, - Kenanga Group",
+            "company_news": [
+                {
+                    "title": "Stanbic IBTC Bank Partners with Tillit MSME Microservices for Affordable Healthcare Solutions",
+                    "url": "https://www.stanbicibtc.com/nigeriaholdings/Stanbic-IBTC-Holdings/whats-happening/newsroom",
+                    "description": "Stanbic IBTC Bank has partnered with Tillit MSME Microservices to provide affordable healthcare solutions to Small and Medium-sized Enterprises (SMEs) in Nigeria. This partnership aims to enhance healthcare access and affordability for SMEs, supporting their growth and sustainability."
+                },
+                {
+                    "title": "Stanbic IBTC Asset Management Crosses \u20a61 Trillion Asset Under Management Threshold",
+                    "url": "https://www.stanbicibtc.com/nigeriaholdings/Stanbic-IBTC-Holdings/whats-happening/newsroom",
+                    "description": "Stanbic IBTC Asset Management, a subsidiary of Stanbic IBTC Holdings, has achieved a significant milestone by surpassing the \u20a61 trillion mark in assets under management. This accomplishment underscores the company's robust growth and leadership in the asset management sector."
+                },
+                {
+                    "title": "Stanbic Bank Kenya Reports 84% Increase in First Quarter Profit",
+                    "url": "https://www.stanbicbank.co.ke/kenya/personal/news-and-insights",
+                    "description": "Stanbic Bank Kenya announced a remarkable 84% year-on-year increase in its first-quarter profit, reaching KES 3.9 billion. This significant growth reflects the bank's strong financial performance and strategic initiatives to enhance profitability and shareholder value."
+                },
+                {
+                    "title": "Stanbic Uganda Bids Farewell to Three Retiring Board Leaders",
+                    "url": "https://www.stanbic.co.ug/ugandaholdings/stanbic-uganda-holdings-limited/newsandinsights",
+                    "description": "Stanbic Uganda recently honored three retiring board directors with a farewell event. The bank acknowledged their contributions to the company's growth and governance, marking the end of an era and the beginning of new leadership opportunities."
+                },
+                {
+                    "title": "Standard Bank Partners with Flutterwave to Enhance Digital Payments in Africa",
+                    "url": "https://www.reuters.com/markets/companies/IBTC.LG/",
+                    "description": "Standard Bank, the parent company of Stanbic, has partnered with Flutterwave to improve digital payment experiences for customers in eight African countries. This collaboration aims to leverage technology to provide seamless and efficient payment solutions across the continent."
+                }
+            ]
+        },
+        "response_time": 47.55541253089905
+    },
+    {
+        "input": {
+            "name": "Kevin Barbe",
+            "job_title": "Other",
+            "company_name": "Doyle Krieger",
+            "country": "Anguilla",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Unable to provide information about Kevin Barbe at Doyle Krieger.",
+            "social_media_links": {
+                "error": "No valid Data found"
+            },
+            "company_summary": "The search results provided do not contain relevant information about a company named Doyle Krieger. Instead, they include details about a medical licensee named Michael Doyle Krieger and a personal announcement regarding an engagement between individuals with the last names Doyle and Krieger. Therefore, I am unable to create a summary about a company named Doyle Krieger based on the provided search results. If you have more specific information or another source, please share it, and I would be happy to help.",
+            "company_competitors": "Detroit at Work, OtterBase, Therapy Staff",
+            "company_news": {
+                "error": "No valid Data found"
+            }
+        },
+        "response_time": 60.303871631622314
+    },
+    {
+        "input": {
+            "name": "Nick Baxter",
+            "job_title": "IT Executive",
+            "company_name": "Cambridge University Press & Assessment",
+            "country": "United Kindom",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Nick Baxter is a seasoned professional currently serving as a Senior Buyer at Cambridge University Press & Assessment, based in Royston, GB. With a robust background in procurement and merchandising, Nick has honed his expertise through various roles, including Senior Buyer for IT Procurement and Senior Buying Manager for Mobile Phone Accessories at Tesco. His career trajectory highlights a strong foundation in sales, retail, and range management, with a particular focus on multi-channel retail and wireless technologies. Nick's professional journey reflects a keen commercial acumen and adaptability, making him a valuable asset in strategic buying and procurement. His interests likely align with optimizing procurement processes and leveraging technology to enhance efficiency in supply chain management.",
+            "social_media_links": [
+                {
+                    "platform": "LinkedIn",
+                    "url": "https://uk.linkedin.com/in/nick-baxter-6487038b"
+                }
+            ],
+            "company_summary": "Cambridge University Press & Assessment, a non-profit entity of the University of Cambridge, is a leading global academic publisher and assessment organization. Formed in 2021 through the merger of Cambridge University Press and Cambridge Assessment, it operates in over 50 countries, including the UK, US, Brazil, and China. The company offers a wide range of products, such as the Cambridge Dictionary, academic journals, and educational assessments like IGCSEs. Notably, it reaches 100 million learners worldwide, with a significant portion of its revenue generated internationally. The organization is committed to educational innovation, diversity, and climate education, and has published works by numerous Nobel Laureates.",
+            "company_competitors": "- AQA, - British Council, - Cengage Group, - Elsevier, - Macmillan Publishers, - SAGE Publishing, - Springer Nature",
+            "company_news": [
+                {
+                    "title": "Cambridge University Press Reports Record \u00a31 Billion in Revenue",
+                    "url": "https://publishingperspectives.com/2023/12/year-end-a-cambridge-university-press-record-1-billion-in-revenue/",
+                    "description": "Cambridge University Press & Assessment has achieved a significant financial milestone by reaching \u00a31 billion in revenue for the first time during its 2022-2023 reporting period. This marks a major achievement in the company's financial performance."
+                },
+                {
+                    "title": "Educational Innovation Through AI: Cognizant Signs Multi-Year Contract with Cambridge University Press & Assessment",
+                    "url": "https://www.prnewswire.com/news-releases/educational-innovation-through-ai-cognizant-signs-multi-year-contract-with-cambridge-university-press--assessment-302023819.html",
+                    "description": "Cambridge University Press & Assessment has renewed a five-year contract with Cognizant to drive digital transformation and leverage AI technology. This partnership aims to enhance operational effectiveness and maintain exam results integrity in the evolving education sector."
+                },
+                {
+                    "title": "Cambridge University Press & Assessment Writes to 20k Authors for AI Licensing 'Opt-In'",
+                    "url": "https://www.thebookseller.com/news/cambridge-university-press--assessment-writes-to-20k-authors-for-ai-licensing-opt-in",
+                    "description": "Cambridge University Press & Assessment is contacting 20,000 authors to request permission for licensing their content to generative AI companies. The 'opt-in' policy aims to ensure authors are informed and have agency over the use of their work in AI training."
+                },
+                {
+                    "title": "Exam Writers Make Claim Against Cambridge University Press",
+                    "url": "https://www.bbc.com/news/articles/c1lgzp3mnevo",
+                    "description": "Exam writers are bringing a legal claim against Cambridge University Press & Assessment, alleging unfair changes to their employment status and contracts. The Society of Authors claims mis-categorization and denial of workplace rights, including fair holiday pay."
+                }
+            ]
+        },
+        "response_time": 44.777085304260254
+    },
+    {
+        "input": {
+            "name": "Wasif Khan",
+            "job_title": "Other",
+            "company_name": "Zaphyre",
+            "country": "United State",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Wasif Khan is a Senior Business Development Manager at Zaphyre, where he plays a pivotal role in expanding the company's reach and helping businesses across the U.S. grow their lead base. His professional journey is marked by a strong focus on leadership and business development, emphasizing the importance of authentic leadership and trust-building within teams. Wasif is passionate about creating a leadership playbook through shared insights and experiences, encouraging open conversations about the challenges and lessons in leadership. His industry perspective highlights the value of real, empathetic leadership over perfection, advocating for a growth mindset and teamwork. Wasif's contributions to thought leadership in business development make him a valuable resource for discussions on leadership and team dynamics.",
+            "social_media_links": [
+                {
+                    "platform": "LinkedIn",
+                    "url": "https://www.linkedin.com/posts/abdul-wasif-326281156_zaphyre-leadershiplesson-growthmindset-activity-7284782813571092481-9l42"
+                }
+            ],
+            "company_summary": "Zaphyre is a leading B2B lead generation company based in the United States, specializing in enhancing sales pipelines for businesses of all sizes, including Fortune 1000 companies and startups. Operating primarily in the USA, Zaphyre offers a range of services such as B2B appointment setting, market research, content marketing, LinkedIn automation, and prospect list building. The company is renowned for its expertise in sales lead generation, B2B email marketing, and bookkeeping. Notably, Zaphyre has facilitated over 1,500 initial sales meetings with executives at Global 2000 companies and is recognized for its innovative, customized go-to-market strategies. With a focus on unlocking the unique potential of each client, Zaphyre provides a cost-effective alternative to in-house lead generation, ensuring a high return on investment.",
+            "company_competitors": "1. Datasun Technologies, 2. Elixir Web Solutions, 3. INFUSE, 4. KlientBoost, 5. SmartSites",
+            "company_news": [
+                {
+                    "title": "Zephyr Energy Secures $7.5 Million Funding for Paradox Basin Project",
+                    "url": "https://markets.businessinsider.com/news/stocks/zephyr-energy-secures-7-5-million-funding-for-paradox-basin-project-1034149877",
+                    "description": "Zephyr Energy has secured $7.5 million from a U.S.-based investor for its Paradox Basin project in Utah. This funding will support drilling and testing operations, allowing Zephyr to maintain operational control and flexibility for future development. The company plans to begin drilling in January 2025, with production test results expected in the first quarter."
+                },
+                {
+                    "title": "Zephyr Energy reports strong interim results for H1 2024, driven by Williston Basin production",
+                    "url": "https://www.zephyrplc.com/proactiveo27sep24/",
+                    "description": "Zephyr Energy reported revenue of $13.6 million for the first half of 2024, primarily driven by production from the Williston Basin. The company's gross profit rose to $10.0 million, reflecting strong operational performance and a positive outlook for future growth."
+                },
+                {
+                    "title": "Zephyr Energy starts well operations ahead of next production test in Utah",
+                    "url": "https://www.proactiveinvestors.com/companies/news/1064611/zephyr-energy-starts-well-operations-ahead-of-next-production-test-in-utah-1064611.html",
+                    "description": "Zephyr Energy has commenced operations for an extended lateral on its State 36-2 LNW-CC-R well in the Cane Creek reservoir, Utah. The company plans to drill an additional 5,500 feet horizontally, with the drilling phase expected to complete within 30 days. Production testing results are anticipated by the end of March."
+                }
+            ]
+        },
+        "response_time": 40.028263568878174
+    },
+    {
+        "input": {
+            "name": "Marcos Garcia",
+            "job_title": "Developer/Engineer",
+            "company_name": "Esperto Services",
+            "country": "Canada",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Unable to provide information about Marcos Garcia at Esperto Services.",
+            "social_media_links": {
+                "error": "No valid Data found"
+            },
+            "company_summary": "Esperto Services is a dynamic company specializing in executive search and IT system design services. With operations primarily in Turkey and Canada, the company focuses on recruiting top-tier executives and board members, aligning them with clients' strategic goals and cultural values. Esperto offers a range of services, including senior management recruitment, human resources digital solutions, and IT system design. Notably, the company emphasizes leadership in volatile environments and has over 20 years of experience in executive search. Esperto is recognized for its commitment to excellence, integrity, and social responsibility, aiming to drive meaningful change and organizational success.",
+            "company_competitors": "Adept Information Technology, Amwell, Aussie I.T, Bactiguard, Boule Diagnostics",
+            "company_news": [
+                {
+                    "title": "Esperto Medical Announces Study Results Measuring Blood Pressure with Sound",
+                    "url": "https://www.prnewswire.com/news-releases/esperto-medical-announces-study-results-measuring-blood-pressure-with-sound-302211294.html",
+                    "description": "Esperto Medical has developed a new technology, Resonance Sonomanometry\u2122, for noninvasive continuous blood pressure monitoring. This technology offers accuracy within 2% without requiring calibration, providing a significant advancement over existing tools. The study results were published in PNAS Nexus, highlighting the potential of this technology to improve medical care for all patients."
+                },
+                {
+                    "title": "Esperto Hospitality Group ignites New Jersey's dining scene with bold new ventures",
+                    "url": "https://www.roi-nj.com/2024/08/16/lifestyle/food-hospitality/esperto-hospitality-group-ignites-new-jerseys-dining-scene-with-bold-new-ventures/",
+                    "description": "Esperto Hospitality Group is expanding its portfolio with the launch of two new venues: Catezza Italian Kitchen and Bar in Red Bank and the newly acquired Il Nido in Marlboro. These ventures aim to elevate the region's dining experiences and create numerous job opportunities, reinforcing the company's commitment to the community."
+                },
+                {
+                    "title": "Smarter monitoring of blood pressure with Esperto",
+                    "url": "https://www.medica-tradefair.com/en/medtech-devices/monitoring-blood-pressure-esperto",
+                    "description": "Esperto Medical's resonance sonomanometry technology offers accurate, real-time blood pressure measurements. This non-invasive method addresses common issues like calibration errors and motion artifacts, integrating seamlessly into healthcare systems for both clinical and remote care. The technology promises to enhance patient monitoring and healthcare outcomes."
+                },
+                {
+                    "title": "Esperto Medical - CB Insights",
+                    "url": "https://www.cbinsights.com/company/esperto-medical",
+                    "description": "Esperto Medical has developed a non-invasive method to continually measure true blood pressure using resonance sonomanometry. This technology provides continuous monitoring suitable for clinical and home environments, offering a significant improvement over traditional blood pressure cuffs."
+                }
+            ]
+        },
+        "response_time": 44.90763878822327
+    },
+    {
+        "input": {
+            "name": "stephen feng",
+            "job_title": "Developer/Engineer",
+            "company_name": "DEWELL GROUP",
+            "country": "United States",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Unable to provide information about Stephen Feng at DEWELL GROUP.",
+            "social_media_links": {
+                "error": "No valid Data found"
+            },
+            "company_summary": "De Well Group is a global leader in cross-border supply chain and logistics solutions, leveraging advanced digital technologies to meet the evolving needs of modern businesses. The company operates across Asia, North America, and Europe, providing a comprehensive range of services including ocean and air logistics, customs compliance, eCommerce fulfillment, and transportation solutions. Notably, De Well Group is recognized for its innovative Pivot28 initiative, which emphasizes digitalization and customized logistics solutions. With a strong focus on reliability and efficiency, De Well Group plays a crucial role in facilitating global trade and economic growth, making it a key player in the logistics industry.",
+            "company_competitors": "1. Aloha Air Cargo, 2. Approved Freight, 3. Atlantic Worldwide Shipping, 4. GLOVIS America, 5. Packair Airfreight Inc.",
+            "company_news": [
+                {
+                    "title": "Cross-border Service Provider De Well Holdings Limited Receives Notice for Listing",
+                    "url": "https://equalocean.com/news/2024050620839",
+                    "description": "De Well Holdings Limited is transitioning from the Hong Kong stock market to the U.S. stock market, with Cainiao holding approximately 30% of the shares. The company plans to issue up to 299,054,373 common shares and list on Nasdaq or NYSE, aiming to expand its financing channels and enhance brand awareness."
+                },
+                {
+                    "title": "De Well Group: We're very proud of the new air freight unit",
+                    "url": "https://postandparcel.info/130174/news/e-commerce/de-well-group-were-very-proud-of-the-new-air-freight-unit/",
+                    "description": "De Well Group has launched a new Air Freight Business Unit in Shanghai, China, surpassing 4,000 tons of cargo volume. The unit includes a 2600-square-meter bonded warehouse at PVG, enhancing network operations and transfer ability. CEO John Hextall expressed pride in the unit's rapid growth."
+                },
+                {
+                    "title": "Christoph Remund takes charge of De Well's Pacific region",
+                    "url": "https://theloadstar.com/christoph-remund-takes-charge-of-de-wells-pacific-region/",
+                    "description": "De Well Group has appointed Christoph Remund as CEO for the Asia Pacific region, excluding China. With extensive experience from DHL Global Forwarding, Remund is expected to leverage his expertise to grow De Well's business and network in Asia, supporting the group's global expansion goals."
+                }
+            ]
+        },
+        "response_time": 31.517180681228638
+    }
+]
