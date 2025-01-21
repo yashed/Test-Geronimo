@@ -21,6 +21,14 @@ class Worker(threading.Thread):
         self.daemon = True
 
     def run(self):
+        """
+        Handle tasks from the queue
+           - Get task from the queue
+           - Process the task
+           - Send email
+           - Update task status in the database
+
+        """
         while True:
             try:
                 # Get a task from the queue

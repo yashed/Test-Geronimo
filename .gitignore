@@ -3,3 +3,5 @@ tasks.db
 .venv
 venv
 sendgrid.env
+.csv
+Test/test-data.csv

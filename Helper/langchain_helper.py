@@ -1,5 +1,7 @@
 import concurrent.futures
 from langchain.prompts import PromptTemplate
+import requests
+import json
 from langchain.chains import LLMChain
 import os
 from dotenv import load_dotenv
@@ -21,6 +23,7 @@ OPENAI_API_KEY = os.getenv("AZURE_OPENAI_API_KEY")
 OPENAI_API_BASE = os.getenv("OPENAI_API_BASE")
 OPENAI_DEPLOYMENT_NAME = os.getenv("OPENAI_DEPLOYMENT_NAME")
 OPENAI_API_VERSION = os.getenv("OPENAI_API_VERSION")
+SERPER_API_KEY = os.getenv("SERPER_API_KEY")
 
 print("Google API Key - ", GOOGLE_API_KEY)
 print("Google CSE ID - ", GOOGLE_CSE_ID)
@@ -38,6 +41,7 @@ if not all(
         OPENAI_API_BASE,
         OPENAI_DEPLOYMENT_NAME,
         OPENAI_API_VERSION,
+        SERPER_API_KEY,
     ]
 ):
     raise ValueError("Please ensure all the necessary environment variables are set.")
@@ -53,18 +57,62 @@ llm = AzureChatOpenAI(
     deployment_name=OPENAI_DEPLOYMENT_NAME,
     temperature=0.0,
 )
-# Gemini LLM initialization
-# llm = ChatGoogleGenerativeAI(model="gemini-pro", google_api_key=GEMINI_API_KEY)
 
 
-def parallel_google_search(queries, num_results=8):
+# Function to perform a Google search using the Serper API
+def google_search(query, num_results=8, use_google_api=False):
     """
-    Perform Google searches in parallel.
+    Perform a search using either the Serper API or the Google Search API.
+
+    Args:
+        query (str): The search query.
+        num_results (int): Number of results to retrieve.
+        use_google_api (bool): If True, use the Google Search API. If False, use Serper API.
+
+    Returns:
+        list: Search results.
     """
-    google_search = GoogleSearchAPIWrapper()
+    if use_google_api:
+        # Use Google Search API
+        google_search_wrapper = GoogleSearchAPIWrapper()
+        try:
+            return google_search_wrapper.results(query, num_results=num_results)
+        except Exception as e:
+            print(f"Error: Google Search API failed with error: {e}")
+            return []
+    else:
+        # Use Serper API
+        url = "https://google.serper.dev/search"
+        payload = json.dumps({"q": query, "num": num_results})
+        headers = {"X-API-KEY": SERPER_API_KEY, "Content-Type": "application/json"}
+
+        response = requests.post(url, headers=headers, data=payload)
+        if response.status_code == 200:
+            return response.json().get("organic", [])
+        else:
+            print(
+                f"Error: Serper request failed with status code {response.status_code}"
+            )
+            return []
+
+
+def parallel_google_search(queries, num_results=8, use_google_api=False):
+    """
+    Perform parallel searches for multiple queries using either Serper API or Google Search API.
+
+    Args:
+        queries (list of str): A list of search queries.
+        num_results (int): Number of results to retrieve for each query.
+        use_google_api (bool): If True, use the Google Search API. If False, use Serper API.
+
+    Returns:
+        list of list: A list where each element contains the search results for a query.
+    """
 
     def fetch_results(query):
-        return google_search.results(query, num_results=num_results)
+        return google_search(
+            query, num_results=num_results, use_google_api=use_google_api
+        )
 
     with concurrent.futures.ThreadPoolExecutor() as executor:
         results = list(executor.map(fetch_results, queries))
@@ -74,6 +122,12 @@ def parallel_google_search(queries, num_results=8):
 def parallel_web_scraping(results, queries):
     """
     Perform web scraping in parallel.
+
+    Args:
+        results (list of list): A list of search results for each query.
+        queries (list of str): A list of search queries.
+    Returns:
+        list of list: A list where each element contains the scraped data for a query.
     """
 
     def scrape(result, query):
@@ -103,6 +157,16 @@ def fetch_top_google_results(
 ):
     """
     Fetch Google search results and scrape the content in parallel.
+
+    Args:
+        name (str): The name of the person.
+        company (str): The name of the company.
+        num_results (int): Number of results to retrieve.
+        company_flag (int): Flag to indicate whether to get company information.
+        competitors (int): Flag to indicate whether to get company competitors.
+        news (int): Flag to indicate whether to get company news.
+    Return:
+        list: A list of dictionaries containing the scraped data for each result.
     """
     queries = []
     if company_flag == 1:  # Get company information
@@ -116,7 +180,7 @@ def fetch_top_google_results(
     ):  # Get company competitors
         queries.append(f"{company} competitors")
     elif news == 1 and company_flag == 0 and competitors == 0:  # Get company news
-        queries.append(f"{company} recent news")
+        queries.append(f"{company} company recent news")
 
     print("Queries:", queries)
 
@@ -133,9 +197,32 @@ def fetch_top_google_results(
 
 
 def generate_data(name, company, position, country):
+    """
+    Generate data for a given person and company using LLM chains.
+
+    Args:
+        name (str): The name of the person.
+        company (str): The name of the company.
+        position (str): The position of the person.
+        country (str): The country of the person.
+    Returns:
+        JSON formatted data containing the generated content.
+        -personal_summary: A concise professional summary of the person.
+        -social_media_links: A JSON array containing the social media links of the person.
+        -company_summary: A summary of the company.
+        -company_competitors: A list of the company's competitors.
+        -company_news: A JSON array containing the company's recent news.
+            Each news item should have the following format:
+            {
+                "title": "Title of the news",
+                "url": "URL of the news",
+                "description": "Description of the news"
+            }
+
+    """
 
     # Fetch Google results
-    person_google_results = fetch_top_google_results(name, company)
+    person_google_results = fetch_top_google_results(name, company, num_results=8)
     company_google_results = fetch_top_google_results(
         name, company, num_results=3, company_flag=1
     )
@@ -191,14 +278,32 @@ def generate_data(name, company, position, country):
     print("Formatted Results - ", formatted_competitors)
 
     # First chain: Generate a concise professional summary
+    from langchain.prompts import PromptTemplate
+
+    from langchain.prompts import PromptTemplate
+
+    from langchain.prompts import PromptTemplate
+
     prompt_template_summary = PromptTemplate(
-        input_variables=["name", "company", "position", "google_results"],
+        input_variables=["name", "company", "position", "country", "google_results"],
         template=(
-            "Provide a detailed and unbiased summary about {name}, who is currently associated with {company} as a {position}. "
-            "Keep the summary around 120 words and Include key details about their career, areas of interest, significant achievements, and any other notable or unique aspects about them. "
-            "Mention any relevant insights or interesting facts that could help a team initiate an engaging and informed conversation with this person. "
-            "Use only the most accurate and relevant information from the provided Google Search Results. "
-            "Be mindful that not all search results may pertain to this individual; filter out any unrelated or incorrect data. "
+            "Create an engaging summary about {name} from {company} that helps understand them professionally and personally "
+            "to facilitate meaningful conversations.\n\n"
+            "Extract and summarize in 120 words:\n"
+            "- Their current work and interests\n"
+            "- Professional background and expertise\n"
+            "- Any passion projects or focus areas\n"
+            "- Notable achievements or contributions\n"
+            "- Industry perspectives or thought leadership\n"
+            "- Any interesting professional activities (speaking, writing, research)\n"
+            "- Areas they seem passionate about\n\n"
+            "Be flexible with role titles - focus on their domain and actual work rather than exact position matches. "
+            "If you find partial information, include it as long as it helps build a conversation with infromation that can get from given data.\n\n"
+            "IMPORTANT - Respond 'Unable to provide information about {name} at {company}' only if:\n"
+            "- 1. Theres no any information about {name} in {company} \n"
+            "- 2. The found information is about a completely different person in an unrelated field\n\n"
+            "- If the data is there but not enough to create a summary, provide as much information as possible.\n"
+            "Dont Just say 'No information found' if there is some information available.\n\n"
             "Google Search Results: {google_results}\n\n"
             "Summary: "
         ),
@@ -209,16 +314,41 @@ def generate_data(name, company, position, country):
     )
 
     # Second chain: Extract social media links
+    from langchain.prompts import PromptTemplate
+
     prompt_template_social_links = PromptTemplate(
-        input_variables=["name", "company", "position", "google_links"],
+        input_variables=["name", "company", "position", "country", "google_links"],
         template=(
-            "Based on the provided Google Search Results, extract the most accurate and relevant personal social media links for {name}. "
-            "These links should belong to the person, not to any organization or unrelated entity. Focus on platforms such as LinkedIn, Twitter, GitHub, personal websites, company profile page or blogs (e.g., Medium). "
-            "Exclude invalid or irrelevant links.\n\n"
+            "Find the most accurate personal and professional profile links for {name}, who works at {company} as {position} in {country}. "
+            "\n\n"
+            "Guidelines for link verification:\n"
+            "- Verify profile ownership by matching name, company, and professional background\n"
+            "- Select only ONE most relevant and active link per platform\n"
+            "- Prioritize profiles that show current role or company association\n"
+            "- For similar names, use company and role information to confirm identity\n"
+            "\n"
+            "Look for these types of profiles:\n"
+            "1. Professional Networks: LinkedIn, Xing, etc.\n"
+            "2. Tech Profiles: GitHub, GitLab, Stack Overflow\n"
+            "3. Social Media: Twitter, Mastodon\n"
+            "4. Content Platforms: Medium, personal blog, speaking profiles\n"
+            "5. Professional Directories: Company staff profile, conference speaker profiles\n"
+            "Try to find the atleast correct LinkedIn profile of the person from the given results\n"
+            "\n"
+            "Exclude:\n"
+            "- Company or organization main pages\n"
+            "- News articles or press releases\n"
+            "- Project repositories or team pages\n"
+            "- Duplicate profiles on the same platform\n"
+            "- Inactive or outdated profiles\n"
+            "\n"
             "Output the result as a JSON array each item enclosed with curly brackets in the following format:\n\n"
             '  -platform": "platform_name", -url": "URL",\n'
-            "Ensure there is one object for each social media link. If no valid links are found, return an empty array.\n\n"
-            "Google Search Results with Links: {google_links}\n\n"
+            "Ensure there is one object for each social media link. If no valid links are found, return an empty array. but try to identify atleast one platform link\n\n"
+            "IMPORTANT - Do not generate any URL by using person name, just give the URL if it is found in the google search results else Do not hallucinate URL \n\n"
+            "\n"
+            "Google Search Results with URL: {google_links}\n"
+            "\n"
             "JSON Array Output:"
         ),
     )
@@ -272,9 +402,10 @@ def generate_data(name, company, position, country):
         template=(
             "Based on the following Google Search results for {company}'s recent news, provide a JSON-formatted summary of the top 3 to 5 most relevant news articles from the last 12 months. "
             "Focus on articles related to the company's financial performance, major partnerships, executive changes, or significant industry developments. "
+            "Do not generate news articles, just give the news according to the given data with reference to the URL. "
             "For each article, include the following details:\n"
             "- 'title': A clear , detailed and accurate title that gives a precise idea of the news.\n"
-            "- 'url': The link to the news article.\n"
+            "- 'url': The full complete and correct link to the news article.\n"
             "- 'description': A concise but informative summary of the news content, not exceeding 100 words.\n"
             "If no valid news articles are found, respond with 'No recent news found.'\n\n"
             "Google Search Results: {company_news_results}\n\n"
@@ -331,14 +462,24 @@ def generate_data(name, company, position, country):
     )
 
     # Send the email with the response data
-
+    print("Response Data - ", response)
     formatted_response = format_response(response)
-
+    print("Formatted Response - ", formatted_response)
     return formatted_response
 
 
 # summazing the scraped content
 def summarize_large_content(content, query, chunk_size=10000, overlap=200):
+    """
+    Summarize large content by splitting it into chunks and summarizing each chunk.
+    Args:
+        content (str): The large content to be summarized.
+        query (str): The query related to the content.
+        chunk_size (int): The size of each chunk.
+        overlap (int): The overlap between chunks.
+    Returns:
+        str: The summarized content
+    """
 
     chunks = []
     start = 0
@@ -359,7 +500,7 @@ def summarize_large_content(content, query, chunk_size=10000, overlap=200):
             "Summary should be related to the Query"
             "without including any unnecessary details.\n\n"
             "Query: {query}\n\n"
-            "Content:\n{chunk}\n\n"
+            "Content:\n{chunks}\n\n"
             "Summary:"
         ),
     )
@@ -385,6 +526,13 @@ def summarize_large_content(content, query, chunk_size=10000, overlap=200):
 
 # function to format the content into json
 def format_response(response_data):
+    """
+    Format the response data into a JSON object.
+    Args:
+        response_data (dict): The response data from the chains.
+    Returns:
+        dict: The formatted JSON object.
+    """
 
     # Extracting details from response_data
     professional_summary = response_data.get("professional_summary", "")
@@ -397,11 +545,10 @@ def format_response(response_data):
     print("social_media_links_raw - ", social_media_links_raw)
     # print("Company News Raw - ", company_news_raw)
 
-    # convert company_news_raw to json
+    # convert company_news_raw and social_media_links_raw to json
     company_news_json = jh.format_json_string(company_news_raw)
     social_media_links_json = jh.format_json_string(social_media_links_raw)
     print("Social Media Links JSON - ", social_media_links_json)
-    # print("Company News JSON - ", company_news_json)
 
     # Parse social media links into the required format
     social_media_links = {}

@@ -11,45 +11,16 @@ from bs4 import BeautifulSoup
 import Helper.langchain_helper as lh
 
 
-# def fetch_with_selenium(url):
-#     """
-#     Fetch content using Selenium
-#     """
-#     # Set up Chrome options for headless browsing
-#     options = Options()
-#     options.add_argument("--headless")
-#     options.add_argument("--disable-gpu")
-#     options.add_argument("--no-sandbox")
-
-#     driver = webdriver.Chrome(
-#         service=Service(ChromeDriverManager().install()), options=options
-#     )
-
-#     try:
-
-#         driver.get(url)
-
-#         WebDriverWait(driver, 10).until(
-#             EC.presence_of_element_located((By.TAG_NAME, "body"))
-#         )
-
-#         # Extract text content
-#         elements = driver.find_elements(By.XPATH, "//p | //h1 | //h2 | //h3 | //li")
-#         content = [el.text.strip() for el in elements if el.text.strip()]
-
-#         return "\n".join(content)
-
-#     except Exception as e:
-#         print(f"Error fetching content with Selenium: {e}")
-#         return None
-
-#     finally:
-#         driver.quit()
-
-
 def fetch_with_requests(url, query, chunk_size=1500, overlap=200):
     """
     Fetch content using requests and BeautifulSoup
+    Args:
+        url (str): The URL to fetch content from
+        query (str): The query used to summarize the content
+        chunk_size (int): The size of each chunk for summarization
+        overlap (int): The overlap between chunks for summarization
+    Returns:
+        str: The extracted content from the URL
     """
     headers = {
         "User-Agent": (
@@ -73,9 +44,11 @@ def fetch_with_requests(url, query, chunk_size=1500, overlap=200):
         content_str = "\n".join(content)
 
         # If content is too large, summarize it using summarize_large_content
-        if len(content_str) > 50000:  # You can adjust this threshold
+        if len(content_str) > 40000:  # You can adjust this threshold
             print(f"Content from {url} is too large, summarizing it...")
             return lh.summarize_large_content(content_str, query)
+        elif len(content_str) > 900000:
+            return None
 
         return content_str
 

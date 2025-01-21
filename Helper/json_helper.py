@@ -3,6 +3,16 @@ import json
 
 
 def format_json_string(response):
+    """
+    Format a JSON-like string into a valid JSON format
+    Mainly used for format social media links and company news to JSON Array
+    Args:
+        response (str): The JSON-like string to be formatted
+    Returns:
+        dict: The formatted JSON object
+
+
+    """
     try:
         # Attempt to parse the string as-is
         return json.loads(response)

@@ -18,7 +18,14 @@ if not SENDGRID_API_KEY:
 
 
 def send_mail(response_data, SendTo):
-    """Main function to send an email."""
+    """
+    Send an email using SendGrid API
+
+    Args:
+        response_data (dict): The data to be sent in the email
+        SendTo (str): The email address to send the email to
+
+    """
 
     print("mail data = ", response_data)
     sg = SendGridAPIClient(SENDGRID_API_KEY)
@@ -70,6 +77,7 @@ def send_mail(response_data, SendTo):
     # Create the email object
     # message = Mail(from_email=Email("geronimo.test.01@gmail.com"))
     message = Mail(from_email=Email("geronimo.wso2@gmail.com"))
+
     # message.template_id = "d-a6c1b0ab7ad84f74b399bb7f28d07998"
     message.template_id = "d-0422142c3c364898967a74e36d6f72a7"
 
