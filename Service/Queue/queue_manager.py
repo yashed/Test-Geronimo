@@ -1,7 +1,7 @@
 import queue
 import threading
 import time
-from Service.Queue.database_manager import DatabaseManager
+from Service.queue.database_manager import DatabaseManager
 from Service.mailService import send_mail
 import Helper.langchain_helper as lh
 import logging

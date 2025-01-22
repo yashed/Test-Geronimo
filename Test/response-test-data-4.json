@@ -1,0 +1,262 @@
+[
+    {
+        "input": {
+            "name": "Wilson Achilles",
+            "job_title": "Developer/Engineer",
+            "company_name": "Funcional Health Tech",
+            "country": "Brazil",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Wilson Achilles Pereira Neto is the Head of Infrastructure and Information Security at Funcional Health Tech, a leading Brazilian healthcare technology company. With over 20 years of experience in infrastructure and information security, Wilson is instrumental in implementing robust cybersecurity measures to protect sensitive healthcare data. His work focuses on leveraging advanced technologies like Thales\u2019 CipherTrust Data Security Platform to ensure data protection and compliance with regulations such as Brazil's General Data Protection Law (LGPD). Wilson is passionate about enhancing data security and privacy, which is evident from his leadership in achieving SOC 2 and 3 certifications for Funcional Health Tech. His efforts have significantly contributed to the company's ability to secure new client deals and maintain a strong market position.",
+            "social_media_links": [
+                {
+                    "platform": "LinkedIn",
+                    "url": "https://br.linkedin.com/in/wilson-achilles/pt"
+                }
+            ],
+            "company_summary": "Funcional Health Tech, based in Barueri, Brazil, is a prominent player in the health technology sector, with over 20 years of experience. The company specializes in developing innovative technological solutions aimed at enhancing the efficiency and sustainability of the healthcare ecosystem. Their primary focus is on data intelligence, providing services that integrate various components of the health market.\n\nFuncional Health Tech offers a range of services and products, including the Programa de Benef\u00edcio Medicamento (PBM), Programa de Suporte aos Pacientes (PSP), and Programa de Suporte ao Diagn\u00f3stico (PSD). They also provide platforms like Web Pharma Analytics and Pedbot, a chat-commerce solution for pharmacies. Their offerings extend to health analytics, actuarial and regulatory consulting, and pharmacy benefits, catering to pharmaceutical industries, health operators, and human resources departments.\n\nThe company has a significant geographical presence in Brazil, with a strong market coverage that includes partnerships with 1,500 points of sale in the pharmaceutical segment. Notable achievements include the implementation of strategic data solutions that have facilitated access to medications and improved healthcare outcomes for clients like P&G Brasil.\n\nFuncional Health Tech is recognized for its commitment to improving healthcare delivery through technology and data analytics. They target sectors such as pharmaceuticals, health insurance, and corporate health benefits, aiming to transform lives by connecting and optimizing the healthcare supply chain. Their industry expertise is further highlighted by their recognition with the Selo de Feedback da Gupy, underscoring their dedication to transparent and effective communication in recruitment processes.",
+            "company_competitors": "Amwell, Cerner Corporation, Cureatr, MedXoom, Nomi Health",
+            "company_news": [
+                {
+                    "title": "Funcional Health Tech acquires corporate benefits provider BeFlex",
+                    "url": "https://latamlist.com/funcional-health-tech-acquires-corporate-benefits-provider-beflex/",
+                    "description": "Funcional Health Tech has acquired BeFlex, a corporate multi-benefits card provider with over 70 corporate clients and 20,000 active users. This acquisition is part of Funcional's strategy to expand in the corporate benefits sector, aiming to reach 3 million users by 2025. The integration will allow Funcional to offer customized benefits packages, including services like food, transportation, and fitness."
+                },
+                {
+                    "title": "Funcional Health Tech acquires PedBot",
+                    "url": "https://www.crunchbase.com/acquisition/funcional-health-tech-acquires-pedbot--4edf38c9",
+                    "description": "Funcional Health Tech has acquired PedBot, a move that aligns with its growth strategy in the health tech sector. The acquisition details remain undisclosed, but it signifies Funcional's commitment to expanding its technological capabilities and service offerings."
+                }
+            ]
+        },
+        "response_time": 40.912402868270874
+    },
+    {
+        "input": {
+            "name": "Wojciech",
+            "job_title": "C-Level",
+            "company_name": "NymCard",
+            "country": "United Arab Emirates",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Wojciech Soltysiak is the Chief Technology Officer at NymCard, where he spearheads the company's API-first strategy, aligning with the open banking trend. His professional journey includes leadership roles at Further Ventures, PayPal, Daimler Mobility Services, and EY, showcasing his extensive expertise in technology and financial services. Wojciech holds a Master of Science in Management and Marketing from Warsaw University of Technology. He is passionate about leveraging technology to enhance financial services, focusing on compliance, risk management, and fraud prevention. His notable achievements include driving technological innovations that streamline operations and improve customer experiences. Wojciech is a thought leader in fintech, contributing to discussions on digital transformation and the future of payments in the MENA region.",
+            "social_media_links": {
+                "error": "No valid Data found"
+            },
+            "company_summary": "NymCard, based in the United Arab Emirates, is a prominent player in the embedded finance sector within the MENA region. The company specializes in providing a comprehensive suite of financial services that empower businesses and platforms to integrate financial solutions seamlessly. NymCard's offerings include card issuance, lending, and money movement services, which are crucial for industries such as financial services, fintech, retail, insurance, telecommunications, travel, and the gig economy.\n\nThe company's platform is highly modular and embedded-first, featuring over 1,000 APIs that simplify the integration of financial services into non-financial ecosystems. This includes advanced solutions like AI-powered credit scoring, flexible lending options, and global payment capabilities. NymCard is particularly adept at addressing market challenges such as risk assessment, supplier payments, and freelancer payouts.\n\nGeographically, NymCard has a strong presence in the MENA region, with its headquarters located in Dubai, UAE. The company has also expanded its operations to Egypt, where it has achieved PCI PIN Security v3.1 compliance, underscoring its commitment to secure and reliable payment solutions.\n\nNymCard has been involved in notable projects, such as partnering with Line Investments & Property to launch a VISA-powered LAKA Gift Card solution across UAE malls and collaborating with eNovate in Egypt to integrate card production with payment services. These initiatives highlight NymCard's role in driving digital transformation and innovation in the region's financial landscape. With a focus on compliance, customer satisfaction, and industry partnerships, NymCard continues to be a key player in the evolving world of embedded finance.",
+            "company_competitors": "Adyen, Checkout.com, Finablr, PayPal, Wise",
+            "company_news": [
+                {
+                    "title": "NymCard Partners with ACI Worldwide to Enhance Fraud Management",
+                    "url": "https://www.pymnts.com/tag/nymcard/",
+                    "description": "NymCard, a Middle East/North Africa-focused card issuer, has teamed up with ACI Worldwide to improve its fraud management platform. Announced on October 18, 2023, this partnership aims to bolster NymCard's capabilities in combating fraud and financial crime, enhancing security for its clients."
+                },
+                {
+                    "title": "NymCard Acquires Buy Now, Pay Later Firm Spotii",
+                    "url": "https://thepaypers.com/companies/latest-news-on-nymcard--27007",
+                    "description": "UAE-based Banking-as-a-Service provider NymCard has acquired the buy now, pay later company Spotii. Announced on June 12, 2023, this acquisition allows NymCard to extend customized BNPL services to its clients, enhancing its financial services offerings in the MENA region."
+                },
+                {
+                    "title": "NymCard and Mastercard Collaborate for Cross-Border Payments",
+                    "url": "https://newsroom.mastercard.com/news/eemea/en/newsroom/press-releases/en/2024/september/nymcard-leverages-mastercard-move-to-offer-fast-and-efficient-cross-border-payments-across-47-countries/",
+                    "description": "NymCard has partnered with Mastercard to offer fast and efficient cross-border payments across 47 countries. This collaboration, announced on September 11, 2024, leverages Mastercard's Cross-Border Services to enhance NymCard's BaaS platform, providing secure and near-real-time remittance services."
+                },
+                {
+                    "title": "NymCard Joins Visa Ready to Launch Program",
+                    "url": "https://www.pymnts.com/tag/nymcard/",
+                    "description": "NymCard, a Banking-as-a-Service firm, has joined the Visa Ready to Launch (VRTL) program. This initiative aims to streamline the process for fintechs to launch new payment solutions, enhancing NymCard's ability to offer innovative financial services in the Middle East and Pakistan."
+                }
+            ]
+        },
+        "response_time": 39.39797902107239
+    },
+    {
+        "input": {
+            "name": "Wettstein",
+            "job_title": "Other",
+            "company_name": "OBT AG",
+            "country": "Switzerland",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Alex Wettstein is an IT System Solutions expert and IT Security Officer (ISO) at OBT AG, based in Zurich. His professional focus is on enhancing IT security and developing robust system solutions, reflecting a strong background in information technology and cybersecurity. Alex is likely involved in writing or contributing to infoboard articles, indicating an interest in sharing knowledge and insights within his field. His role suggests a commitment to safeguarding digital infrastructures and ensuring secure IT environments. Engaging with Alex on topics such as the latest trends in IT security, challenges in system solutions, and his experiences in the field could lead to meaningful conversations.",
+            "social_media_links": [
+                {
+                    "platform": "Professional Directory",
+                    "url": "https://www.obt.ch/en/company/our-experts/alex-wettstein"
+                }
+            ],
+            "company_summary": "OBT AG is a prominent Swiss company specializing in fiduciary, consulting, audit, tax, and legal services, alongside offering comprehensive IT solutions. With a workforce of approximately 300 employees, OBT AG operates from 12 offices across Switzerland, making it one of the six largest firms in its sector within the country. The company is dedicated to providing holistic and personalized solutions tailored to the needs of small and medium-sized enterprises (SMEs), ensuring quality, security, and sustainable success for its clients.\n\nOBT AG's service portfolio is extensive, covering a wide range of business needs. Their fiduciary services include financial management and advisory, while their consulting services focus on strategic business development and operational efficiency. The audit services ensure compliance and transparency, and their tax and legal services are designed to offer foresight and strategic planning. Additionally, OBT AG provides holistic IT solutions, supporting businesses in integrating technology to enhance their operations.\n\nThe company's regional presence across Switzerland allows it to be closely connected with its clients, offering localized expertise and support. This geographical coverage ensures that OBT AG can cater to a diverse range of industries and sectors, providing tailored solutions that meet specific market demands.\n\nOBT AG's commitment to competence and reliability, coupled with its comprehensive service offerings, positions it as a trusted partner for businesses seeking to navigate the complexities of modern business environments. The company's focus on sustainable success and its participation in events and fairs further underscore its dedication to client engagement and industry leadership.",
+            "company_competitors": "- Accenture, - Atos, - Capgemini, - IBM, - SAP",
+            "company_news": [
+                {
+                    "title": "OBT shares target increased, overweight on strong growth",
+                    "url": "https://www.investing.com/news/analyst-ratings/obt-shares-target-increased-overweight-on-strong-growth-93CH-3771472",
+                    "description": "Piper Sandler increased its stock price target for Orange County Bancorp (NASDAQ: OBT) to $71 from $66, maintaining an Overweight rating. The bank is recognized for its strong financial health, consistent profitability, and growth prospects, with a market capitalization of $339 million and $2.5 billion in assets."
+                },
+                {
+                    "title": "Insider Sale: Reg Pres Of $OBT (OBT) Sells 910 Shares",
+                    "url": "https://www.barchart.com/story/news/29731394/insider-sale-reg-pres-of-obt-obt-sells-910-shares",
+                    "description": "Joseph A Ruhl, the Regional President of Orange County Bancorp, sold 910 shares of the company. This insider sale was reported in a recent SEC filing, reflecting ongoing trading activities by company executives."
+                },
+                {
+                    "title": "OBT Live & UIC Digital Announce Global Partnership",
+                    "url": "https://www.linkedin.com/posts/obt-live_obt-live-uic-digital-announce-global-partnership-activity-7254794975299690496-DI0S",
+                    "description": "OBT Live announced a global partnership with UIC Digital to deliver hyper-personalized digital solutions for the sports, media, and publishing industries. This collaboration aims to enhance digital experiences and customer engagement."
+                }
+            ]
+        },
+        "response_time": 41.32172417640686
+    },
+    {
+        "input": {
+            "name": "Nathan Pye",
+            "job_title": "IT Executive",
+            "company_name": "Checkmate",
+            "country": "Australia",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Geronimo unable to provide information about Nathan Pye at Checkmate.",
+            "social_media_links": {
+                "error": "No valid Data found"
+            },
+            "company_summary": "Geronimo Found multiple companies named Checkmate. Here are the details:\n\nThe first Checkmate is a financial services company primarily focused on providing short-term loans and check cashing services. Established in 1989, this company operates in several U.S. states, including Arizona, California, Colorado, New Mexico, and Washington. They offer a variety of loan products such as registration loans, payday loans, and installment loans, catering to customers seeking quick financial solutions. Their services are accessible both online and in-store, emphasizing customer convenience and support. The company is committed to helping customers make informed financial decisions and is regulated by relevant financial authorities in the states they operate.\n\nThe second Checkmate is a technology company offering powerful ordering solutions for the restaurant industry. This company provides scalable technology and 24/7 support to help restaurants enhance their digital business operations. Their services include first-party and third-party ordering systems, loyalty programs, data analytics, and voice AI solutions for automating drive-thru and phone orders. Checkmate's technology integrates seamlessly with existing restaurant systems, allowing for efficient management of orders and improved customer experiences. Trusted by over 2,400 brands, they are known for their ability to quickly integrate with platforms like Wendy's and support rapid business scaling. Their solutions aim to increase sales, streamline operations, and improve restaurant margins.",
+            "company_competitors": "- Chowly, - Deliverect, - HiPeople, - Jolt, - VICTIG Background Checks",
+            "company_news": [
+                {
+                    "title": "Tech provider Checkmate raises $10M to grow AI ordering",
+                    "url": "https://restaurantbusinessonline.com/technology/tech-provider-checkmate-raises-10m-grow-ai-ordering",
+                    "description": "Checkmate, a digital ordering provider for restaurants, has raised $10 million in a Series B funding round led by Tiger Global. The funds will be used to expand AI-powered phone and drive-thru ordering solutions, aiming to bring these technologies to more medium and large restaurant chains."
+                },
+                {
+                    "title": "Checkmate Raises $10 Million in Series B Funding Led by Tiger Global",
+                    "url": "https://www.prweb.com/releases/checkmate-raises-10-million-in-series-b-funding-led-by-tiger-global-to-scale-the-adoption-of-its-restaurant-voice-ai-and-kiosk-solutions-302282963.html",
+                    "description": "Checkmate secured $10 million in Series B funding to accelerate the adoption of its voice AI and kiosk technologies. The investment will help Checkmate expand its digital ordering solutions, offering a customizable platform for restaurants to enhance their operations and customer experience."
+                },
+                {
+                    "title": "Checkmate Secures $10 Million to Fuel Expansion of Its Voice AI, Kiosk and Other Restaurant Technology Solutions",
+                    "url": "https://restauranttechnologynews.com/2024/10/checkmate-secures-10-million-to-fuel-expansion-of-its-voice-ai-kiosk-and-other-restaurant-technology-solutions/",
+                    "description": "Checkmate has secured a $10 million Series B funding round led by Tiger Global to expand its voice AI and kiosk technologies. The company aims to capitalize on the growing demand for digital ordering solutions, providing a comprehensive platform for restaurant brands to streamline operations and enhance customer experiences."
+                },
+                {
+                    "title": "Checkmate acquires VoiceBite, a voice AI company",
+                    "url": "https://www.fastcasual.com/companies/media/itsacheckmate/",
+                    "description": "Checkmate, a restaurant ordering solutions provider, has acquired VoiceBite, a voice AI company. This acquisition enhances Checkmate's capabilities in AI-powered ordering, allowing restaurants to automate phone and drive-thru orders, and is part of Checkmate's strategy to expand its digital ordering solutions."
+                }
+            ]
+        },
+        "response_time": 39.534257888793945
+    },
+    {
+        "input": {
+            "name": "alex",
+            "job_title": "C-Level",
+            "company_name": "stanbic",
+            "country": "Kenya",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Alex Siboe is a prominent figure in the banking and technology sectors, currently serving as the Chief Technology Officer at Stanbic Bank Kenya. With over 20 years of leadership experience, Alex has a strong background in banking and telecommunications, having worked with organizations like Safaricom and the Communication Authority of Kenya. He is passionate about leveraging technology to enhance customer experiences and drive economic growth in Kenya and South Sudan. Alex has been instrumental in Stanbic's digital transformation, focusing on mobile applications and core-banking systems. He is also a fintech enthusiast, involved in initiatives around AI, blockchain, and cloud computing. Outside work, Alex enjoys running, traveling, and supporting youth soccer initiatives.",
+            "social_media_links": [
+                {
+                    "platform": "LinkedIn",
+                    "url": "https://ke.linkedin.com/in/alex-siboe-wekunda-98784012"
+                }
+            ],
+            "company_summary": "Geronimo found multiple companies named Stanbic. Here are the details:\n\nStanbic Bank Uganda is a prominent financial institution offering a wide range of banking services tailored to meet the needs of personal, business, and corporate clients. The bank is committed to providing innovative solutions that enhance customer convenience and satisfaction. Key services include personal and business banking, loans, insurance, and specialized offerings such as private banking and the \"Stanbic For Her\" initiative. The bank also offers digital solutions like mobile and online banking, enabling customers to manage their finances efficiently. Stanbic Bank Uganda is recognized for its customer-centric approach and has received accolades such as the Best Bank in Uganda 2022.\n\nStanbic IBTC Bank, a subsidiary of Stanbic IBTC Holdings in Nigeria, is a leading financial services provider known for its comprehensive banking solutions. The bank offers personal and business banking services, including loans, mortgages, and international money remittance. It is dedicated to driving Africa's growth by meeting the financial needs of the underbanked and empowering businesses. Stanbic IBTC Bank is also involved in promoting trade relationships between African countries and China. The bank's innovative digital platforms, such as the Stanbic IBTC Super App, enhance customer experience by providing seamless financial transactions. Stanbic IBTC Bank has been recognized for its excellence in the banking sector, winning awards at the Euromoney Global Private Banking Awards.",
+            "company_competitors": "1. Absa Bank Limited, 2. Agricultural Development Bank, 3. BNP Paribas India Solutions, 4. dfcu Bank, 5. Kenanga Group",
+            "company_news": [
+                {
+                    "title": "Stanbic IBTC to Invest 27% of Rights Issue Proceeds in SMEs and Commercial Banking",
+                    "url": "https://punchng.com/rights-issue-stanbic-ibtc-to-invest-27-in-smes-commercial-banking/",
+                    "description": "Stanbic IBTC Holdings Plc plans to allocate 27% of the N148.71bn from its rights issue to support SMEs and commercial banking. This initiative aims to boost sectors critical to Nigeria's economic development. The rights issue includes 2.94bn shares at N50.50 each, with proceeds also enhancing corporate banking and IT infrastructure."
+                },
+                {
+                    "title": "Stanbic Bank Kenya Partners with Orion Innovation for Strategic Modernization",
+                    "url": "https://www.prnewswire.com/news-releases/stanbic-bank-kenya-partners-with-orion-innovation-for-strategic-modernization-302154071.html",
+                    "description": "Stanbic Bank Kenya collaborates with Orion Innovation to upgrade its core banking system using Temenos' cloud-based platform. This modernization aims to enhance customer experiences and operational efficiency, aligning with Stanbic's digital transformation strategy."
+                },
+                {
+                    "title": "Stanbic Uganda Bids Farewell to Three Retiring Board Leaders",
+                    "url": "https://www.stanbic.co.ug/ugandaholdings/stanbic-uganda-holdings-limited/newsandinsights",
+                    "description": "Stanbic Uganda honored three retiring board directors with a farewell event. The directors' contributions were celebrated, marking a significant transition in the bank's leadership as it continues to focus on growth and innovation in Uganda's financial sector."
+                }
+            ]
+        },
+        "response_time": 36.877259254455566
+    },
+    {
+        "input": {
+            "name": "Kevin Barbe",
+            "job_title": "Other",
+            "company_name": "Doyle Krieger",
+            "country": "Anguilla",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Geronimo unable to provide information about Kevin Barbe at Doyle Krieger",
+            "social_media_links": {
+                "error": "No valid Data found"
+            },
+            "company_summary": "Geronimo unable to find valid information about Doyle Krieger.",
+            "company_competitors": "Clark Door, Noise Barriers, OtterBase, Sound Fighter Systems, Therapy Staff",
+            "company_news": {
+                "error": "No data found."
+            }
+        },
+        "response_time": 61.3160765171051
+    },
+    {
+        "input": {
+            "name": "Nick Baxter",
+            "job_title": "IT Executive",
+            "company_name": "Cambridge University Press & Assessment",
+            "country": "United Kindom",
+            "Response": null,
+            "Test_Status": null
+        },
+        "output": {
+            "professional_summary": "Nick Baxter is a seasoned professional currently serving as a Senior Buyer at Cambridge University Press & Assessment, based in Royston, GB. With a robust background in procurement and merchandising, Nick has honed his expertise through various roles, including Senior Buyer for IT Procurement and Senior Buying Manager for Mobile Phone Accessories at Tesco. His career reflects a strong foundation in sales, retail, and range management, with a particular focus on multi-channel retail and wireless technologies. Known for his sharp commercial acumen and supportive nature, Nick is passionate about optimizing procurement processes and driving commercial success. His industry insights and flexible approach make him a valuable asset in strategic buying and procurement discussions.",
+            "social_media_links": [
+                {
+                    "platform": "LinkedIn",
+                    "url": "https://uk.linkedin.com/in/nick-baxter-6487038b"
+                }
+            ],
+            "company_summary": "Cambridge University Press & Assessment, a distinguished entity of the University of Cambridge, is a world-leading academic publisher and assessment organization. Formed in August 2021 through the merger of Cambridge University Press and Cambridge Assessment, the institution operates as a non-profit organization. It is headquartered in Cambridge, England, with a significant global presence, boasting 50 overseas offices and reaching 100 million learners worldwide. The organization generates 85% of its revenue from international markets, with reported revenues exceeding \u00a31 billion.\n\nThe primary focus of Cambridge University Press & Assessment is to contribute to society through education, learning, and research. It offers a wide array of products and services, including the Cambridge Dictionary, Cambridge Core, IGCSEs, Cambridge Technicals, Linguaskill, and numerous academic journals and books. The organization is renowned for its educational innovation and commitment to open access, with 63% of new research journal articles published as open access.\n\nCambridge University Press & Assessment is notable for its extensive involvement in global education, having issued 11 million grades through its exam boards, including OCR and Cambridge International Education, in the 2023-24 period. The organization is also a strong advocate for climate education and diversity, aiming to embed principles of equity, diversity, inclusion, and belonging in its assessment practices. Under the leadership of CEO Peter Phillips, the institution continues to drive educational change and support communities worldwide.",
+            "company_competitors": "- Cengage Group, - Elsevier, - Macmillan Publishers, - SAGE Publishing, - Springer Nature",
+            "company_news": [
+                {
+                    "title": "Cambridge University Press Reports Record \u00a31 Billion in Revenue",
+                    "url": "https://publishingperspectives.com/2023/12/year-end-a-cambridge-university-press-record-1-billion-in-revenue/",
+                    "description": "Cambridge University Press & Assessment has achieved a significant financial milestone by reaching \u00a31 billion in revenue for the first time during its 2022-2023 reporting period, marking a notable achievement in its financial performance."
+                },
+                {
+                    "title": "Educational Innovation Through AI: Cognizant Signs Multi-Year Contract with Cambridge University Press & Assessment",
+                    "url": "https://www.prnewswire.com/news-releases/educational-innovation-through-ai-cognizant-signs-multi-year-contract-with-cambridge-university-press--assessment-302023819.html",
+                    "description": "Cambridge University Press & Assessment has renewed a five-year contract with Cognizant to drive digital transformation and leverage AI technology, aiming to improve operational effectiveness and maintain exam results integrity in the evolving education sector."
+                },
+                {
+                    "title": "Cambridge University Press & Assessment Writes to 20k Authors for AI Licensing 'Opt-In'",
+                    "url": "https://www.thebookseller.com/news/cambridge-university-press--assessment-writes-to-20k-authors-for-ai-licensing-opt-in",
+                    "description": "Cambridge University Press & Assessment is contacting 20,000 authors to request permission for licensing their content to generative AI companies. The 'opt-in' policy aims to ensure authors are informed and have agency over how their work is used."
+                },
+                {
+                    "title": "Exam Writers Make Claim Against Cambridge University Press",
+                    "url": "https://www.bbc.com/news/articles/c1lgzp3mnevo",
+                    "description": "Exam writers are bringing a legal claim against Cambridge University Press & Assessment, alleging unfair changes to their contracts that resulted in reduced pay and denied workplace rights. The Society of Authors supports the claim, seeking fair treatment and compensation."
+                }
+            ]
+        },
+        "response_time": 36.07234978675842
+    }
+]

@@ -21,7 +21,7 @@ def load_test_data(file_path):
 # Main function to orchestrate the testing
 def main():
     test_data_path = os.path.join(os.path.dirname(__file__), "test-data-2.csv")
-    response_path = os.path.join(os.path.dirname(__file__), "response-test-data-2.json")
+    response_path = os.path.join(os.path.dirname(__file__), "response-test-data-4.json")
 
     # Load test data from CSV
     try:

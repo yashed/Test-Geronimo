@@ -7,8 +7,8 @@ from fastapi.security.api_key import APIKeyHeader
 import Helper.langchain_helper as lh
 import logging
 from Service.mailService import send_mail
-from Service.Queue.queue_manager import start_worker, task_queue
-from Service.Queue.database_manager import DatabaseManager
+from Service.queue.queue_manager import start_worker, task_queue
+from Service.queue.database_manager import DatabaseManager
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
