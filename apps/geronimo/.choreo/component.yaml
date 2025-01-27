@@ -9,7 +9,3 @@ endpoints:
     networkVisibilities:
       - Public
     schemaFilePath: openapi.yaml
-dependencies:
-  connectionReferences:
-    - name: Test-Geronimo-MailServicce
-      resourceRef: service:/hyht/email-service/v1/PUBLIC
