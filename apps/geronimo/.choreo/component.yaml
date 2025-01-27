@@ -1,0 +1,14 @@
+schemaVersion: 1.1
+endpoints:
+  - name: fastapi_service
+    displayName: FastAPI Service
+    service:
+      port: 8000
+    type: REST
+    networkVisibilities:
+      - Public
+    schemaFilePath: openapi.yaml
+dependencies:
+  connectionReferences:
+    - name: Test-Geronimo-MailServicce
+      resourceRef: service:/hyht/email-service/v1/PUBLIC

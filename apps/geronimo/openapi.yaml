@@ -1,0 +1,142 @@
+openapi: 3.0.3
+info:
+  title: FastAPI
+  description: API specification for the FastAPI application.
+  version: 0.1.0
+paths:
+  /:
+    get:
+      summary: Read Root
+      operationId: read_root
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              example:
+                message: "Welcome to the API"
+  /test:
+    get:
+      summary: Test Endpoint
+      operationId: test_endpoint
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              example:
+                message: "This is a test endpoint"
+  /send_email:
+    post:
+      summary: Test Email Sending
+      operationId: send_email
+      security:
+        - apiKeyAuth: []  
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/EmailRequest"
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              example:
+                message: "Email sent successfully"
+                response: {}
+        "500":
+          description: Internal Server Error
+          content:
+            application/json:
+              example:
+                detail: "Internal server error"
+  /generate_data:
+    post:
+      summary: Generate Data
+      operationId: generate_data
+      security:
+        - apiKeyAuth: []  # Reference the API key security scheme
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/UserRequest"
+      responses:
+        "200":
+          description: Successful Response
+          content:
+            application/json:
+              example:
+                professional_summary: "No summary available"
+                social_media_links:
+                  - platform: "LinkedIn"
+                    url: "https://linkedin.com/example"
+                company_summary: "No company summary available"
+                company_competitors: "No competitors found"
+                additional_insights: "No additional insights available."
+        "401":
+          description: "Unauthorized: Invalid API key"
+          content:
+            application/json:
+              example:
+                detail: "Unauthorized: Invalid API key"
+        "404":
+          description: Data generation failed
+          content:
+            application/json:
+              example:
+                detail: "Data generation failed"
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      name: GERONIMO-API-KEY
+      in: header
+  schemas:
+    UserRequest:
+      type: object
+      required:
+        - name
+        - company
+        - country
+        - position
+        - interest
+        - email
+      properties:
+        name:
+          type: string
+          description: Name of the user
+        company:
+          type: string
+          description: Name of the company
+        country:
+          type: string
+          description: Country of the user
+        position:
+          type: string
+          description: Job position of the user
+        interest:
+          type: string
+          description: User's interest area
+        email:
+          type: string
+          description: User's email address
+    EmailRequest:
+      type: object
+      required:
+        - to
+        - subject
+        - body
+      properties:
+        to:
+          type: string
+          description: Email address of the recipient
+        subject:
+          type: string
+          description: Subject of the email
+        body:
+          type: string
+          description: Body content of the email
