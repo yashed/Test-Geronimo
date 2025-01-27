@@ -22,7 +22,7 @@ USER 10016
 
 # Expose the FastAPI port (8000)
 EXPOSE 8000
-
+ENV PORT 8000
 # Mount the database directory as a volume
 VOLUME ["/tmp"]
 
