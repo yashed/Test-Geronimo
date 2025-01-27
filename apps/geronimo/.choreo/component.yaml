@@ -1,13 +1,13 @@
 schemaVersion: 1.1
 endpoints:
-  - name: fastapi_service
-    displayName: FastAPI Service
+  - name: test_geronimo_service
+    displayName: Test Geronimo
     service:
       port: 8000
     type: REST
     networkVisibilities:
       - Public
-    schemaFilePath: openapi.yaml
+    schemaFilePath: .choreo/openapi.yaml
 dependencies:
   connectionReferences:
     - name: Test-Geronimo-MailServicce
