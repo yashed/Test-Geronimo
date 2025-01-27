@@ -3,11 +3,12 @@ endpoints:
   - name: test_geronimo_service
     displayName: Test Geronimo
     service:
+      basePath: /apps/geronimo
       port: 8000
     type: REST
     networkVisibilities:
       - Public
-    schemaFilePath: .choreo/openapi.yaml
+    schemaFilePath: openapi.yaml
 dependencies:
   connectionReferences:
     - name: Test-Geronimo-MailServicce
