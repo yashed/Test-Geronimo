@@ -3,7 +3,7 @@ endpoints:
   - name: test_geronimo_service
     displayName: Test Geronimo
     service:
-      basePath: /apps/geronimo
+      basePath: /
       port: 8000
     type: REST
     networkVisibilities:
