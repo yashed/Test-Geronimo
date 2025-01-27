@@ -12,4 +12,4 @@ endpoints:
 dependencies:
     connectionReferences:
     - name: Geronimo-Mail-Service
-      resourceRef: service:/hyht/Email Service/v1/803f0/PUBLIC
+      resourceRef: service:/hyht/email-service/v1/803f0/PUBLIC
