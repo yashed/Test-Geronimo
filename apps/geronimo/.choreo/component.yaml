@@ -9,7 +9,3 @@ endpoints:
     networkVisibilities:
       - Public
     schemaFilePath: openapi.yaml
-dependencies:
-    connectionReferences:
-    - name: Geronimo-Mail-Service
-      resourceRef: service:/hyht/email-service/v1/803f0/PUBLIC
