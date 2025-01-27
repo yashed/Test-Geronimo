@@ -6,6 +6,8 @@ info:
 servers:
   - url: http://localhost:8000
     description: Local environment
+  - url: https://apis-dev.wso2.com/solutions-architecture/geronimo-mail-testing/v1.0
+    description: Production environment
 paths:
   /:
     get:
@@ -60,7 +62,7 @@ paths:
       summary: Generate Data
       operationId: generate_data
       security:
-        - apiKeyAuth: []  # Reference the API key security scheme
+        - apiKeyAuth: []  
       requestBody:
         required: true
         content:
