@@ -5,6 +5,7 @@ from .config import SERVICE_URL, API_KEY
 
 def send_email_choreo(to_email, subject, body):
     access_token = get_access_token()
+    print("Access Token: ", access_token)
     url = f"{SERVICE_URL}/emails"
 
     headers = {
