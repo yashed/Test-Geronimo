@@ -3,13 +3,8 @@ endpoints:
   - name: test_geronimo_service
     displayName: Test Geronimo
     service:
-      basePath: /
       port: 8000
     type: REST
     networkVisibilities:
       - Public
     schemaFilePath: openapi.yaml
-dependencies:
-    connectionReferences:
-    - name: Geronimo-Mail-Service
-      resourceRef: service:/hyht/email-service/v1/803f0/PUBLIC

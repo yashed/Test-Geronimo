@@ -8,7 +8,6 @@ import Helper.langchain_helper as lh
 import logging
 from Service.queue.queue_manager import start_worker, task_queue
 from Service.queue.database_manager import DatabaseManager
-from Service.mailService import send_email_choreo
 from dotenv import load_dotenv
 
 load_dotenv(override=True)
@@ -116,23 +115,23 @@ async def log_unhandled_requests(request: Request, call_next):
     return response
 
 
-@app.post("/send_email")
-async def send_email(
-    email_request: EmailRequest,
-):
-    """
-    Endpoint to test sending email through Choreo email service.
-    """
-    try:
-        response = send_email_choreo(
-            to_email=email_request.to,
-            subject=email_request.subject,
-            body=email_request.body,
-        )
-        return {"message": "Email sent successfully", "response": response}
-    except Exception as e:
-        logger.exception("Error sending email: %s", e)
-        raise HTTPException(status_code=500, detail="Internal server error")
+# @app.post("/send_email")
+# async def send_email(
+#     email_request: EmailRequest,
+# ):
+#     """
+#     Endpoint to test sending email through Choreo email service.
+#     """
+#     try:
+#         response = send_email_choreo(
+#             to_email=email_request.to,
+#             subject=email_request.subject,
+#             body=email_request.body,
+#         )
+#         return {"message": "Email sent successfully", "response": response}
+#     except Exception as e:
+#         logger.exception("Error sending email: %s", e)
+#         raise HTTPException(status_code=500, detail="Internal server error")
 
 
 # Initialize worker and database manager
